@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/fast_boxes.dir/src/convex_hull.cpp.o"
+  "CMakeFiles/fast_boxes.dir/src/convex_hull.cpp.o.d"
   "CMakeFiles/fast_boxes.dir/src/dilate.cpp.o"
+  "CMakeFiles/fast_boxes.dir/src/dilate.cpp.o.d"
   "CMakeFiles/fast_boxes.dir/src/find_components.cpp.o"
+  "CMakeFiles/fast_boxes.dir/src/find_components.cpp.o.d"
   "CMakeFiles/fast_boxes.dir/src/rotated_bounding_box.cpp.o"
+  "CMakeFiles/fast_boxes.dir/src/rotated_bounding_box.cpp.o.d"
   "libfast_boxes.pdb"
   "libfast_boxes.so"
 )
