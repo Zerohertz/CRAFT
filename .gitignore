@@ -4,6 +4,7 @@ exp/*
 wandb/*
 vis_result/*
 .ipynb_checkpoints
+utils/cpp_bindings/build
 pretrained
 data/TrainingData/data
 data/TrainingData/data-synth
