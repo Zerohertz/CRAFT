@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0,1,6,7 python train.py --yaml=main
