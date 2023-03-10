@@ -1,0 +1,12 @@
+__pycache__/
+model/__pycache__/
+exp/*
+wandb/*
+vis_result/*
+.ipynb_checkpoints
+pretrained
+data/TrainingData/data
+data/TrainingData/data-synth
+data/TestData/data
+data/TestData/data-synth
+data/TestData/target
