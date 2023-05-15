@@ -1,0 +1,1300 @@
+.complexity:  1644
+
+TensorContractLayout 0 block= load_par=c_1=[0:3:1] r_1=[0:3:1] s_1=[0:3:1] store_par=ax1_12_10=[0:64:1] free=ax2_13_10=[0:2400:1] ax3_14_10=[0:2400:1]
+layout_profile(block_axes_tripcount=5625, parallel_axes_tripcount=1728)
+	l 4 nn.pad0:0   [1, 3, 2402, 2404] [F,P,F,F] ['0', 'c_1', 'ax2_13_10+r_1', 'ax3_14_10+s_1']
+	l 5 t3  const [3, 3, 3, 64] [P,P,P,F] ['r_1', 's_1', 'c_1', 'ax1_12_10']
+	r               |V2 $1420[ax1_12_10,ax2_13_10,ax3_14_10] = tensor_contract_multiply_add(|V2 $1763[ax1_12_10,ax2_13_10,ax3_14_10,c_1,r_1,s_1], |V2 $5[ax1_12_10,ax2_13_10,ax3_14_10,c_1,r_1,s_1], contract={c_1=[0:3:1],r_1=[0:3:1],s_1=[0:3:1]}, lhs_free={ax2_13_10=[0:2400:1],ax3_14_10=[0:2400:1]}, rhs_free={ax1_12_10=[0:64:1]}) # dl = vgg16_bn_6/Sequential_5/Conv2d_12/aten__convolution/Conv2D
+	l 52 t50  const [64] [P] ['ax1_12_10']
+	l 1580 t1579  const [64] [P] ['ax1_12_10']
+	l 34 t32  const [64] [P] ['ax1_12_10']
+	l 22 t20  const [64] [P] ['ax1_12_10']
+	s 1463 vgg16_bn_6/Sequential_5/Conv2d_15/aten__convolution/transpose:0   [2400, 2400, 64] [F,F,P] ['ax2_13_10', 'ax3_14_10', 'ax1_12_10']
+
+
+
+TensorContractLayout 1 block=r_13=[0:3:1] s_13=[0:3:1] load_par=c_13=[0:64:1] store_par=m_13=[0:64:1] free=h_13_0=[0:1200:1] h_13_1=[0:2:1] w_13_0=[0:1200:1] w_13_1=[0:2:1]
+layout_profile(block_axes_tripcount=25317, parallel_axes_tripcount=4096)
+	l 75 t73  const [64] [P] ['m_13']
+	l 87 t85  const [64] [P] ['m_13']
+	l 1583 t1582  const [64] [P] ['m_13']
+	l 105 t103  const [64] [P] ['m_13']
+	l 67 vgg16_bn_6/Sequential_5/Conv2d_15/aten__convolution/transpose:0   [2400, 2400, 64] [F,F,P] ['2h_13_0+h_13_1+r_13-1', '2w_13_0+w_13_1+s_13-1', 'c_13']
+	l 68 t66  const [3, 3, 64, 64] [B,B,P,F] ['r_13', 's_13', 'c_13', 'm_13']
+	r                   |V2 $1421[h_13_0,h_13_1,w_13_0,w_13_1,m_13] = tensor_contract_multiply_add(|V2 $67[h_13_0,h_13_1,w_13_0,w_13_1,m_13,c_13,r_13,s_13], |V2 $68[h_13_0,h_13_1,w_13_0,w_13_1,m_13,c_13,r_13,s_13], contract={c_13=[0:64:1],r_13=[0:3:1],s_13=[0:3:1]}, lhs_free={h_13_0=[0:1200:1],h_13_1=[0:2:1],w_13_0=[0:1200:1],w_13_1=[0:2:1]}, rhs_free={m_13=[0:64:1]}) # dl = vgg16_bn_6/Sequential_5/Conv2d_15/aten__convolution/Conv2D
+	s 1467 vgg16_bn_6/Sequential_5/MaxPool2d_18/aten_max_pool2d/transpose:0   [1200, 2, 1200, 2, 64] [F,F,F,F,P] ['h_13_0', 'h_13_1', 'w_13_0', 'w_13_1', 'm_13']
+
+
+
+DFNLayout 2 broadcast= block= par=c_24=[0:64:1] free=h_24=[0:1200:1] w_24=[0:1200:1] r_24=[0:2:1] s_24=[0:2:1]
+layout_profile(block_axes_tripcount=2813, parallel_axes_tripcount=64)
+	l 119 vgg16_bn_6/Sequential_5/MaxPool2d_18/aten_max_pool2d/transpose:0   [1200, 2, 1200, 2, 64] [F,F,F,F,P] ['h_24', 'r_24', 'w_24', 's_24', 'c_24']
+	r             |V2 $120[c_24,h_24,w_24] = reduce_maximum(|V2 $119[c_24,h_24,w_24,r_24,s_24], {r_24=[0:2:1],s_24=[0:2:1]}) # dl = vgg16_bn_6/Sequential_5/MaxPool2d_18/aten_max_pool2d/MaxPool2d
+	s 1469 vgg16_bn_6/Sequential_5/Conv2d_19/aten__convolution/transpose:0   [1200, 1200, 64] [F,F,P] ['h_24', 'w_24', 'c_24']
+
+
+
+TensorContractLayout 3 block=r_27=[0:3:1] s_27=[0:3:1] load_par=c_27=[0:64:1] store_par=m_27=[0:128:1] free=h_27=[0:1200:1] w_27=[0:1200:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=8192)
+	l 138 t136  const [128] [P] ['m_27']
+	l 150 t148  const [128] [P] ['m_27']
+	l 1586 t1585  const [128] [P] ['m_27']
+	l 168 t166  const [128] [P] ['m_27']
+	l 130 vgg16_bn_6/Sequential_5/Conv2d_19/aten__convolution/transpose:0   [1200, 1200, 64] [F,F,P] ['h_27+r_27-1', 'w_27+s_27-1', 'c_27']
+	l 131 t129  const [3, 3, 64, 128] [B,B,P,F] ['r_27', 's_27', 'c_27', 'm_27']
+	r               |V2 $1422[h_27,w_27,m_27] = tensor_contract_multiply_add(|V2 $130[h_27,w_27,m_27,c_27,r_27,s_27], |V2 $131[h_27,w_27,m_27,c_27,r_27,s_27], contract={c_27=[0:64:1],r_27=[0:3:1],s_27=[0:3:1]}, lhs_free={h_27=[0:1200:1],w_27=[0:1200:1]}, rhs_free={m_27=[0:128:1]}) # dl = vgg16_bn_6/Sequential_5/Conv2d_19/aten__convolution/Conv2D
+	s 1473 vgg16_bn_6/Sequential_5/Conv2d_22/aten__convolution/transpose:0   [1200, 1200, 128] [F,F,P] ['h_27', 'w_27', 'm_27']
+
+
+
+TensorContractLayout 4 block=w_38_1=[0:2:1] r_38=[0:3:1] s_38=[0:3:1] load_par=c_38=[0:128:1] store_par=m_38_0=[0:2:1] m_38_1=[0:64:1] free=h_38_0=[0:600:1] h_38_1=[0:2:1] w_38_0=[0:600:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 191 t189  const [128] [P] ['64m_38_0+m_38_1']
+	l 203 t201  const [128] [P] ['64m_38_0+m_38_1']
+	l 1589 t1588  const [128] [P] ['64m_38_0+m_38_1']
+	l 221 t219  const [128] [P] ['64m_38_0+m_38_1']
+	l 183 vgg16_bn_6/Sequential_5/Conv2d_22/aten__convolution/transpose:0   [1200, 1200, 128] [F,F,P] ['2h_38_0+h_38_1+r_38-1', '2w_38_0+w_38_1+s_38-1', 'c_38']
+	l 184 t182  const [3, 3, 128, 128] [B,B,P,F] ['r_38', 's_38', 'c_38', '64m_38_0+m_38_1']
+	r                     |V2 $1423[h_38_0,h_38_1,w_38_0,w_38_1,m_38_0,m_38_1] = tensor_contract_multiply_add(|V2 $183[h_38_0,h_38_1,w_38_0,w_38_1,m_38_0,m_38_1,c_38,r_38,s_38], |V2 $184[h_38_0,h_38_1,w_38_0,w_38_1,m_38_0,m_38_1,c_38,r_38,s_38], contract={c_38=[0:128:1],r_38=[0:3:1],s_38=[0:3:1]}, lhs_free={h_38_0=[0:600:1],h_38_1=[0:2:1],w_38_0=[0:600:1],w_38_1=[0:2:1]}, rhs_free={m_38_0=[0:2:1],m_38_1=[0:64:1]}) # dl = vgg16_bn_6/Sequential_5/Conv2d_22/aten__convolution/Conv2D
+	s 231 vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0   [2, 64, 600, 2, 600, 2] [P,P,F,F,F,B] ['m_38_0', 'm_38_1', 'h_38_0', 'h_38_1', 'w_38_0', 'w_38_1']
+
+
+
+DFNLayout 5 broadcast= block=s_49=[0:2:1] par=c_49_0=[0:2:1] c_49_1=[0:64:1] free=h_49=[0:600:1] w_49=[0:600:1] r_49=[0:2:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=128)
+	l 233 vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0   [2, 64, 600, 2, 600, 2] [P,P,F,F,F,B] ['c_49_0', 'c_49_1', 'h_49', 'r_49', 'w_49', 's_49']
+	r               |V2 $236[c_49_0,c_49_1,h_49,w_49] = reduce_maximum(|V2 $233[c_49_0,c_49_1,h_49,w_49,r_49,s_49], {r_49=[0:2:1],s_49=[0:2:1]}) # dl = vgg16_bn_6/Sequential_6/MaxPool2d_8/aten_max_pool2d/MaxPool2d
+	s 1478 vgg16_bn_6/Sequential_6/Conv2d_9/aten__convolution/transpose:0   [600, 600, 2, 64] [F,F,P,P] ['h_49', 'w_49', 'c_49_0', 'c_49_1']
+
+
+
+TensorContractLayout 6 block=r_52=[0:3:1] s_52=[0:3:1] load_par=c_52_0=[0:2:1] c_52_1=[0:64:1] store_par=m_52=[0:256:1] free=h_52=[0:600:1] w_52=[0:600:1]
+layout_profile(block_axes_tripcount=3168, parallel_axes_tripcount=16384)
+	l 254 t252  const [256] [P] ['m_52']
+	l 266 t264  const [256] [P] ['m_52']
+	l 1592 t1591  const [256] [P] ['m_52']
+	l 284 t282  const [256] [P] ['m_52']
+	l 246 vgg16_bn_6/Sequential_6/Conv2d_9/aten__convolution/transpose:0   [600, 600, 2, 64] [F,F,P,P] ['h_52+r_52-1', 'w_52+s_52-1', 'c_52_0', 'c_52_1']
+	l 247 t245  const [3, 3, 128, 256] [B,B,P,F] ['r_52', 's_52', '64c_52_0+c_52_1', 'm_52']
+	r                 |V2 $1424[h_52,w_52,m_52] = tensor_contract_multiply_add(|V2 $246[h_52,w_52,m_52,c_52_0,c_52_1,r_52,s_52], |V2 $247[h_52,w_52,m_52,c_52_0,c_52_1,r_52,s_52], contract={c_52_0=[0:2:1],c_52_1=[0:64:1],r_52=[0:3:1],s_52=[0:3:1]}, lhs_free={h_52=[0:600:1],w_52=[0:600:1]}, rhs_free={m_52=[0:256:1]}) # dl = vgg16_bn_6/Sequential_6/Conv2d_9/aten__convolution/Conv2D
+	s 1482 vgg16_bn_6/Sequential_6/Conv2d_12/aten__convolution/transpose:0   [600, 600, 256] [F,F,P] ['h_52', 'w_52', 'm_52']
+
+
+
+TensorContractLayout 7 block=r_63=[0:3:1] s_63=[0:3:1] load_par=c_63=[0:256:1] store_par=m_63_0=[0:2:1] m_63_1=[0:128:1] free=h_63_0=[0:300:1] h_63_1=[0:2:1] w_63_0=[0:300:1] w_63_1=[0:2:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 307 t305  const [256] [P] ['128m_63_0+m_63_1']
+	l 319 t317  const [256] [P] ['128m_63_0+m_63_1']
+	l 1595 t1594  const [256] [P] ['128m_63_0+m_63_1']
+	l 337 t335  const [256] [P] ['128m_63_0+m_63_1']
+	l 299 vgg16_bn_6/Sequential_6/Conv2d_12/aten__convolution/transpose:0   [600, 600, 256] [F,F,P] ['2h_63_0+h_63_1+r_63-1', '2w_63_0+w_63_1+s_63-1', 'c_63']
+	l 300 t298  const [3, 3, 256, 256] [B,B,P,F] ['r_63', 's_63', 'c_63', '128m_63_0+m_63_1']
+	r                     |V2 $1425[h_63_0,h_63_1,w_63_0,w_63_1,m_63_0,m_63_1] = tensor_contract_multiply_add(|V2 $299[h_63_0,h_63_1,w_63_0,w_63_1,m_63_0,m_63_1,c_63,r_63,s_63], |V2 $300[h_63_0,h_63_1,w_63_0,w_63_1,m_63_0,m_63_1,c_63,r_63,s_63], contract={c_63=[0:256:1],r_63=[0:3:1],s_63=[0:3:1]}, lhs_free={h_63_0=[0:300:1],h_63_1=[0:2:1],w_63_0=[0:300:1],w_63_1=[0:2:1]}, rhs_free={m_63_0=[0:2:1],m_63_1=[0:128:1]}) # dl = vgg16_bn_6/Sequential_6/Conv2d_12/aten__convolution/Conv2D
+	s 1704 t1716   [300, 2, 300, 2, 2, 128] [F,F,F,F,P,P] ['h_63_0', 'h_63_1', 'w_63_0', 'w_63_1', 'm_63_0', 'm_63_1']
+	s 350 vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0   [600, 600, 2, 128] [F,F,P,P] ['2h_63_0+h_63_1', '2w_63_0+w_63_1', 'm_63_0', 'm_63_1']
+
+
+
+TensorContractLayout 8 block=r_74=[0:3:1] s_74=[0:3:1] load_par=c_74_0=[0:2:1] c_74_1=[0:128:1] store_par=m_74=[0:256:1] free=h_74_0=[0:300:1] h_74_1=[0:2:1] w_74_0=[0:300:1] w_74_1=[0:2:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 360 t358  const [256] [P] ['m_74']
+	l 372 t370  const [256] [P] ['m_74']
+	l 1598 t1597  const [256] [P] ['m_74']
+	l 390 t388  const [256] [P] ['m_74']
+	l 352 vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0   [600, 600, 2, 128] [F,F,P,P] ['2h_74_0+h_74_1+r_74-1', '2w_74_0+w_74_1+s_74-1', 'c_74_0', 'c_74_1']
+	l 353 t351  const [3, 3, 256, 256] [B,B,P,F] ['r_74', 's_74', '128c_74_0+c_74_1', 'm_74']
+	r                     |V2 $1426[h_74_0,h_74_1,w_74_0,w_74_1,m_74] = tensor_contract_multiply_add(|V2 $352[h_74_0,h_74_1,w_74_0,w_74_1,m_74,c_74_0,c_74_1,r_74,s_74], |V2 $353[h_74_0,h_74_1,w_74_0,w_74_1,m_74,c_74_0,c_74_1,r_74,s_74], contract={c_74_0=[0:2:1],c_74_1=[0:128:1],r_74=[0:3:1],s_74=[0:3:1]}, lhs_free={h_74_0=[0:300:1],h_74_1=[0:2:1],w_74_0=[0:300:1],w_74_1=[0:2:1]}, rhs_free={m_74=[0:256:1]}) # dl = vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/Conv2D
+	s 1489 vgg16_bn_6/Sequential_8/MaxPool2d_14/aten_max_pool2d/transpose:0   [300, 2, 300, 2, 256] [F,F,F,F,P] ['h_74_0', 'h_74_1', 'w_74_0', 'w_74_1', 'm_74']
+
+
+
+DFNLayout 9 broadcast= block= par=c_85=[0:256:1] free=h_85=[0:300:1] w_85=[0:300:1] r_85=[0:2:1] s_85=[0:2:1]
+layout_profile(block_axes_tripcount=352, parallel_axes_tripcount=128)
+	l 404 vgg16_bn_6/Sequential_8/MaxPool2d_14/aten_max_pool2d/transpose:0   [300, 2, 300, 2, 256] [F,F,F,F,P] ['h_85', 'r_85', 'w_85', 's_85', 'c_85']
+	r             |V2 $405[c_85,h_85,w_85] = reduce_maximum(|V2 $404[c_85,h_85,w_85,r_85,s_85], {r_85=[0:2:1],s_85=[0:2:1]}) # dl = vgg16_bn_6/Sequential_8/MaxPool2d_14/aten_max_pool2d/MaxPool2d
+	s 1491 vgg16_bn_6/Sequential_8/Conv2d_15/aten__convolution/transpose:0   [300, 300, 256] [F,F,P] ['h_85', 'w_85', 'c_85']
+
+
+
+TensorContractLayout 10 block=r_88=[0:3:1] s_88=[0:3:1] load_par=c_88=[0:256:1] store_par=m_88=[0:512:1] free=h_88=[0:300:1] w_88=[0:300:1]
+layout_profile(block_axes_tripcount=3168, parallel_axes_tripcount=16384)
+	l 423 t421  const [512] [P] ['m_88']
+	l 435 t433  const [512] [P] ['m_88']
+	l 1601 t1600  const [512] [P] ['m_88']
+	l 453 t451  const [512] [P] ['m_88']
+	l 415 vgg16_bn_6/Sequential_8/Conv2d_15/aten__convolution/transpose:0   [300, 300, 256] [F,F,P] ['h_88+r_88-1', 'w_88+s_88-1', 'c_88']
+	l 416 t414  const [3, 3, 256, 512] [B,B,P,F] ['r_88', 's_88', 'c_88', 'm_88']
+	r               |V2 $1427[h_88,w_88,m_88] = tensor_contract_multiply_add(|V2 $415[h_88,w_88,m_88,c_88,r_88,s_88], |V2 $416[h_88,w_88,m_88,c_88,r_88,s_88], contract={c_88=[0:256:1],r_88=[0:3:1],s_88=[0:3:1]}, lhs_free={h_88=[0:300:1],w_88=[0:300:1]}, rhs_free={m_88=[0:512:1]}) # dl = vgg16_bn_6/Sequential_8/Conv2d_15/aten__convolution/Conv2D
+	s 1495 vgg16_bn_6/Sequential_8/Conv2d_18/aten__convolution/transpose:0   [300, 300, 512] [F,F,P] ['h_88', 'w_88', 'm_88']
+
+
+
+TensorContractLayout 11 block=r_99=[0:3:1] s_99=[0:3:1] load_par=c_99=[0:512:1] store_par=m_99_0=[0:2:1] m_99_1=[0:256:1] free=h_99_0=[0:150:1] h_99_1=[0:2:1] w_99_0=[0:150:1] w_99_1=[0:2:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 476 t474  const [512] [P] ['256m_99_0+m_99_1']
+	l 488 t486  const [512] [P] ['256m_99_0+m_99_1']
+	l 1604 t1603  const [512] [P] ['256m_99_0+m_99_1']
+	l 506 t504  const [512] [P] ['256m_99_0+m_99_1']
+	l 468 vgg16_bn_6/Sequential_8/Conv2d_18/aten__convolution/transpose:0   [300, 300, 512] [F,F,P] ['2h_99_0+h_99_1+r_99-1', '2w_99_0+w_99_1+s_99-1', 'c_99']
+	l 469 t467  const [3, 3, 512, 512] [B,B,P,F] ['r_99', 's_99', 'c_99', '256m_99_0+m_99_1']
+	r                     |V2 $1428[h_99_0,h_99_1,w_99_0,w_99_1,m_99_0,m_99_1] = tensor_contract_multiply_add(|V2 $468[h_99_0,h_99_1,w_99_0,w_99_1,m_99_0,m_99_1,c_99,r_99,s_99], |V2 $469[h_99_0,h_99_1,w_99_0,w_99_1,m_99_0,m_99_1,c_99,r_99,s_99], contract={c_99=[0:512:1],r_99=[0:3:1],s_99=[0:3:1]}, lhs_free={h_99_0=[0:150:1],h_99_1=[0:2:1],w_99_0=[0:150:1],w_99_1=[0:2:1]}, rhs_free={m_99_0=[0:2:1],m_99_1=[0:256:1]}) # dl = vgg16_bn_6/Sequential_8/Conv2d_18/aten__convolution/Conv2D
+	s 1673 t1685   [150, 2, 150, 2, 2, 256] [F,F,F,F,P,P] ['h_99_0', 'h_99_1', 'w_99_0', 'w_99_1', 'm_99_0', 'm_99_1']
+	s 519 vgg16_bn_6/Sequential_10/Conv2d_11/aten__convolution/transpose:0   [300, 300, 2, 256] [F,F,P,P] ['2h_99_0+h_99_1', '2w_99_0+w_99_1', 'm_99_0', 'm_99_1']
+
+
+
+TensorContractLayout 12 block=r_110=[0:3:1] s_110=[0:3:1] load_par=c_110_0=[0:2:1] c_110_1=[0:256:1] store_par=m_110=[0:512:1] free=h_110_0=[0:150:1] h_110_1=[0:2:1] w_110_0=[0:150:1] w_110_1=[0:2:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 529 t527  const [512] [P] ['m_110']
+	l 541 t539  const [512] [P] ['m_110']
+	l 1607 t1606  const [512] [P] ['m_110']
+	l 559 t557  const [512] [P] ['m_110']
+	l 521 vgg16_bn_6/Sequential_10/Conv2d_11/aten__convolution/transpose:0   [300, 300, 2, 256] [F,F,P,P] ['2h_110_0+h_110_1+r_110-1', '2w_110_0+w_110_1+s_110-1', 'c_110_0', 'c_110_1']
+	l 522 t520  const [3, 3, 512, 512] [B,B,P,F] ['r_110', 's_110', '256c_110_0+c_110_1', 'm_110']
+	r                     |V2 $1429[h_110_0,h_110_1,w_110_0,w_110_1,m_110] = tensor_contract_multiply_add(|V2 $521[h_110_0,h_110_1,w_110_0,w_110_1,m_110,c_110_0,c_110_1,r_110,s_110], |V2 $522[h_110_0,h_110_1,w_110_0,w_110_1,m_110,c_110_0,c_110_1,r_110,s_110], contract={c_110_0=[0:2:1],c_110_1=[0:256:1],r_110=[0:3:1],s_110=[0:3:1]}, lhs_free={h_110_0=[0:150:1],h_110_1=[0:2:1],w_110_0=[0:150:1],w_110_1=[0:2:1]}, rhs_free={m_110=[0:512:1]}) # dl = vgg16_bn_6/Sequential_10/Conv2d_11/aten__convolution/Conv2D
+	s 1502 vgg16_bn_6/Sequential_10/MaxPool2d_14/aten_max_pool2d/transpose:0   [150, 2, 150, 2, 512] [F,F,F,F,P] ['h_110_0', 'h_110_1', 'w_110_0', 'w_110_1', 'm_110']
+
+
+
+DFNLayout 13 broadcast= block= par=c_121=[0:512:1] free=h_121=[0:150:1] w_121=[0:150:1] r_121=[0:2:1] s_121=[0:2:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=128)
+	l 573 vgg16_bn_6/Sequential_10/MaxPool2d_14/aten_max_pool2d/transpose:0   [150, 2, 150, 2, 512] [F,F,F,F,P] ['h_121', 'r_121', 'w_121', 's_121', 'c_121']
+	r             |V2 $574[c_121,h_121,w_121] = reduce_maximum(|V2 $573[c_121,h_121,w_121,r_121,s_121], {r_121=[0:2:1],s_121=[0:2:1]}) # dl = vgg16_bn_6/Sequential_10/MaxPool2d_14/aten_max_pool2d/MaxPool2d
+	s 1504 vgg16_bn_6/Sequential_10/Conv2d_15/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_121', 'w_121', 'c_121']
+
+
+
+TensorContractLayout 14 block=r_124=[0:3:1] s_124=[0:3:1] load_par=c_124=[0:512:1] store_par=m_124=[0:512:1] free=h_124=[0:150:1] w_124=[0:150:1]
+layout_profile(block_axes_tripcount=1584, parallel_axes_tripcount=16384)
+	l 592 t590  const [512] [P] ['m_124']
+	l 604 t602  const [512] [P] ['m_124']
+	l 1610 t1609  const [512] [P] ['m_124']
+	l 622 t620  const [512] [P] ['m_124']
+	l 584 vgg16_bn_6/Sequential_10/Conv2d_15/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_124+r_124-1', 'w_124+s_124-1', 'c_124']
+	l 585 t583  const [3, 3, 512, 512] [B,B,P,F] ['r_124', 's_124', 'c_124', 'm_124']
+	r               |V2 $1430[h_124,w_124,m_124] = tensor_contract_multiply_add(|V2 $584[h_124,w_124,m_124,c_124,r_124,s_124], |V2 $585[h_124,w_124,m_124,c_124,r_124,s_124], contract={c_124=[0:512:1],r_124=[0:3:1],s_124=[0:3:1]}, lhs_free={h_124=[0:150:1],w_124=[0:150:1]}, rhs_free={m_124=[0:512:1]}) # dl = vgg16_bn_6/Sequential_10/Conv2d_15/aten__convolution/Conv2D
+	s 1508 vgg16_bn_6/Sequential_10/Conv2d_18/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_124', 'w_124', 'm_124']
+
+
+
+TensorContractLayout 15 block=r_135=[0:3:1] s_135=[0:3:1] load_par=c_135=[0:512:1] store_par=m_135=[0:512:1] free=h_135=[0:150:1] w_135=[0:150:1]
+layout_profile(block_axes_tripcount=1584, parallel_axes_tripcount=16384)
+	l 645 t643  const [512] [P] ['m_135']
+	l 657 t655  const [512] [P] ['m_135']
+	l 1613 t1612  const [512] [P] ['m_135']
+	l 675 t673  const [512] [P] ['m_135']
+	l 637 vgg16_bn_6/Sequential_10/Conv2d_18/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_135+r_135-1', 'w_135+s_135-1', 'c_135']
+	l 638 t636  const [3, 3, 512, 512] [B,B,P,F] ['r_135', 's_135', 'c_135', 'm_135']
+	r               |V2 $1431[h_135,w_135,m_135] = tensor_contract_multiply_add(|V2 $637[h_135,w_135,m_135,c_135,r_135,s_135], |V2 $638[h_135,w_135,m_135,c_135,r_135,s_135], contract={c_135=[0:512:1],r_135=[0:3:1],s_135=[0:3:1]}, lhs_free={h_135=[0:150:1],w_135=[0:150:1]}, rhs_free={m_135=[0:512:1]}) # dl = vgg16_bn_6/Sequential_10/Conv2d_18/aten__convolution/Conv2D
+	s 684 vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/transpose:0   [150, 150, 512] [F,F,P] ['h_135', 'w_135', 'm_135']
+	s 1759 t1661   [150, 150, 512] [F,F,P] ['h_135', 'w_135', 'm_135']
+
+
+
+DFNLayout 16 broadcast= block= par=c_145=[0:512:1] free=h_145=[0:150:1] w_145=[0:150:1] r_145=[0:3:1] s_145=[0:3:1]
+layout_profile(block_axes_tripcount=396, parallel_axes_tripcount=128)
+	l 685 vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/transpose:0   [150, 150, 512] [F,F,P] ['h_145+r_145-1', 'w_145+s_145-1', 'c_145']
+	r             |V2 $686[c_145,h_145,w_145] = reduce_maximum(|V2 $685[c_145,h_145,w_145,r_145,s_145], {r_145=[0:3:1],s_145=[0:3:1]}) # dl = vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/MaxPool2d
+	s 1513 vgg16_bn_6/Sequential_12/Conv2d_4/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_145', 'w_145', 'c_145']
+
+
+
+TensorContractLayout 17 block=r_148=[0:3:1] s_148=[0:3:1] load_par=c_148=[0:512:1] store_par=m_148=[0:1024:1] free=h_148=[0:150:1] w_148=[0:150:1]
+layout_profile(block_axes_tripcount=3168, parallel_axes_tripcount=16384)
+	l 704 t702  const [1024] [P] ['m_148']
+	l 696 vgg16_bn_6/Sequential_12/Conv2d_4/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_148+6r_148-6', 'w_148+6s_148-6', 'c_148']
+	l 697 t695  const [3, 3, 512, 1024] [B,B,P,F] ['r_148', 's_148', 'c_148', 'm_148']
+	r               |V2 $1432[h_148,w_148,m_148] = tensor_contract_multiply_add(|V2 $696[h_148,w_148,m_148,c_148,r_148,s_148], |V2 $697[h_148,w_148,m_148,c_148,r_148,s_148], contract={c_148=[0:512:1],r_148=[0:3:1],s_148=[0:3:1]}, lhs_free={h_148=[0:150:1],w_148=[0:150:1]}, rhs_free={m_148=[0:1024:1]}) # dl = vgg16_bn_6/Sequential_12/Conv2d_4/aten__convolution/Conv2D
+	s 1515 vgg16_bn_6/Sequential_12/Conv2d_5/aten__convolution/transpose:0   [150, 150, 1024] [F,F,P] ['h_148', 'w_148', 'm_148']
+
+
+
+TensorContractLayout 18 block= load_par=c_152=[0:1024:1] store_par=m_152_0=[0:2:1] m_152_1=[0:512:1] free=h_152=[0:150:1] w_152=[0:150:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=16384)
+	l 723 t721  const [1024] [P] ['512m_152_0+m_152_1']
+	l 715 vgg16_bn_6/Sequential_12/Conv2d_5/aten__convolution/transpose:0   [150, 150, 1024] [F,F,P] ['h_152', 'w_152', 'c_152']
+	l 716 t714  const [1, 1, 1024, 1024] [F,F,P,F] ['0', '0', 'c_152', '512m_152_0+m_152_1']
+	r             |V2 $1433[h_152,w_152,m_152_0,m_152_1] = tensor_contract_multiply_add(|V2 $715[h_152,w_152,m_152_0,m_152_1,c_152], |V2 $716[h_152,w_152,m_152_0,m_152_1,c_152], contract={c_152=[0:1024:1]}, lhs_free={h_152=[0:150:1],w_152=[0:150:1]}, rhs_free={m_152_0=[0:2:1],m_152_1=[0:512:1]}) # dl = vgg16_bn_6/Sequential_12/Conv2d_5/aten__convolution/Conv2D
+	s 1642 t1654   [150, 150, 2, 512] [F,F,P,P] ['h_152', 'w_152', 'm_152_0', 'm_152_1']
+
+
+
+TensorContractLayout 19 block= load_par=c_158_0_1653=[0:2:1] c_158_1_1653=[0:512:1] store_par=m_158_1653=[0:512:1] free=h_158_1653=[0:150:1] w_158_1653=[0:150:1]
+layout_profile(block_axes_tripcount=352, parallel_axes_tripcount=16384)
+	l 1656 t1654   [150, 150, 2, 512] [F,F,P,P] ['h_158_1653', 'w_158_1653', 'c_158_0_1653', 'c_158_1_1653']
+	l 1657 t1655  const [2, 512, 512] [P,P,F] ['c_158_0_1653', 'c_158_1_1653', 'm_158_1653']
+	r             |V2 $1658[h_158_1653,w_158_1653,m_158_1653] = tensor_contract_multiply_add(|V2 $1656[h_158_1653,w_158_1653,m_158_1653,c_158_0_1653,c_158_1_1653], |V2 $1657[h_158_1653,w_158_1653,m_158_1653,c_158_0_1653,c_158_1_1653], contract={c_158_0_1653=[0:2:1],c_158_1_1653=[0:512:1]}, lhs_free={h_158_1653=[0:150:1],w_158_1653=[0:150:1]}, rhs_free={m_158_1653=[0:512:1]}) # dl = double_conv_11/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	s 1659 t1667   [150, 150, 512] [F,F,P] ['h_158_1653', 'w_158_1653', 'm_158_1653']
+
+
+
+TensorContractLayout 20 block= load_par=c_158_1_1660=[0:512:1] store_par=m_158_1660=[0:512:1] free=h_158_1660=[0:150:1] w_158_1660=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1663 t1661   [150, 150, 512] [F,F,P] ['h_158_1660', 'w_158_1660', 'c_158_1_1660']
+	l 1664 t1662  const [1, 512, 512] [F,P,F] ['0', 'c_158_1_1660', 'm_158_1660']
+	r           |V2 $1665[h_158_1660,w_158_1660,m_158_1660] = tensor_contract_multiply_add(|V2 $1663[h_158_1660,w_158_1660,m_158_1660,c_158_1_1660], |V2 $1664[h_158_1660,w_158_1660,m_158_1660,c_158_1_1660], contract={c_158_1_1660=[0:512:1]}, lhs_free={h_158_1660=[0:150:1],w_158_1660=[0:150:1]}, rhs_free={m_158_1660=[0:512:1]}) # dl = double_conv_11/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	l 1668 t1667   [150, 150, 512] [F,F,P] ['h_158_1660', 'w_158_1660', 'm_158_1660']
+	l 1616 t1615  const [512] [P] ['m_158_1660']
+	l 747 t745  const [512] [P] ['m_158_1660']
+	l 759 t757  const [512] [P] ['m_158_1660']
+	l 777 t775  const [512] [P] ['m_158_1660']
+	s 1523 double_conv_11/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_158_1660', 'w_158_1660', 'm_158_1660']
+
+
+
+TensorContractLayout 21 block=r_169=[0:3:1] s_169=[0:3:1] load_par=c_169=[0:512:1] store_par=m_169=[0:256:1] free=h_169=[0:150:1] w_169=[0:150:1]
+layout_profile(block_axes_tripcount=792, parallel_axes_tripcount=16384)
+	l 800 t798  const [256] [P] ['m_169']
+	l 812 t810  const [256] [P] ['m_169']
+	l 1619 t1618  const [256] [P] ['m_169']
+	l 830 t828  const [256] [P] ['m_169']
+	l 792 double_conv_11/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_169+r_169-1', 'w_169+s_169-1', 'c_169']
+	l 793 t791  const [3, 3, 512, 256] [B,B,P,F] ['r_169', 's_169', 'c_169', 'm_169']
+	r               |V2 $1435[h_169,w_169,m_169] = tensor_contract_multiply_add(|V2 $792[h_169,w_169,m_169,c_169,r_169,s_169], |V2 $793[h_169,w_169,m_169,c_169,r_169,s_169], contract={c_169=[0:512:1],r_169=[0:3:1],s_169=[0:3:1]}, lhs_free={h_169=[0:150:1],w_169=[0:150:1]}, rhs_free={m_169=[0:256:1]}) # dl = double_conv_11/Sequential_1/Conv2d_9/aten__convolution/Conv2D
+	s 1528 transpose0:0   [256, 150, 150] [P,F,F] ['m_169', 'h_169', 'w_169']
+
+
+
+TensorContractLayout 22 block=i0_181=[0:2:1] i1_181=[0:2:1] load_par=m_181=[0:256:1] store_par=c_181=[0:256:1] free=d0_181=[0:150:1] d1_181=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 849 transpose0:0   [256, 150, 150] [P,F,F] ['m_181', 'd0_181+i0_181-1', 'd1_181+i1_181-1']
+	l 850 t847  const [256, 256, 4, 4] [P,F,B,B] ['m_181', 'c_181', '-2i0_181+3', '-2i1_181+3']
+	r               |V2 $1436[d0_181,d1_181,c_181] = tensor_contract_multiply_add(|V2 $849[d0_181,d1_181,c_181,m_181,i0_181,i1_181], |V2 $850[d0_181,d1_181,c_181,m_181,i0_181,i1_181], contract={m_181=[0:256:1],i0_181=[0:2:1],i1_181=[0:2:1]}, lhs_free={d0_181=[0:150:1],d1_181=[0:150:1]}, rhs_free={c_181=[0:256:1]}) # dl = aten_upsample_bilinear2d/conv2d_transpose
+	s 853 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['c_181', 'd0_181', '0', 'd1_181', '0']
+
+
+
+TensorContractLayout 23 block=i0_182=[0:2:1] i1_182=[0:2:1] load_par=m_182=[0:256:1] store_par=c_182=[0:256:1] free=d0_182=[0:150:1] d1_182=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 854 transpose0:0   [256, 150, 150] [P,F,F] ['m_182', 'd0_182+i0_182-1', 'd1_182+i1_182']
+	l 855 t847  const [256, 256, 4, 4] [P,F,B,B] ['m_182', 'c_182', '-2i0_182+3', '-2i1_182+2']
+	r               |V2 $1437[d0_182,d1_182,c_182] = tensor_contract_multiply_add(|V2 $854[d0_182,d1_182,c_182,m_182,i0_182,i1_182], |V2 $855[d0_182,d1_182,c_182,m_182,i0_182,i1_182], contract={m_182=[0:256:1],i0_182=[0:2:1],i1_182=[0:2:1]}, lhs_free={d0_182=[0:150:1],d1_182=[0:150:1]}, rhs_free={c_182=[0:256:1]}) # dl = aten_upsample_bilinear2d/conv2d_transpose
+	s 858 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['c_182', 'd0_182', '0', 'd1_182', '1']
+
+
+
+TensorContractLayout 24 block=i0_183=[0:2:1] i1_183=[0:2:1] load_par=m_183=[0:256:1] store_par=c_183=[0:256:1] free=d0_183=[0:150:1] d1_183=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 859 transpose0:0   [256, 150, 150] [P,F,F] ['m_183', 'd0_183+i0_183', 'd1_183+i1_183-1']
+	l 860 t847  const [256, 256, 4, 4] [P,F,B,B] ['m_183', 'c_183', '-2i0_183+2', '-2i1_183+3']
+	r               |V2 $1438[d0_183,d1_183,c_183] = tensor_contract_multiply_add(|V2 $859[d0_183,d1_183,c_183,m_183,i0_183,i1_183], |V2 $860[d0_183,d1_183,c_183,m_183,i0_183,i1_183], contract={m_183=[0:256:1],i0_183=[0:2:1],i1_183=[0:2:1]}, lhs_free={d0_183=[0:150:1],d1_183=[0:150:1]}, rhs_free={c_183=[0:256:1]}) # dl = aten_upsample_bilinear2d/conv2d_transpose
+	s 863 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['c_183', 'd0_183', '1', 'd1_183', '0']
+
+
+
+TensorContractLayout 25 block=i0_184=[0:2:1] i1_184=[0:2:1] load_par=m_184=[0:256:1] store_par=c_184=[0:256:1] free=d0_184=[0:150:1] d1_184=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 864 transpose0:0   [256, 150, 150] [P,F,F] ['m_184', 'd0_184+i0_184', 'd1_184+i1_184']
+	l 865 t847  const [256, 256, 4, 4] [P,F,B,B] ['m_184', 'c_184', '-2i0_184+2', '-2i1_184+2']
+	r               |V2 $1439[d0_184,d1_184,c_184] = tensor_contract_multiply_add(|V2 $864[d0_184,d1_184,c_184,m_184,i0_184,i1_184], |V2 $865[d0_184,d1_184,c_184,m_184,i0_184,i1_184], contract={m_184=[0:256:1],i0_184=[0:2:1],i1_184=[0:2:1]}, lhs_free={d0_184=[0:150:1],d1_184=[0:150:1]}, rhs_free={c_184=[0:256:1]}) # dl = aten_upsample_bilinear2d/conv2d_transpose
+	s 868 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['c_184', 'd0_184', '1', 'd1_184', '1']
+
+
+
+DFNLayout 26 broadcast=i1_185=[0:256:1] block= par=i1_185=[0:256:1] free=i2_185_0=[0:150:1] i2_185_1=[0:2:1] i3_185_0=[0:150:1] i3_185_1=[0:2:1]
+layout_profile(block_axes_tripcount=88, parallel_axes_tripcount=128)
+	l 870 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['i1_185', 'i2_185_0', 'i2_185_1', 'i3_185_0', 'i3_185_1']
+	l 877 t875  const [300, 300] [F,F] ['2i2_185_0+i2_185_1', '2i3_185_0+i3_185_1']
+	s 1760 t1692   [150, 2, 150, 2, 256] [F,F,F,F,P] ['i2_185_0', 'i2_185_1', 'i3_185_0', 'i3_185_1', 'i1_185']
+
+
+
+TensorContractLayout 27 block= load_par=c_191_0_1684=[0:2:1] c_191_1_1684=[0:256:1] store_par=m_191_1684=[0:256:1] free=h_191_0_1684=[0:150:1] h_191_1_1684=[0:2:1] w_191_0_1684=[0:150:1] w_191_1_1684=[0:2:1]
+layout_profile(block_axes_tripcount=352, parallel_axes_tripcount=16384)
+	l 1687 t1685   [150, 2, 150, 2, 2, 256] [F,F,F,F,P,P] ['h_191_0_1684', 'h_191_1_1684', 'w_191_0_1684', 'w_191_1_1684', 'c_191_0_1684', 'c_191_1_1684']
+	l 1688 t1686  const [2, 256, 256] [P,P,F] ['c_191_0_1684', 'c_191_1_1684', 'm_191_1684']
+	r                 |V2 $1689[h_191_0_1684,h_191_1_1684,w_191_0_1684,w_191_1_1684,m_191_1684] = tensor_contract_multiply_add(|V2 $1687[h_191_0_1684,h_191_1_1684,w_191_0_1684,w_191_1_1684,m_191_1684,c_191_0_1684,c_191_1_1684], |V2 $1688[h_191_0_1684,h_191_1_1684,w_191_0_1684,w_191_1_1684,m_191_1684,c_191_0_1684,c_191_1_1684], contract={c_191_0_1684=[0:2:1],c_191_1_1684=[0:256:1]}, lhs_free={h_191_0_1684=[0:150:1],h_191_1_1684=[0:2:1],w_191_0_1684=[0:150:1],w_191_1_1684=[0:2:1]}, rhs_free={m_191_1684=[0:256:1]}) # dl = double_conv_27/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	s 1690 t1698   [150, 2, 150, 2, 256] [F,F,F,F,P] ['h_191_0_1684', 'h_191_1_1684', 'w_191_0_1684', 'w_191_1_1684', 'm_191_1684']
+
+
+
+TensorContractLayout 28 block= load_par=c_191_1_1691=[0:256:1] store_par=m_191_1691=[0:256:1] free=h_191_0_1691=[0:150:1] h_191_1_1691=[0:2:1] w_191_0_1691=[0:150:1] w_191_1_1691=[0:2:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1694 t1692   [150, 2, 150, 2, 256] [F,F,F,F,P] ['h_191_0_1691', 'h_191_1_1691', 'w_191_0_1691', 'w_191_1_1691', 'c_191_1_1691']
+	l 1695 t1693  const [1, 256, 256] [F,P,F] ['0', 'c_191_1_1691', 'm_191_1691']
+	r               |V2 $1696[h_191_0_1691,h_191_1_1691,w_191_0_1691,w_191_1_1691,m_191_1691] = tensor_contract_multiply_add(|V2 $1694[h_191_0_1691,h_191_1_1691,w_191_0_1691,w_191_1_1691,m_191_1691,c_191_1_1691], |V2 $1695[h_191_0_1691,h_191_1_1691,w_191_0_1691,w_191_1_1691,m_191_1691,c_191_1_1691], contract={c_191_1_1691=[0:256:1]}, lhs_free={h_191_0_1691=[0:150:1],h_191_1_1691=[0:2:1],w_191_0_1691=[0:150:1],w_191_1_1691=[0:2:1]}, rhs_free={m_191_1691=[0:256:1]}) # dl = double_conv_27/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	l 1699 t1698   [150, 2, 150, 2, 256] [F,F,F,F,P] ['h_191_0_1691', 'h_191_1_1691', 'w_191_0_1691', 'w_191_1_1691', 'm_191_1691']
+	l 1622 t1621  const [256] [P] ['m_191_1691']
+	l 898 t896  const [256] [P] ['m_191_1691']
+	l 910 t908  const [256] [P] ['m_191_1691']
+	l 928 t926  const [256] [P] ['m_191_1691']
+	s 1536 double_conv_27/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [300, 300, 256] [F,F,P] ['2h_191_0_1691+h_191_1_1691', '2w_191_0_1691+w_191_1_1691', 'm_191_1691']
+
+
+
+TensorContractLayout 29 block=r_202=[0:3:1] s_202=[0:3:1] load_par=c_202=[0:256:1] store_par=m_202=[0:128:1] free=h_202=[0:300:1] w_202=[0:300:1]
+layout_profile(block_axes_tripcount=792, parallel_axes_tripcount=16384)
+	l 951 t949  const [128] [P] ['m_202']
+	l 963 t961  const [128] [P] ['m_202']
+	l 1625 t1624  const [128] [P] ['m_202']
+	l 981 t979  const [128] [P] ['m_202']
+	l 943 double_conv_27/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [300, 300, 256] [F,F,P] ['h_202+r_202-1', 'w_202+s_202-1', 'c_202']
+	l 944 t942  const [3, 3, 256, 128] [B,B,P,F] ['r_202', 's_202', 'c_202', 'm_202']
+	r               |V2 $1441[h_202,w_202,m_202] = tensor_contract_multiply_add(|V2 $943[h_202,w_202,m_202,c_202,r_202,s_202], |V2 $944[h_202,w_202,m_202,c_202,r_202,s_202], contract={c_202=[0:256:1],r_202=[0:3:1],s_202=[0:3:1]}, lhs_free={h_202=[0:300:1],w_202=[0:300:1]}, rhs_free={m_202=[0:128:1]}) # dl = double_conv_27/Sequential_1/Conv2d_9/aten__convolution/Conv2D
+	s 1541 transpose2:0   [128, 300, 300] [P,F,F] ['m_202', 'h_202', 'w_202']
+
+
+
+TensorContractLayout 30 block=i0_214=[0:2:1] i1_214=[0:2:1] load_par=m_214=[0:128:1] store_par=c_214=[0:128:1] free=d0_214=[0:300:1] d1_214=[0:300:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1000 transpose2:0   [128, 300, 300] [P,F,F] ['m_214', 'd0_214+i0_214-1', 'd1_214+i1_214-1']
+	l 1001 t998  const [128, 128, 4, 4] [P,F,B,B] ['m_214', 'c_214', '-2i0_214+3', '-2i1_214+3']
+	r               |V2 $1442[d0_214,d1_214,c_214] = tensor_contract_multiply_add(|V2 $1000[d0_214,d1_214,c_214,m_214,i0_214,i1_214], |V2 $1001[d0_214,d1_214,c_214,m_214,i0_214,i1_214], contract={m_214=[0:128:1],i0_214=[0:2:1],i1_214=[0:2:1]}, lhs_free={d0_214=[0:300:1],d1_214=[0:300:1]}, rhs_free={c_214=[0:128:1]}) # dl = aten_upsample_bilinear2d_1/conv2d_transpose
+	s 1004 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['c_214', 'd0_214', '0', 'd1_214', '0']
+
+
+
+TensorContractLayout 31 block=i0_215=[0:2:1] i1_215=[0:2:1] load_par=m_215=[0:128:1] store_par=c_215=[0:128:1] free=d0_215=[0:300:1] d1_215=[0:300:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1005 transpose2:0   [128, 300, 300] [P,F,F] ['m_215', 'd0_215+i0_215-1', 'd1_215+i1_215']
+	l 1006 t998  const [128, 128, 4, 4] [P,F,B,B] ['m_215', 'c_215', '-2i0_215+3', '-2i1_215+2']
+	r               |V2 $1443[d0_215,d1_215,c_215] = tensor_contract_multiply_add(|V2 $1005[d0_215,d1_215,c_215,m_215,i0_215,i1_215], |V2 $1006[d0_215,d1_215,c_215,m_215,i0_215,i1_215], contract={m_215=[0:128:1],i0_215=[0:2:1],i1_215=[0:2:1]}, lhs_free={d0_215=[0:300:1],d1_215=[0:300:1]}, rhs_free={c_215=[0:128:1]}) # dl = aten_upsample_bilinear2d_1/conv2d_transpose
+	s 1009 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['c_215', 'd0_215', '0', 'd1_215', '1']
+
+
+
+TensorContractLayout 32 block=i0_216=[0:2:1] i1_216=[0:2:1] load_par=m_216=[0:128:1] store_par=c_216=[0:128:1] free=d0_216=[0:300:1] d1_216=[0:300:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1010 transpose2:0   [128, 300, 300] [P,F,F] ['m_216', 'd0_216+i0_216', 'd1_216+i1_216-1']
+	l 1011 t998  const [128, 128, 4, 4] [P,F,B,B] ['m_216', 'c_216', '-2i0_216+2', '-2i1_216+3']
+	r               |V2 $1444[d0_216,d1_216,c_216] = tensor_contract_multiply_add(|V2 $1010[d0_216,d1_216,c_216,m_216,i0_216,i1_216], |V2 $1011[d0_216,d1_216,c_216,m_216,i0_216,i1_216], contract={m_216=[0:128:1],i0_216=[0:2:1],i1_216=[0:2:1]}, lhs_free={d0_216=[0:300:1],d1_216=[0:300:1]}, rhs_free={c_216=[0:128:1]}) # dl = aten_upsample_bilinear2d_1/conv2d_transpose
+	s 1014 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['c_216', 'd0_216', '1', 'd1_216', '0']
+
+
+
+TensorContractLayout 33 block=i0_217=[0:2:1] i1_217=[0:2:1] load_par=m_217=[0:128:1] store_par=c_217=[0:128:1] free=d0_217=[0:300:1] d1_217=[0:300:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1015 transpose2:0   [128, 300, 300] [P,F,F] ['m_217', 'd0_217+i0_217', 'd1_217+i1_217']
+	l 1016 t998  const [128, 128, 4, 4] [P,F,B,B] ['m_217', 'c_217', '-2i0_217+2', '-2i1_217+2']
+	r               |V2 $1445[d0_217,d1_217,c_217] = tensor_contract_multiply_add(|V2 $1015[d0_217,d1_217,c_217,m_217,i0_217,i1_217], |V2 $1016[d0_217,d1_217,c_217,m_217,i0_217,i1_217], contract={m_217=[0:128:1],i0_217=[0:2:1],i1_217=[0:2:1]}, lhs_free={d0_217=[0:300:1],d1_217=[0:300:1]}, rhs_free={c_217=[0:128:1]}) # dl = aten_upsample_bilinear2d_1/conv2d_transpose
+	s 1019 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['c_217', 'd0_217', '1', 'd1_217', '1']
+
+
+
+DFNLayout 34 broadcast=i1_218=[0:128:1] block= par=i1_218=[0:128:1] free=i2_218_0=[0:300:1] i2_218_1=[0:2:1] i3_218_0=[0:300:1] i3_218_1=[0:2:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=128)
+	l 1021 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['i1_218', 'i2_218_0', 'i2_218_1', 'i3_218_0', 'i3_218_1']
+	l 1028 t1026  const [600, 600] [F,F] ['2i2_218_0+i2_218_1', '2i3_218_0+i3_218_1']
+	s 1761 t1723   [300, 2, 300, 2, 128] [F,F,F,F,P] ['i2_218_0', 'i2_218_1', 'i3_218_0', 'i3_218_1', 'i1_218']
+
+
+
+TensorContractLayout 35 block= load_par=c_224_0_1715=[0:2:1] c_224_1_1715=[0:128:1] store_par=m_224_1715=[0:128:1] free=h_224_0_1715=[0:300:1] h_224_1_1715=[0:2:1] w_224_0_1715=[0:300:1] w_224_1_1715=[0:2:1]
+layout_profile(block_axes_tripcount=352, parallel_axes_tripcount=16384)
+	l 1718 t1716   [300, 2, 300, 2, 2, 128] [F,F,F,F,P,P] ['h_224_0_1715', 'h_224_1_1715', 'w_224_0_1715', 'w_224_1_1715', 'c_224_0_1715', 'c_224_1_1715']
+	l 1719 t1717  const [2, 128, 128] [P,P,F] ['c_224_0_1715', 'c_224_1_1715', 'm_224_1715']
+	r                 |V2 $1720[h_224_0_1715,h_224_1_1715,w_224_0_1715,w_224_1_1715,m_224_1715] = tensor_contract_multiply_add(|V2 $1718[h_224_0_1715,h_224_1_1715,w_224_0_1715,w_224_1_1715,m_224_1715,c_224_0_1715,c_224_1_1715], |V2 $1719[h_224_0_1715,h_224_1_1715,w_224_0_1715,w_224_1_1715,m_224_1715,c_224_0_1715,c_224_1_1715], contract={c_224_0_1715=[0:2:1],c_224_1_1715=[0:128:1]}, lhs_free={h_224_0_1715=[0:300:1],h_224_1_1715=[0:2:1],w_224_0_1715=[0:300:1],w_224_1_1715=[0:2:1]}, rhs_free={m_224_1715=[0:128:1]}) # dl = double_conv_43/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	s 1721 t1729   [300, 2, 300, 2, 128] [F,F,F,F,P] ['h_224_0_1715', 'h_224_1_1715', 'w_224_0_1715', 'w_224_1_1715', 'm_224_1715']
+
+
+
+TensorContractLayout 36 block= load_par=c_224_1_1722=[0:128:1] store_par=m_224_1722=[0:128:1] free=h_224_0_1722=[0:300:1] h_224_1_1722=[0:2:1] w_224_0_1722=[0:300:1] w_224_1_1722=[0:2:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1725 t1723   [300, 2, 300, 2, 128] [F,F,F,F,P] ['h_224_0_1722', 'h_224_1_1722', 'w_224_0_1722', 'w_224_1_1722', 'c_224_1_1722']
+	l 1726 t1724  const [1, 128, 128] [F,P,F] ['0', 'c_224_1_1722', 'm_224_1722']
+	r               |V2 $1727[h_224_0_1722,h_224_1_1722,w_224_0_1722,w_224_1_1722,m_224_1722] = tensor_contract_multiply_add(|V2 $1725[h_224_0_1722,h_224_1_1722,w_224_0_1722,w_224_1_1722,m_224_1722,c_224_1_1722], |V2 $1726[h_224_0_1722,h_224_1_1722,w_224_0_1722,w_224_1_1722,m_224_1722,c_224_1_1722], contract={c_224_1_1722=[0:128:1]}, lhs_free={h_224_0_1722=[0:300:1],h_224_1_1722=[0:2:1],w_224_0_1722=[0:300:1],w_224_1_1722=[0:2:1]}, rhs_free={m_224_1722=[0:128:1]}) # dl = double_conv_43/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	l 1730 t1729   [300, 2, 300, 2, 128] [F,F,F,F,P] ['h_224_0_1722', 'h_224_1_1722', 'w_224_0_1722', 'w_224_1_1722', 'm_224_1722']
+	l 1628 t1627  const [128] [P] ['m_224_1722']
+	l 1049 t1047  const [128] [P] ['m_224_1722']
+	l 1061 t1059  const [128] [P] ['m_224_1722']
+	l 1079 t1077  const [128] [P] ['m_224_1722']
+	s 1549 double_conv_43/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [600, 600, 128] [F,F,P] ['2h_224_0_1722+h_224_1_1722', '2w_224_0_1722+w_224_1_1722', 'm_224_1722']
+
+
+
+TensorContractLayout 37 block=r_235=[0:3:1] s_235=[0:3:1] load_par=c_235=[0:128:1] store_par=m_235=[0:64:1] free=h_235=[0:600:1] w_235=[0:600:1]
+layout_profile(block_axes_tripcount=1584, parallel_axes_tripcount=8192)
+	l 1102 t1100  const [64] [P] ['m_235']
+	l 1114 t1112  const [64] [P] ['m_235']
+	l 1631 t1630  const [64] [P] ['m_235']
+	l 1132 t1130  const [64] [P] ['m_235']
+	l 1094 double_conv_43/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [600, 600, 128] [F,F,P] ['h_235+r_235-1', 'w_235+s_235-1', 'c_235']
+	l 1095 t1093  const [3, 3, 128, 64] [B,B,P,F] ['r_235', 's_235', 'c_235', 'm_235']
+	r               |V2 $1447[h_235,w_235,m_235] = tensor_contract_multiply_add(|V2 $1094[h_235,w_235,m_235,c_235,r_235,s_235], |V2 $1095[h_235,w_235,m_235,c_235,r_235,s_235], contract={c_235=[0:128:1],r_235=[0:3:1],s_235=[0:3:1]}, lhs_free={h_235=[0:600:1],w_235=[0:600:1]}, rhs_free={m_235=[0:64:1]}) # dl = double_conv_43/Sequential_1/Conv2d_9/aten__convolution/Conv2D
+	s 1554 transpose4:0   [64, 600, 600] [P,F,F] ['m_235', 'h_235', 'w_235']
+
+
+
+TensorContractLayout 38 block=i0_247=[0:2:1] i1_247=[0:2:1] load_par=m_247=[0:64:1] store_par=c_247=[0:64:1] free=d0_247=[0:600:1] d1_247=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1151 transpose4:0   [64, 600, 600] [P,F,F] ['m_247', 'd0_247+i0_247-1', 'd1_247+i1_247-1']
+	l 1152 t1149  const [64, 64, 4, 4] [P,F,B,B] ['m_247', 'c_247', '-2i0_247+3', '-2i1_247+3']
+	r               |V2 $1448[d0_247,d1_247,c_247] = tensor_contract_multiply_add(|V2 $1151[d0_247,d1_247,c_247,m_247,i0_247,i1_247], |V2 $1152[d0_247,d1_247,c_247,m_247,i0_247,i1_247], contract={m_247=[0:64:1],i0_247=[0:2:1],i1_247=[0:2:1]}, lhs_free={d0_247=[0:600:1],d1_247=[0:600:1]}, rhs_free={c_247=[0:64:1]}) # dl = aten_upsample_bilinear2d_2/conv2d_transpose
+	s 1155 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['c_247', 'd0_247', '0', 'd1_247', '0']
+
+
+
+TensorContractLayout 39 block=i0_248=[0:2:1] i1_248=[0:2:1] load_par=m_248=[0:64:1] store_par=c_248=[0:64:1] free=d0_248=[0:600:1] d1_248=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1156 transpose4:0   [64, 600, 600] [P,F,F] ['m_248', 'd0_248+i0_248-1', 'd1_248+i1_248']
+	l 1157 t1149  const [64, 64, 4, 4] [P,F,B,B] ['m_248', 'c_248', '-2i0_248+3', '-2i1_248+2']
+	r               |V2 $1449[d0_248,d1_248,c_248] = tensor_contract_multiply_add(|V2 $1156[d0_248,d1_248,c_248,m_248,i0_248,i1_248], |V2 $1157[d0_248,d1_248,c_248,m_248,i0_248,i1_248], contract={m_248=[0:64:1],i0_248=[0:2:1],i1_248=[0:2:1]}, lhs_free={d0_248=[0:600:1],d1_248=[0:600:1]}, rhs_free={c_248=[0:64:1]}) # dl = aten_upsample_bilinear2d_2/conv2d_transpose
+	s 1160 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['c_248', 'd0_248', '0', 'd1_248', '1']
+
+
+
+TensorContractLayout 40 block=i0_249=[0:2:1] i1_249=[0:2:1] load_par=m_249=[0:64:1] store_par=c_249=[0:64:1] free=d0_249=[0:600:1] d1_249=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1161 transpose4:0   [64, 600, 600] [P,F,F] ['m_249', 'd0_249+i0_249', 'd1_249+i1_249-1']
+	l 1162 t1149  const [64, 64, 4, 4] [P,F,B,B] ['m_249', 'c_249', '-2i0_249+2', '-2i1_249+3']
+	r               |V2 $1450[d0_249,d1_249,c_249] = tensor_contract_multiply_add(|V2 $1161[d0_249,d1_249,c_249,m_249,i0_249,i1_249], |V2 $1162[d0_249,d1_249,c_249,m_249,i0_249,i1_249], contract={m_249=[0:64:1],i0_249=[0:2:1],i1_249=[0:2:1]}, lhs_free={d0_249=[0:600:1],d1_249=[0:600:1]}, rhs_free={c_249=[0:64:1]}) # dl = aten_upsample_bilinear2d_2/conv2d_transpose
+	s 1165 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['c_249', 'd0_249', '1', 'd1_249', '0']
+
+
+
+TensorContractLayout 41 block=i0_250=[0:2:1] i1_250=[0:2:1] load_par=m_250=[0:64:1] store_par=c_250=[0:64:1] free=d0_250=[0:600:1] d1_250=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1166 transpose4:0   [64, 600, 600] [P,F,F] ['m_250', 'd0_250+i0_250', 'd1_250+i1_250']
+	l 1167 t1149  const [64, 64, 4, 4] [P,F,B,B] ['m_250', 'c_250', '-2i0_250+2', '-2i1_250+2']
+	r               |V2 $1451[d0_250,d1_250,c_250] = tensor_contract_multiply_add(|V2 $1166[d0_250,d1_250,c_250,m_250,i0_250,i1_250], |V2 $1167[d0_250,d1_250,c_250,m_250,i0_250,i1_250], contract={m_250=[0:64:1],i0_250=[0:2:1],i1_250=[0:2:1]}, lhs_free={d0_250=[0:600:1],d1_250=[0:600:1]}, rhs_free={c_250=[0:64:1]}) # dl = aten_upsample_bilinear2d_2/conv2d_transpose
+	s 1170 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['c_250', 'd0_250', '1', 'd1_250', '1']
+
+
+
+DFNLayout 42 broadcast=i1_251=[0:64:1] block=i3_251_1=[0:2:1] par=i1_251=[0:64:1] free=i2_251_0=[0:600:1] i2_251_1=[0:2:1] i3_251_0=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=64)
+	l 1172 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['i1_251', 'i2_251_0', 'i2_251_1', 'i3_251_0', 'i3_251_1']
+	l 1179 t1177  const [1200, 1200] [F,F] ['2i2_251_0+i2_251_1', '2i3_251_0+i3_251_1']
+	s 1762 t1750   [600, 2, 600, 2, 64] [F,F,F,B,P] ['i2_251_0', 'i2_251_1', 'i3_251_0', 'i3_251_1', 'i1_251']
+
+
+
+TensorContractLayout 43 block=w_257_1_1742=[0:2:1] load_par=c_257_0_1742=[0:2:1] c_257_1_1742=[0:64:1] store_par=m_257_1742=[0:64:1] free=h_257_0_1742=[0:600:1] h_257_1_1742=[0:2:1] w_257_0_1742=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=8192)
+	l 1186 vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0   [2, 64, 600, 2, 600, 2] [P,P,F,F,F,B] ['c_257_0_1742', 'c_257_1_1742', 'h_257_0_1742', 'h_257_1_1742', 'w_257_0_1742', 'w_257_1_1742']
+	l 1746 t1744  const [2, 64, 64] [P,P,F] ['c_257_0_1742', 'c_257_1_1742', 'm_257_1742']
+	r                 |V2 $1747[h_257_0_1742,h_257_1_1742,w_257_0_1742,w_257_1_1742,m_257_1742] = tensor_contract_multiply_add(|V2 $1186[h_257_0_1742,h_257_1_1742,w_257_0_1742,w_257_1_1742,m_257_1742,c_257_0_1742,c_257_1_1742], |V2 $1746[h_257_0_1742,h_257_1_1742,w_257_0_1742,w_257_1_1742,m_257_1742,c_257_0_1742,c_257_1_1742], contract={c_257_0_1742=[0:2:1],c_257_1_1742=[0:64:1]}, lhs_free={h_257_0_1742=[0:600:1],h_257_1_1742=[0:2:1],w_257_0_1742=[0:600:1],w_257_1_1742=[0:2:1]}, rhs_free={m_257_1742=[0:64:1]}) # dl = double_conv_59/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	s 1748 t1756   [600, 2, 600, 2, 64] [F,F,F,B,P] ['h_257_0_1742', 'h_257_1_1742', 'w_257_0_1742', 'w_257_1_1742', 'm_257_1742']
+
+
+
+TensorContractLayout 44 block=w_257_1_1749=[0:2:1] load_par=c_257_1_1749=[0:64:1] store_par=m_257_1749=[0:64:1] free=h_257_0_1749=[0:600:1] h_257_1_1749=[0:2:1] w_257_0_1749=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1752 t1750   [600, 2, 600, 2, 64] [F,F,F,B,P] ['h_257_0_1749', 'h_257_1_1749', 'w_257_0_1749', 'w_257_1_1749', 'c_257_1_1749']
+	l 1753 t1751  const [1, 64, 64] [F,P,F] ['0', 'c_257_1_1749', 'm_257_1749']
+	r               |V2 $1754[h_257_0_1749,h_257_1_1749,w_257_0_1749,w_257_1_1749,m_257_1749] = tensor_contract_multiply_add(|V2 $1752[h_257_0_1749,h_257_1_1749,w_257_0_1749,w_257_1_1749,m_257_1749,c_257_1_1749], |V2 $1753[h_257_0_1749,h_257_1_1749,w_257_0_1749,w_257_1_1749,m_257_1749,c_257_1_1749], contract={c_257_1_1749=[0:64:1]}, lhs_free={h_257_0_1749=[0:600:1],h_257_1_1749=[0:2:1],w_257_0_1749=[0:600:1],w_257_1_1749=[0:2:1]}, rhs_free={m_257_1749=[0:64:1]}) # dl = double_conv_59/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	l 1757 t1756   [600, 2, 600, 2, 64] [F,F,F,B,P] ['h_257_0_1749', 'h_257_1_1749', 'w_257_0_1749', 'w_257_1_1749', 'm_257_1749']
+	l 1634 t1633  const [64] [P] ['m_257_1749']
+	l 1200 t1198  const [64] [P] ['m_257_1749']
+	l 1212 t1210  const [64] [P] ['m_257_1749']
+	l 1230 t1228  const [64] [P] ['m_257_1749']
+	s 1562 double_conv_59/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [1200, 1200, 64] [F,F,P] ['2h_257_0_1749+h_257_1_1749', '2w_257_0_1749+w_257_1_1749', 'm_257_1749']
+
+
+
+TensorContractLayout 45 block=r_268=[0:3:1] s_268=[0:3:1] load_par=c_268=[0:64:1] store_par=m_268=[0:32:1] free=h_268=[0:1200:1] w_268=[0:1200:1]
+layout_profile(block_axes_tripcount=12663, parallel_axes_tripcount=2048)
+	l 1253 t1251  const [32] [P] ['m_268']
+	l 1265 t1263  const [32] [P] ['m_268']
+	l 1637 t1636  const [32] [P] ['m_268']
+	l 1283 t1281  const [32] [P] ['m_268']
+	l 1245 double_conv_59/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [1200, 1200, 64] [F,F,P] ['h_268+r_268-1', 'w_268+s_268-1', 'c_268']
+	l 1246 t1244  const [3, 3, 64, 32] [B,B,P,F] ['r_268', 's_268', 'c_268', 'm_268']
+	r               |V2 $1453[h_268,w_268,m_268] = tensor_contract_multiply_add(|V2 $1245[h_268,w_268,m_268,c_268,r_268,s_268], |V2 $1246[h_268,w_268,m_268,c_268,r_268,s_268], contract={c_268=[0:64:1],r_268=[0:3:1],s_268=[0:3:1]}, lhs_free={h_268=[0:1200:1],w_268=[0:1200:1]}, rhs_free={m_268=[0:32:1]}) # dl = double_conv_59/Sequential_1/Conv2d_9/aten__convolution/Conv2D
+	s 1296 Sequential_60/Conv2d_9/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_268', 'w_268', 'm_268']
+	s 1293 double_conv_59/Sequential_1/BatchNorm2d_10/aten_relu/Relu:0   [1, 32, 1200, 1200] [F,P,F,F] ['0', 'm_268', 'h_268', 'w_268']
+
+
+
+TensorContractLayout 46 block=r_279=[0:3:1] s_279=[0:3:1] load_par=c_279=[0:32:1] store_par=m_279=[0:32:1] free=h_279=[0:1200:1] w_279=[0:1200:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=1024)
+	l 1306 t1304  const [32] [P] ['m_279']
+	l 1298 Sequential_60/Conv2d_9/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_279+r_279-1', 'w_279+s_279-1', 'c_279']
+	l 1299 t1297  const [3, 3, 32, 32] [B,B,P,F] ['r_279', 's_279', 'c_279', 'm_279']
+	r               |V2 $1454[h_279,w_279,m_279] = tensor_contract_multiply_add(|V2 $1298[h_279,w_279,m_279,c_279,r_279,s_279], |V2 $1299[h_279,w_279,m_279,c_279,r_279,s_279], contract={c_279=[0:32:1],r_279=[0:3:1],s_279=[0:3:1]}, lhs_free={h_279=[0:1200:1],w_279=[0:1200:1]}, rhs_free={m_279=[0:32:1]}) # dl = Sequential_60/Conv2d_9/aten__convolution/Conv2D
+	s 1567 Sequential_60/Conv2d_11/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_279', 'w_279', 'm_279']
+
+
+
+TensorContractLayout 47 block=r_284=[0:3:1] s_284=[0:3:1] load_par=c_284=[0:32:1] store_par=m_284=[0:32:1] free=h_284=[0:1200:1] w_284=[0:1200:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=1024)
+	l 1329 t1327  const [32] [P] ['m_284']
+	l 1321 Sequential_60/Conv2d_11/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_284+r_284-1', 'w_284+s_284-1', 'c_284']
+	l 1322 t1320  const [3, 3, 32, 32] [B,B,P,F] ['r_284', 's_284', 'c_284', 'm_284']
+	r               |V2 $1455[h_284,w_284,m_284] = tensor_contract_multiply_add(|V2 $1321[h_284,w_284,m_284,c_284,r_284,s_284], |V2 $1322[h_284,w_284,m_284,c_284,r_284,s_284], contract={c_284=[0:32:1],r_284=[0:3:1],s_284=[0:3:1]}, lhs_free={h_284=[0:1200:1],w_284=[0:1200:1]}, rhs_free={m_284=[0:32:1]}) # dl = Sequential_60/Conv2d_11/aten__convolution/Conv2D
+	s 1569 Sequential_60/Conv2d_13/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_284', 'w_284', 'm_284']
+
+
+
+TensorContractLayout 48 block=r_289=[0:3:1] s_289=[0:3:1] load_par=c_289=[0:32:1] store_par=m_289=[0:16:1] free=h_289=[0:1200:1] w_289=[0:1200:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=512)
+	l 1352 t1350  const [16] [P] ['m_289']
+	l 1344 Sequential_60/Conv2d_13/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_289+r_289-1', 'w_289+s_289-1', 'c_289']
+	l 1345 t1343  const [3, 3, 32, 16] [B,B,P,F] ['r_289', 's_289', 'c_289', 'm_289']
+	r               |V2 $1456[h_289,w_289,m_289] = tensor_contract_multiply_add(|V2 $1344[h_289,w_289,m_289,c_289,r_289,s_289], |V2 $1345[h_289,w_289,m_289,c_289,r_289,s_289], contract={c_289=[0:32:1],r_289=[0:3:1],s_289=[0:3:1]}, lhs_free={h_289=[0:1200:1],w_289=[0:1200:1]}, rhs_free={m_289=[0:16:1]}) # dl = Sequential_60/Conv2d_13/aten__convolution/Conv2D
+	s 1571 Sequential_60/Conv2d_15/aten__convolution/transpose:0   [1200, 1200, 16] [F,F,P] ['h_289', 'w_289', 'm_289']
+
+
+
+TensorContractLayout 49 block= load_par=c_294=[0:16:1] store_par=m_294=[0:16:1] free=h_294=[0:1200:1] w_294=[0:1200:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=256)
+	l 1375 t1373  const [16] [P] ['m_294']
+	l 1367 Sequential_60/Conv2d_15/aten__convolution/transpose:0   [1200, 1200, 16] [F,F,P] ['h_294', 'w_294', 'c_294']
+	l 1368 t1366  const [1, 1, 16, 16] [F,F,P,F] ['0', '0', 'c_294', 'm_294']
+	r           |V2 $1457[h_294,w_294,m_294] = tensor_contract_multiply_add(|V2 $1367[h_294,w_294,m_294,c_294], |V2 $1368[h_294,w_294,m_294,c_294], contract={c_294=[0:16:1]}, lhs_free={h_294=[0:1200:1],w_294=[0:1200:1]}, rhs_free={m_294=[0:16:1]}) # dl = Sequential_60/Conv2d_15/aten__convolution/Conv2D
+	s 1573 Sequential_60/Conv2d_17/aten__convolution/transpose:0   [1200, 1200, 16] [F,F,P] ['h_294', 'w_294', 'm_294']
+
+
+
+TensorContractLayout 50 block= load_par=c_299=[0:16:1] store_par=m_299=[0:2:1] free=h_299=[0:1200:1] w_299=[0:1200:1]
+layout_profile(block_axes_tripcount=1407, parallel_axes_tripcount=32)
+	l 1398 t1396  const [2] [P] ['m_299']
+	l 1390 Sequential_60/Conv2d_17/aten__convolution/transpose:0   [1200, 1200, 16] [F,F,P] ['h_299', 'w_299', 'c_299']
+	l 1391 t1389  const [1, 1, 16, 2] [F,F,P,F] ['0', '0', 'c_299', 'm_299']
+	r           |V2 $1458[h_299,w_299,m_299] = tensor_contract_multiply_add(|V2 $1390[h_299,w_299,m_299,c_299], |V2 $1391[h_299,w_299,m_299,c_299], contract={c_299=[0:16:1]}, lhs_free={h_299=[0:1200:1],w_299=[0:1200:1]}, rhs_free={m_299=[0:2:1]}) # dl = Sequential_60/Conv2d_17/aten__convolution/Conv2D
+	s 1575 aten_permute/transpose:0   [1, 1200, 1200, 2] [F,F,F,P] ['0', 'h_299', 'w_299', 'm_299']
+
+
+
+vgg16_bn_6/Sequential_5/Conv2d_15/aten__convolution/transpose:0 - [2400, 2400, 64], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1463 S', '67 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_5/MaxPool2d_18/aten_max_pool2d/transpose:0 - [1200, 2, 1200, 2, 64], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1467 S', '119 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_5/Conv2d_19/aten__convolution/transpose:0 - [1200, 1200, 64], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['130 L', '1469 S'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_5/Conv2d_22/aten__convolution/transpose:0 - [1200, 1200, 128], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1473 S', '183 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0 - [2, 64, 600, 2, 600, 2], tensor_layout: [P,P,F,F,F,B]
+ access_layout [P,P,F,F,F,B], accesses: ['231 S', '1186 L', '233 L'], path: [[_identity,_identity,_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_6/Conv2d_9/aten__convolution/transpose:0 - [600, 600, 2, 64], tensor_layout: [F,F,P,P]
+ access_layout [F,F,P,P], accesses: ['246 L', '1478 S'], path: [[_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_6/Conv2d_12/aten__convolution/transpose:0 - [600, 600, 256], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1482 S', '299 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0 - [600, 600, 2, 128], tensor_layout: [F,F,P,P]
+ access_layout [F,F,P,P], accesses: ['350 S', '352 L'], path: [[_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_8/MaxPool2d_14/aten_max_pool2d/transpose:0 - [300, 2, 300, 2, 256], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1489 S', '404 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_8/Conv2d_15/aten__convolution/transpose:0 - [300, 300, 256], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['415 L', '1491 S'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_8/Conv2d_18/aten__convolution/transpose:0 - [300, 300, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1495 S', '468 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_10/Conv2d_11/aten__convolution/transpose:0 - [300, 300, 2, 256], tensor_layout: [F,F,P,P]
+ access_layout [F,F,P,P], accesses: ['519 S', '521 L'], path: [[_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_10/MaxPool2d_14/aten_max_pool2d/transpose:0 - [150, 2, 150, 2, 512], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1502 S', '573 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_10/Conv2d_15/aten__convolution/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['584 L', '1504 S'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_10/Conv2d_18/aten__convolution/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1508 S', '637 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['684 S', '685 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_12/Conv2d_4/aten__convolution/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['696 L', '1513 S'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_12/Conv2d_5/aten__convolution/transpose:0 - [150, 150, 1024], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1515 S', '715 L'], path: [[_identity,_identity,_identity]]
+double_conv_11/Sequential_1/Conv2d_9/aten__convolution/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1523 S', '792 L'], path: [[_identity,_identity,_identity]]
+transpose0:0 - [256, 150, 150], tensor_layout: [P,F,F]
+ access_layout [P,F,F], accesses: ['1528 S', '849 L', '854 L', '859 L', '864 L'], path: [[_identity,_identity,_identity]]
+nn.conv2d_transpose0:0 - [256, 150, 2, 150, 2], tensor_layout: [P,F,F,F,F]
+ access_layout [P,F,F,F,F], accesses: ['853 S', '858 S', '863 S', '868 S', '870 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+double_conv_27/Sequential_1/Conv2d_9/aten__convolution/transpose:0 - [300, 300, 256], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1536 S', '943 L'], path: [[_identity,_identity,_identity]]
+transpose2:0 - [128, 300, 300], tensor_layout: [P,F,F]
+ access_layout [P,F,F], accesses: ['1541 S', '1000 L', '1005 L', '1010 L', '1015 L'], path: [[_identity,_identity,_identity]]
+nn.conv2d_transpose1:0 - [128, 300, 2, 300, 2], tensor_layout: [P,F,F,F,F]
+ access_layout [P,F,F,F,F], accesses: ['1004 S', '1009 S', '1014 S', '1019 S', '1021 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+double_conv_43/Sequential_1/Conv2d_9/aten__convolution/transpose:0 - [600, 600, 128], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1549 S', '1094 L'], path: [[_identity,_identity,_identity]]
+transpose4:0 - [64, 600, 600], tensor_layout: [P,F,F]
+ access_layout [P,F,F], accesses: ['1554 S', '1151 L', '1156 L', '1161 L', '1166 L'], path: [[_identity,_identity,_identity]]
+nn.conv2d_transpose2:0 - [64, 600, 2, 600, 2], tensor_layout: [P,F,F,F,B]
+ access_layout [P,F,F,F,B], accesses: ['1155 S', '1160 S', '1165 S', '1170 S', '1172 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+double_conv_59/Sequential_1/Conv2d_9/aten__convolution/transpose:0 - [1200, 1200, 64], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1562 S', '1245 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_9/aten__convolution/transpose:0 - [1200, 1200, 32], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1296 S', '1298 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_11/aten__convolution/transpose:0 - [1200, 1200, 32], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1567 S', '1321 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_13/aten__convolution/transpose:0 - [1200, 1200, 32], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1569 S', '1344 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_15/aten__convolution/transpose:0 - [1200, 1200, 16], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1571 S', '1367 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_17/aten__convolution/transpose:0 - [1200, 1200, 16], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1573 S', '1390 L'], path: [[_identity,_identity,_identity]]
+t1654 - [150, 150, 2, 512], tensor_layout: [F,F,P,P]
+ access_layout [F,F,P,P], accesses: ['1642 S', '1656 L'], path: [[_identity,_identity,_identity,_identity]]
+t1661 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1759 S', '1663 L'], path: [[_identity,_identity,_identity]]
+t1667 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1659 S', '1668 L'], path: [[_identity,_identity,_identity]]
+t1685 - [150, 2, 150, 2, 2, 256], tensor_layout: [F,F,F,F,P,P]
+ access_layout [F,F,F,F,P,P], accesses: ['1673 S', '1687 L'], path: [[_identity,_identity,_identity,_identity,_identity,_identity]]
+t1692 - [150, 2, 150, 2, 256], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1694 L', '1760 S'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1698 - [150, 2, 150, 2, 256], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1690 S', '1699 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1716 - [300, 2, 300, 2, 2, 128], tensor_layout: [F,F,F,F,P,P]
+ access_layout [F,F,F,F,P,P], accesses: ['1704 S', '1718 L'], path: [[_identity,_identity,_identity,_identity,_identity,_identity]]
+t1723 - [300, 2, 300, 2, 128], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1725 L', '1761 S'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1729 - [300, 2, 300, 2, 128], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1721 S', '1730 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1750 - [600, 2, 600, 2, 64], tensor_layout: [F,F,F,B,P]
+ access_layout [F,F,F,B,P], accesses: ['1752 L', '1762 S'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1756 - [600, 2, 600, 2, 64], tensor_layout: [F,F,F,B,P]
+ access_layout [F,F,F,B,P], accesses: ['1748 S', '1757 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+layoutgroup_profile(total_dmas=0, total_tripcount=131909, total_transpose_tripcount=0, total_pf_transposes=0, total_bf_transposes=0, block_axes_tripcount=131909, parallel_axes_tripcount=499040, dags_no_parallelism=0)
+complexity:  1644
+
+TensorContractLayout 0 block= load_par=c_1=[0:3:1] r_1=[0:3:1] s_1=[0:3:1] store_par=ax1_12_10=[0:64:1] free=ax2_13_10=[0:2400:1] ax3_14_10=[0:2400:1]
+layout_profile(block_axes_tripcount=5625, parallel_axes_tripcount=1728)
+	l 4 nn.pad0:0   [1, 3, 2402, 2404] [F,P,F,F] ['0', 'c_1', 'ax2_13_10+r_1', 'ax3_14_10+s_1']
+	l 5 t3  const [3, 3, 3, 64] [P,P,P,F] ['r_1', 's_1', 'c_1', 'ax1_12_10']
+	r               |V2 $1420[ax1_12_10,ax2_13_10,ax3_14_10] = tensor_contract_multiply_add(|V2 $1763[ax1_12_10,ax2_13_10,ax3_14_10,c_1,r_1,s_1], |V2 $5[ax1_12_10,ax2_13_10,ax3_14_10,c_1,r_1,s_1], contract={c_1=[0:3:1],r_1=[0:3:1],s_1=[0:3:1]}, lhs_free={ax2_13_10=[0:2400:1],ax3_14_10=[0:2400:1]}, rhs_free={ax1_12_10=[0:64:1]}) # dl = vgg16_bn_6/Sequential_5/Conv2d_12/aten__convolution/Conv2D
+	l 52 t50  const [64] [P] ['ax1_12_10']
+	l 1580 t1579  const [64] [P] ['ax1_12_10']
+	l 34 t32  const [64] [P] ['ax1_12_10']
+	l 22 t20  const [64] [P] ['ax1_12_10']
+	s 1463 vgg16_bn_6/Sequential_5/Conv2d_15/aten__convolution/transpose:0   [2400, 2400, 64] [F,F,P] ['ax2_13_10', 'ax3_14_10', 'ax1_12_10']
+
+
+
+TensorContractLayout 1 block=r_13=[0:3:1] s_13=[0:3:1] load_par=c_13=[0:64:1] store_par=m_13=[0:64:1] free=h_13_0=[0:1200:1] h_13_1=[0:2:1] w_13_0=[0:1200:1] w_13_1=[0:2:1]
+layout_profile(block_axes_tripcount=25317, parallel_axes_tripcount=4096)
+	l 75 t73  const [64] [P] ['m_13']
+	l 87 t85  const [64] [P] ['m_13']
+	l 1583 t1582  const [64] [P] ['m_13']
+	l 105 t103  const [64] [P] ['m_13']
+	l 67 vgg16_bn_6/Sequential_5/Conv2d_15/aten__convolution/transpose:0   [2400, 2400, 64] [F,F,P] ['2h_13_0+h_13_1+r_13-1', '2w_13_0+w_13_1+s_13-1', 'c_13']
+	l 68 t66  const [3, 3, 64, 64] [B,B,P,F] ['r_13', 's_13', 'c_13', 'm_13']
+	r                   |V2 $1421[h_13_0,h_13_1,w_13_0,w_13_1,m_13] = tensor_contract_multiply_add(|V2 $67[h_13_0,h_13_1,w_13_0,w_13_1,m_13,c_13,r_13,s_13], |V2 $68[h_13_0,h_13_1,w_13_0,w_13_1,m_13,c_13,r_13,s_13], contract={c_13=[0:64:1],r_13=[0:3:1],s_13=[0:3:1]}, lhs_free={h_13_0=[0:1200:1],h_13_1=[0:2:1],w_13_0=[0:1200:1],w_13_1=[0:2:1]}, rhs_free={m_13=[0:64:1]}) # dl = vgg16_bn_6/Sequential_5/Conv2d_15/aten__convolution/Conv2D
+	s 1467 vgg16_bn_6/Sequential_5/MaxPool2d_18/aten_max_pool2d/transpose:0   [1200, 2, 1200, 2, 64] [F,F,F,F,P] ['h_13_0', 'h_13_1', 'w_13_0', 'w_13_1', 'm_13']
+
+
+
+DFNLayout 2 broadcast= block= par=c_24=[0:64:1] free=h_24=[0:1200:1] w_24=[0:1200:1] r_24=[0:2:1] s_24=[0:2:1]
+layout_profile(block_axes_tripcount=2813, parallel_axes_tripcount=64)
+	l 119 vgg16_bn_6/Sequential_5/MaxPool2d_18/aten_max_pool2d/transpose:0   [1200, 2, 1200, 2, 64] [F,F,F,F,P] ['h_24', 'r_24', 'w_24', 's_24', 'c_24']
+	r             |V2 $120[c_24,h_24,w_24] = reduce_maximum(|V2 $119[c_24,h_24,w_24,r_24,s_24], {r_24=[0:2:1],s_24=[0:2:1]}) # dl = vgg16_bn_6/Sequential_5/MaxPool2d_18/aten_max_pool2d/MaxPool2d
+	s 1469 vgg16_bn_6/Sequential_5/Conv2d_19/aten__convolution/transpose:0   [1200, 1200, 64] [F,F,P] ['h_24', 'w_24', 'c_24']
+
+
+
+TensorContractLayout 3 block=r_27=[0:3:1] s_27=[0:3:1] load_par=c_27=[0:64:1] store_par=m_27=[0:128:1] free=h_27=[0:1200:1] w_27=[0:1200:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=8192)
+	l 138 t136  const [128] [P] ['m_27']
+	l 150 t148  const [128] [P] ['m_27']
+	l 1586 t1585  const [128] [P] ['m_27']
+	l 168 t166  const [128] [P] ['m_27']
+	l 130 vgg16_bn_6/Sequential_5/Conv2d_19/aten__convolution/transpose:0   [1200, 1200, 64] [F,F,P] ['h_27+r_27-1', 'w_27+s_27-1', 'c_27']
+	l 131 t129  const [3, 3, 64, 128] [B,B,P,F] ['r_27', 's_27', 'c_27', 'm_27']
+	r               |V2 $1422[h_27,w_27,m_27] = tensor_contract_multiply_add(|V2 $130[h_27,w_27,m_27,c_27,r_27,s_27], |V2 $131[h_27,w_27,m_27,c_27,r_27,s_27], contract={c_27=[0:64:1],r_27=[0:3:1],s_27=[0:3:1]}, lhs_free={h_27=[0:1200:1],w_27=[0:1200:1]}, rhs_free={m_27=[0:128:1]}) # dl = vgg16_bn_6/Sequential_5/Conv2d_19/aten__convolution/Conv2D
+	s 1473 vgg16_bn_6/Sequential_5/Conv2d_22/aten__convolution/transpose:0   [1200, 1200, 128] [F,F,P] ['h_27', 'w_27', 'm_27']
+
+
+
+TensorContractLayout 4 block=w_38_1=[0:2:1] r_38=[0:3:1] s_38=[0:3:1] load_par=c_38=[0:128:1] store_par=m_38_0=[0:2:1] m_38_1=[0:64:1] free=h_38_0=[0:600:1] h_38_1=[0:2:1] w_38_0=[0:600:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 191 t189  const [128] [P] ['64m_38_0+m_38_1']
+	l 203 t201  const [128] [P] ['64m_38_0+m_38_1']
+	l 1589 t1588  const [128] [P] ['64m_38_0+m_38_1']
+	l 221 t219  const [128] [P] ['64m_38_0+m_38_1']
+	l 183 vgg16_bn_6/Sequential_5/Conv2d_22/aten__convolution/transpose:0   [1200, 1200, 128] [F,F,P] ['2h_38_0+h_38_1+r_38-1', '2w_38_0+w_38_1+s_38-1', 'c_38']
+	l 184 t182  const [3, 3, 128, 128] [B,B,P,F] ['r_38', 's_38', 'c_38', '64m_38_0+m_38_1']
+	r                     |V2 $1423[h_38_0,h_38_1,w_38_0,w_38_1,m_38_0,m_38_1] = tensor_contract_multiply_add(|V2 $183[h_38_0,h_38_1,w_38_0,w_38_1,m_38_0,m_38_1,c_38,r_38,s_38], |V2 $184[h_38_0,h_38_1,w_38_0,w_38_1,m_38_0,m_38_1,c_38,r_38,s_38], contract={c_38=[0:128:1],r_38=[0:3:1],s_38=[0:3:1]}, lhs_free={h_38_0=[0:600:1],h_38_1=[0:2:1],w_38_0=[0:600:1],w_38_1=[0:2:1]}, rhs_free={m_38_0=[0:2:1],m_38_1=[0:64:1]}) # dl = vgg16_bn_6/Sequential_5/Conv2d_22/aten__convolution/Conv2D
+	s 231 vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0   [2, 64, 600, 2, 600, 2] [P,P,F,F,F,B] ['m_38_0', 'm_38_1', 'h_38_0', 'h_38_1', 'w_38_0', 'w_38_1']
+
+
+
+DFNLayout 5 broadcast= block=s_49=[0:2:1] par=c_49_0=[0:2:1] c_49_1=[0:64:1] free=h_49=[0:600:1] w_49=[0:600:1] r_49=[0:2:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=128)
+	l 233 vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0   [2, 64, 600, 2, 600, 2] [P,P,F,F,F,B] ['c_49_0', 'c_49_1', 'h_49', 'r_49', 'w_49', 's_49']
+	r               |V2 $236[c_49_0,c_49_1,h_49,w_49] = reduce_maximum(|V2 $233[c_49_0,c_49_1,h_49,w_49,r_49,s_49], {r_49=[0:2:1],s_49=[0:2:1]}) # dl = vgg16_bn_6/Sequential_6/MaxPool2d_8/aten_max_pool2d/MaxPool2d
+	s 1478 vgg16_bn_6/Sequential_6/Conv2d_9/aten__convolution/transpose:0   [600, 600, 2, 64] [F,F,P,P] ['h_49', 'w_49', 'c_49_0', 'c_49_1']
+
+
+
+TensorContractLayout 6 block=r_52=[0:3:1] s_52=[0:3:1] load_par=c_52_0=[0:2:1] c_52_1=[0:64:1] store_par=m_52=[0:256:1] free=h_52=[0:600:1] w_52=[0:600:1]
+layout_profile(block_axes_tripcount=3168, parallel_axes_tripcount=16384)
+	l 254 t252  const [256] [P] ['m_52']
+	l 266 t264  const [256] [P] ['m_52']
+	l 1592 t1591  const [256] [P] ['m_52']
+	l 284 t282  const [256] [P] ['m_52']
+	l 246 vgg16_bn_6/Sequential_6/Conv2d_9/aten__convolution/transpose:0   [600, 600, 2, 64] [F,F,P,P] ['h_52+r_52-1', 'w_52+s_52-1', 'c_52_0', 'c_52_1']
+	l 247 t245  const [3, 3, 128, 256] [B,B,P,F] ['r_52', 's_52', '64c_52_0+c_52_1', 'm_52']
+	r                 |V2 $1424[h_52,w_52,m_52] = tensor_contract_multiply_add(|V2 $246[h_52,w_52,m_52,c_52_0,c_52_1,r_52,s_52], |V2 $247[h_52,w_52,m_52,c_52_0,c_52_1,r_52,s_52], contract={c_52_0=[0:2:1],c_52_1=[0:64:1],r_52=[0:3:1],s_52=[0:3:1]}, lhs_free={h_52=[0:600:1],w_52=[0:600:1]}, rhs_free={m_52=[0:256:1]}) # dl = vgg16_bn_6/Sequential_6/Conv2d_9/aten__convolution/Conv2D
+	s 1482 vgg16_bn_6/Sequential_6/Conv2d_12/aten__convolution/transpose:0   [600, 600, 256] [F,F,P] ['h_52', 'w_52', 'm_52']
+
+
+
+TensorContractLayout 7 block=r_63=[0:3:1] s_63=[0:3:1] load_par=c_63=[0:256:1] store_par=m_63_0=[0:2:1] m_63_1=[0:128:1] free=h_63_0=[0:300:1] h_63_1=[0:2:1] w_63_0=[0:300:1] w_63_1=[0:2:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 307 t305  const [256] [P] ['128m_63_0+m_63_1']
+	l 319 t317  const [256] [P] ['128m_63_0+m_63_1']
+	l 1595 t1594  const [256] [P] ['128m_63_0+m_63_1']
+	l 337 t335  const [256] [P] ['128m_63_0+m_63_1']
+	l 299 vgg16_bn_6/Sequential_6/Conv2d_12/aten__convolution/transpose:0   [600, 600, 256] [F,F,P] ['2h_63_0+h_63_1+r_63-1', '2w_63_0+w_63_1+s_63-1', 'c_63']
+	l 300 t298  const [3, 3, 256, 256] [B,B,P,F] ['r_63', 's_63', 'c_63', '128m_63_0+m_63_1']
+	r                     |V2 $1425[h_63_0,h_63_1,w_63_0,w_63_1,m_63_0,m_63_1] = tensor_contract_multiply_add(|V2 $299[h_63_0,h_63_1,w_63_0,w_63_1,m_63_0,m_63_1,c_63,r_63,s_63], |V2 $300[h_63_0,h_63_1,w_63_0,w_63_1,m_63_0,m_63_1,c_63,r_63,s_63], contract={c_63=[0:256:1],r_63=[0:3:1],s_63=[0:3:1]}, lhs_free={h_63_0=[0:300:1],h_63_1=[0:2:1],w_63_0=[0:300:1],w_63_1=[0:2:1]}, rhs_free={m_63_0=[0:2:1],m_63_1=[0:128:1]}) # dl = vgg16_bn_6/Sequential_6/Conv2d_12/aten__convolution/Conv2D
+	s 1704 t1716   [300, 2, 300, 2, 2, 128] [F,F,F,F,P,P] ['h_63_0', 'h_63_1', 'w_63_0', 'w_63_1', 'm_63_0', 'm_63_1']
+	s 350 vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0   [600, 600, 2, 128] [F,F,P,P] ['2h_63_0+h_63_1', '2w_63_0+w_63_1', 'm_63_0', 'm_63_1']
+
+
+
+TensorContractLayout 8 block=r_74=[0:3:1] s_74=[0:3:1] load_par=c_74_0=[0:2:1] c_74_1=[0:128:1] store_par=m_74=[0:256:1] free=h_74_0=[0:300:1] h_74_1=[0:2:1] w_74_0=[0:300:1] w_74_1=[0:2:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 360 t358  const [256] [P] ['m_74']
+	l 372 t370  const [256] [P] ['m_74']
+	l 1598 t1597  const [256] [P] ['m_74']
+	l 390 t388  const [256] [P] ['m_74']
+	l 352 vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0   [600, 600, 2, 128] [F,F,P,P] ['2h_74_0+h_74_1+r_74-1', '2w_74_0+w_74_1+s_74-1', 'c_74_0', 'c_74_1']
+	l 353 t351  const [3, 3, 256, 256] [B,B,P,F] ['r_74', 's_74', '128c_74_0+c_74_1', 'm_74']
+	r                     |V2 $1426[h_74_0,h_74_1,w_74_0,w_74_1,m_74] = tensor_contract_multiply_add(|V2 $352[h_74_0,h_74_1,w_74_0,w_74_1,m_74,c_74_0,c_74_1,r_74,s_74], |V2 $353[h_74_0,h_74_1,w_74_0,w_74_1,m_74,c_74_0,c_74_1,r_74,s_74], contract={c_74_0=[0:2:1],c_74_1=[0:128:1],r_74=[0:3:1],s_74=[0:3:1]}, lhs_free={h_74_0=[0:300:1],h_74_1=[0:2:1],w_74_0=[0:300:1],w_74_1=[0:2:1]}, rhs_free={m_74=[0:256:1]}) # dl = vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/Conv2D
+	s 1489 vgg16_bn_6/Sequential_8/MaxPool2d_14/aten_max_pool2d/transpose:0   [300, 2, 300, 2, 256] [F,F,F,F,P] ['h_74_0', 'h_74_1', 'w_74_0', 'w_74_1', 'm_74']
+
+
+
+DFNLayout 9 broadcast= block= par=c_85=[0:256:1] free=h_85=[0:300:1] w_85=[0:300:1] r_85=[0:2:1] s_85=[0:2:1]
+layout_profile(block_axes_tripcount=352, parallel_axes_tripcount=128)
+	l 404 vgg16_bn_6/Sequential_8/MaxPool2d_14/aten_max_pool2d/transpose:0   [300, 2, 300, 2, 256] [F,F,F,F,P] ['h_85', 'r_85', 'w_85', 's_85', 'c_85']
+	r             |V2 $405[c_85,h_85,w_85] = reduce_maximum(|V2 $404[c_85,h_85,w_85,r_85,s_85], {r_85=[0:2:1],s_85=[0:2:1]}) # dl = vgg16_bn_6/Sequential_8/MaxPool2d_14/aten_max_pool2d/MaxPool2d
+	s 1491 vgg16_bn_6/Sequential_8/Conv2d_15/aten__convolution/transpose:0   [300, 300, 256] [F,F,P] ['h_85', 'w_85', 'c_85']
+
+
+
+TensorContractLayout 10 block=r_88=[0:3:1] s_88=[0:3:1] load_par=c_88=[0:256:1] store_par=m_88=[0:512:1] free=h_88=[0:300:1] w_88=[0:300:1]
+layout_profile(block_axes_tripcount=3168, parallel_axes_tripcount=16384)
+	l 423 t421  const [512] [P] ['m_88']
+	l 435 t433  const [512] [P] ['m_88']
+	l 1601 t1600  const [512] [P] ['m_88']
+	l 453 t451  const [512] [P] ['m_88']
+	l 415 vgg16_bn_6/Sequential_8/Conv2d_15/aten__convolution/transpose:0   [300, 300, 256] [F,F,P] ['h_88+r_88-1', 'w_88+s_88-1', 'c_88']
+	l 416 t414  const [3, 3, 256, 512] [B,B,P,F] ['r_88', 's_88', 'c_88', 'm_88']
+	r               |V2 $1427[h_88,w_88,m_88] = tensor_contract_multiply_add(|V2 $415[h_88,w_88,m_88,c_88,r_88,s_88], |V2 $416[h_88,w_88,m_88,c_88,r_88,s_88], contract={c_88=[0:256:1],r_88=[0:3:1],s_88=[0:3:1]}, lhs_free={h_88=[0:300:1],w_88=[0:300:1]}, rhs_free={m_88=[0:512:1]}) # dl = vgg16_bn_6/Sequential_8/Conv2d_15/aten__convolution/Conv2D
+	s 1495 vgg16_bn_6/Sequential_8/Conv2d_18/aten__convolution/transpose:0   [300, 300, 512] [F,F,P] ['h_88', 'w_88', 'm_88']
+
+
+
+TensorContractLayout 11 block=r_99=[0:3:1] s_99=[0:3:1] load_par=c_99=[0:512:1] store_par=m_99_0=[0:2:1] m_99_1=[0:256:1] free=h_99_0=[0:150:1] h_99_1=[0:2:1] w_99_0=[0:150:1] w_99_1=[0:2:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 476 t474  const [512] [P] ['256m_99_0+m_99_1']
+	l 488 t486  const [512] [P] ['256m_99_0+m_99_1']
+	l 1604 t1603  const [512] [P] ['256m_99_0+m_99_1']
+	l 506 t504  const [512] [P] ['256m_99_0+m_99_1']
+	l 468 vgg16_bn_6/Sequential_8/Conv2d_18/aten__convolution/transpose:0   [300, 300, 512] [F,F,P] ['2h_99_0+h_99_1+r_99-1', '2w_99_0+w_99_1+s_99-1', 'c_99']
+	l 469 t467  const [3, 3, 512, 512] [B,B,P,F] ['r_99', 's_99', 'c_99', '256m_99_0+m_99_1']
+	r                     |V2 $1428[h_99_0,h_99_1,w_99_0,w_99_1,m_99_0,m_99_1] = tensor_contract_multiply_add(|V2 $468[h_99_0,h_99_1,w_99_0,w_99_1,m_99_0,m_99_1,c_99,r_99,s_99], |V2 $469[h_99_0,h_99_1,w_99_0,w_99_1,m_99_0,m_99_1,c_99,r_99,s_99], contract={c_99=[0:512:1],r_99=[0:3:1],s_99=[0:3:1]}, lhs_free={h_99_0=[0:150:1],h_99_1=[0:2:1],w_99_0=[0:150:1],w_99_1=[0:2:1]}, rhs_free={m_99_0=[0:2:1],m_99_1=[0:256:1]}) # dl = vgg16_bn_6/Sequential_8/Conv2d_18/aten__convolution/Conv2D
+	s 1673 t1685   [150, 2, 150, 2, 2, 256] [F,F,F,F,P,P] ['h_99_0', 'h_99_1', 'w_99_0', 'w_99_1', 'm_99_0', 'm_99_1']
+	s 519 vgg16_bn_6/Sequential_10/Conv2d_11/aten__convolution/transpose:0   [300, 300, 2, 256] [F,F,P,P] ['2h_99_0+h_99_1', '2w_99_0+w_99_1', 'm_99_0', 'm_99_1']
+
+
+
+TensorContractLayout 12 block=r_110=[0:3:1] s_110=[0:3:1] load_par=c_110_0=[0:2:1] c_110_1=[0:256:1] store_par=m_110=[0:512:1] free=h_110_0=[0:150:1] h_110_1=[0:2:1] w_110_0=[0:150:1] w_110_1=[0:2:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=16384)
+	l 529 t527  const [512] [P] ['m_110']
+	l 541 t539  const [512] [P] ['m_110']
+	l 1607 t1606  const [512] [P] ['m_110']
+	l 559 t557  const [512] [P] ['m_110']
+	l 521 vgg16_bn_6/Sequential_10/Conv2d_11/aten__convolution/transpose:0   [300, 300, 2, 256] [F,F,P,P] ['2h_110_0+h_110_1+r_110-1', '2w_110_0+w_110_1+s_110-1', 'c_110_0', 'c_110_1']
+	l 522 t520  const [3, 3, 512, 512] [B,B,P,F] ['r_110', 's_110', '256c_110_0+c_110_1', 'm_110']
+	r                     |V2 $1429[h_110_0,h_110_1,w_110_0,w_110_1,m_110] = tensor_contract_multiply_add(|V2 $521[h_110_0,h_110_1,w_110_0,w_110_1,m_110,c_110_0,c_110_1,r_110,s_110], |V2 $522[h_110_0,h_110_1,w_110_0,w_110_1,m_110,c_110_0,c_110_1,r_110,s_110], contract={c_110_0=[0:2:1],c_110_1=[0:256:1],r_110=[0:3:1],s_110=[0:3:1]}, lhs_free={h_110_0=[0:150:1],h_110_1=[0:2:1],w_110_0=[0:150:1],w_110_1=[0:2:1]}, rhs_free={m_110=[0:512:1]}) # dl = vgg16_bn_6/Sequential_10/Conv2d_11/aten__convolution/Conv2D
+	s 1502 vgg16_bn_6/Sequential_10/MaxPool2d_14/aten_max_pool2d/transpose:0   [150, 2, 150, 2, 512] [F,F,F,F,P] ['h_110_0', 'h_110_1', 'w_110_0', 'w_110_1', 'm_110']
+
+
+
+DFNLayout 13 broadcast= block= par=c_121=[0:512:1] free=h_121=[0:150:1] w_121=[0:150:1] r_121=[0:2:1] s_121=[0:2:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=128)
+	l 573 vgg16_bn_6/Sequential_10/MaxPool2d_14/aten_max_pool2d/transpose:0   [150, 2, 150, 2, 512] [F,F,F,F,P] ['h_121', 'r_121', 'w_121', 's_121', 'c_121']
+	r             |V2 $574[c_121,h_121,w_121] = reduce_maximum(|V2 $573[c_121,h_121,w_121,r_121,s_121], {r_121=[0:2:1],s_121=[0:2:1]}) # dl = vgg16_bn_6/Sequential_10/MaxPool2d_14/aten_max_pool2d/MaxPool2d
+	s 1504 vgg16_bn_6/Sequential_10/Conv2d_15/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_121', 'w_121', 'c_121']
+
+
+
+TensorContractLayout 14 block=r_124=[0:3:1] s_124=[0:3:1] load_par=c_124=[0:512:1] store_par=m_124=[0:512:1] free=h_124=[0:150:1] w_124=[0:150:1]
+layout_profile(block_axes_tripcount=1584, parallel_axes_tripcount=16384)
+	l 592 t590  const [512] [P] ['m_124']
+	l 604 t602  const [512] [P] ['m_124']
+	l 1610 t1609  const [512] [P] ['m_124']
+	l 622 t620  const [512] [P] ['m_124']
+	l 584 vgg16_bn_6/Sequential_10/Conv2d_15/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_124+r_124-1', 'w_124+s_124-1', 'c_124']
+	l 585 t583  const [3, 3, 512, 512] [B,B,P,F] ['r_124', 's_124', 'c_124', 'm_124']
+	r               |V2 $1430[h_124,w_124,m_124] = tensor_contract_multiply_add(|V2 $584[h_124,w_124,m_124,c_124,r_124,s_124], |V2 $585[h_124,w_124,m_124,c_124,r_124,s_124], contract={c_124=[0:512:1],r_124=[0:3:1],s_124=[0:3:1]}, lhs_free={h_124=[0:150:1],w_124=[0:150:1]}, rhs_free={m_124=[0:512:1]}) # dl = vgg16_bn_6/Sequential_10/Conv2d_15/aten__convolution/Conv2D
+	s 1508 vgg16_bn_6/Sequential_10/Conv2d_18/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_124', 'w_124', 'm_124']
+
+
+
+TensorContractLayout 15 block=r_135=[0:3:1] s_135=[0:3:1] load_par=c_135=[0:512:1] store_par=m_135=[0:512:1] free=h_135=[0:150:1] w_135=[0:150:1]
+layout_profile(block_axes_tripcount=1584, parallel_axes_tripcount=16384)
+	l 645 t643  const [512] [P] ['m_135']
+	l 657 t655  const [512] [P] ['m_135']
+	l 1613 t1612  const [512] [P] ['m_135']
+	l 675 t673  const [512] [P] ['m_135']
+	l 637 vgg16_bn_6/Sequential_10/Conv2d_18/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_135+r_135-1', 'w_135+s_135-1', 'c_135']
+	l 638 t636  const [3, 3, 512, 512] [B,B,P,F] ['r_135', 's_135', 'c_135', 'm_135']
+	r               |V2 $1431[h_135,w_135,m_135] = tensor_contract_multiply_add(|V2 $637[h_135,w_135,m_135,c_135,r_135,s_135], |V2 $638[h_135,w_135,m_135,c_135,r_135,s_135], contract={c_135=[0:512:1],r_135=[0:3:1],s_135=[0:3:1]}, lhs_free={h_135=[0:150:1],w_135=[0:150:1]}, rhs_free={m_135=[0:512:1]}) # dl = vgg16_bn_6/Sequential_10/Conv2d_18/aten__convolution/Conv2D
+	s 684 vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/transpose:0   [150, 150, 512] [F,F,P] ['h_135', 'w_135', 'm_135']
+	s 1759 t1661   [150, 150, 512] [F,F,P] ['h_135', 'w_135', 'm_135']
+
+
+
+DFNLayout 16 broadcast= block= par=c_145=[0:512:1] free=h_145=[0:150:1] w_145=[0:150:1] r_145=[0:3:1] s_145=[0:3:1]
+layout_profile(block_axes_tripcount=396, parallel_axes_tripcount=128)
+	l 685 vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/transpose:0   [150, 150, 512] [F,F,P] ['h_145+r_145-1', 'w_145+s_145-1', 'c_145']
+	r             |V2 $686[c_145,h_145,w_145] = reduce_maximum(|V2 $685[c_145,h_145,w_145,r_145,s_145], {r_145=[0:3:1],s_145=[0:3:1]}) # dl = vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/MaxPool2d
+	s 1513 vgg16_bn_6/Sequential_12/Conv2d_4/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_145', 'w_145', 'c_145']
+
+
+
+TensorContractLayout 17 block=r_148=[0:3:1] s_148=[0:3:1] load_par=c_148=[0:512:1] store_par=m_148=[0:1024:1] free=h_148=[0:150:1] w_148=[0:150:1]
+layout_profile(block_axes_tripcount=3168, parallel_axes_tripcount=16384)
+	l 704 t702  const [1024] [P] ['m_148']
+	l 696 vgg16_bn_6/Sequential_12/Conv2d_4/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_148+6r_148-6', 'w_148+6s_148-6', 'c_148']
+	l 697 t695  const [3, 3, 512, 1024] [B,B,P,F] ['r_148', 's_148', 'c_148', 'm_148']
+	r               |V2 $1432[h_148,w_148,m_148] = tensor_contract_multiply_add(|V2 $696[h_148,w_148,m_148,c_148,r_148,s_148], |V2 $697[h_148,w_148,m_148,c_148,r_148,s_148], contract={c_148=[0:512:1],r_148=[0:3:1],s_148=[0:3:1]}, lhs_free={h_148=[0:150:1],w_148=[0:150:1]}, rhs_free={m_148=[0:1024:1]}) # dl = vgg16_bn_6/Sequential_12/Conv2d_4/aten__convolution/Conv2D
+	s 1515 vgg16_bn_6/Sequential_12/Conv2d_5/aten__convolution/transpose:0   [150, 150, 1024] [F,F,P] ['h_148', 'w_148', 'm_148']
+
+
+
+TensorContractLayout 18 block= load_par=c_152=[0:1024:1] store_par=m_152_0=[0:2:1] m_152_1=[0:512:1] free=h_152=[0:150:1] w_152=[0:150:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=16384)
+	l 723 t721  const [1024] [P] ['512m_152_0+m_152_1']
+	l 715 vgg16_bn_6/Sequential_12/Conv2d_5/aten__convolution/transpose:0   [150, 150, 1024] [F,F,P] ['h_152', 'w_152', 'c_152']
+	l 716 t714  const [1, 1, 1024, 1024] [F,F,P,F] ['0', '0', 'c_152', '512m_152_0+m_152_1']
+	r             |V2 $1433[h_152,w_152,m_152_0,m_152_1] = tensor_contract_multiply_add(|V2 $715[h_152,w_152,m_152_0,m_152_1,c_152], |V2 $716[h_152,w_152,m_152_0,m_152_1,c_152], contract={c_152=[0:1024:1]}, lhs_free={h_152=[0:150:1],w_152=[0:150:1]}, rhs_free={m_152_0=[0:2:1],m_152_1=[0:512:1]}) # dl = vgg16_bn_6/Sequential_12/Conv2d_5/aten__convolution/Conv2D
+	s 1642 t1654   [150, 150, 2, 512] [F,F,P,P] ['h_152', 'w_152', 'm_152_0', 'm_152_1']
+
+
+
+TensorContractLayout 19 block= load_par=c_158_0_1653=[0:2:1] c_158_1_1653=[0:512:1] store_par=m_158_1653=[0:512:1] free=h_158_1653=[0:150:1] w_158_1653=[0:150:1]
+layout_profile(block_axes_tripcount=352, parallel_axes_tripcount=16384)
+	l 1656 t1654   [150, 150, 2, 512] [F,F,P,P] ['h_158_1653', 'w_158_1653', 'c_158_0_1653', 'c_158_1_1653']
+	l 1657 t1655  const [2, 512, 512] [P,P,F] ['c_158_0_1653', 'c_158_1_1653', 'm_158_1653']
+	r             |V2 $1658[h_158_1653,w_158_1653,m_158_1653] = tensor_contract_multiply_add(|V2 $1656[h_158_1653,w_158_1653,m_158_1653,c_158_0_1653,c_158_1_1653], |V2 $1657[h_158_1653,w_158_1653,m_158_1653,c_158_0_1653,c_158_1_1653], contract={c_158_0_1653=[0:2:1],c_158_1_1653=[0:512:1]}, lhs_free={h_158_1653=[0:150:1],w_158_1653=[0:150:1]}, rhs_free={m_158_1653=[0:512:1]}) # dl = double_conv_11/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	s 1659 t1667   [150, 150, 512] [F,F,P] ['h_158_1653', 'w_158_1653', 'm_158_1653']
+
+
+
+TensorContractLayout 20 block= load_par=c_158_1_1660=[0:512:1] store_par=m_158_1660=[0:512:1] free=h_158_1660=[0:150:1] w_158_1660=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1663 t1661   [150, 150, 512] [F,F,P] ['h_158_1660', 'w_158_1660', 'c_158_1_1660']
+	l 1664 t1662  const [1, 512, 512] [F,P,F] ['0', 'c_158_1_1660', 'm_158_1660']
+	r           |V2 $1665[h_158_1660,w_158_1660,m_158_1660] = tensor_contract_multiply_add(|V2 $1663[h_158_1660,w_158_1660,m_158_1660,c_158_1_1660], |V2 $1664[h_158_1660,w_158_1660,m_158_1660,c_158_1_1660], contract={c_158_1_1660=[0:512:1]}, lhs_free={h_158_1660=[0:150:1],w_158_1660=[0:150:1]}, rhs_free={m_158_1660=[0:512:1]}) # dl = double_conv_11/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	l 1668 t1667   [150, 150, 512] [F,F,P] ['h_158_1660', 'w_158_1660', 'm_158_1660']
+	l 1616 t1615  const [512] [P] ['m_158_1660']
+	l 747 t745  const [512] [P] ['m_158_1660']
+	l 759 t757  const [512] [P] ['m_158_1660']
+	l 777 t775  const [512] [P] ['m_158_1660']
+	s 1523 double_conv_11/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_158_1660', 'w_158_1660', 'm_158_1660']
+
+
+
+TensorContractLayout 21 block=r_169=[0:3:1] s_169=[0:3:1] load_par=c_169=[0:512:1] store_par=m_169=[0:256:1] free=h_169=[0:150:1] w_169=[0:150:1]
+layout_profile(block_axes_tripcount=792, parallel_axes_tripcount=16384)
+	l 800 t798  const [256] [P] ['m_169']
+	l 812 t810  const [256] [P] ['m_169']
+	l 1619 t1618  const [256] [P] ['m_169']
+	l 830 t828  const [256] [P] ['m_169']
+	l 792 double_conv_11/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [150, 150, 512] [F,F,P] ['h_169+r_169-1', 'w_169+s_169-1', 'c_169']
+	l 793 t791  const [3, 3, 512, 256] [B,B,P,F] ['r_169', 's_169', 'c_169', 'm_169']
+	r               |V2 $1435[h_169,w_169,m_169] = tensor_contract_multiply_add(|V2 $792[h_169,w_169,m_169,c_169,r_169,s_169], |V2 $793[h_169,w_169,m_169,c_169,r_169,s_169], contract={c_169=[0:512:1],r_169=[0:3:1],s_169=[0:3:1]}, lhs_free={h_169=[0:150:1],w_169=[0:150:1]}, rhs_free={m_169=[0:256:1]}) # dl = double_conv_11/Sequential_1/Conv2d_9/aten__convolution/Conv2D
+	s 1528 transpose0:0   [256, 150, 150] [P,F,F] ['m_169', 'h_169', 'w_169']
+
+
+
+TensorContractLayout 22 block=i0_181=[0:2:1] i1_181=[0:2:1] load_par=m_181=[0:256:1] store_par=c_181=[0:256:1] free=d0_181=[0:150:1] d1_181=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 849 transpose0:0   [256, 150, 150] [P,F,F] ['m_181', 'd0_181+i0_181-1', 'd1_181+i1_181-1']
+	l 850 t847  const [256, 256, 4, 4] [P,F,B,B] ['m_181', 'c_181', '-2i0_181+3', '-2i1_181+3']
+	r               |V2 $1436[d0_181,d1_181,c_181] = tensor_contract_multiply_add(|V2 $849[d0_181,d1_181,c_181,m_181,i0_181,i1_181], |V2 $850[d0_181,d1_181,c_181,m_181,i0_181,i1_181], contract={m_181=[0:256:1],i0_181=[0:2:1],i1_181=[0:2:1]}, lhs_free={d0_181=[0:150:1],d1_181=[0:150:1]}, rhs_free={c_181=[0:256:1]}) # dl = aten_upsample_bilinear2d/conv2d_transpose
+	s 853 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['c_181', 'd0_181', '0', 'd1_181', '0']
+
+
+
+TensorContractLayout 23 block=i0_182=[0:2:1] i1_182=[0:2:1] load_par=m_182=[0:256:1] store_par=c_182=[0:256:1] free=d0_182=[0:150:1] d1_182=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 854 transpose0:0   [256, 150, 150] [P,F,F] ['m_182', 'd0_182+i0_182-1', 'd1_182+i1_182']
+	l 855 t847  const [256, 256, 4, 4] [P,F,B,B] ['m_182', 'c_182', '-2i0_182+3', '-2i1_182+2']
+	r               |V2 $1437[d0_182,d1_182,c_182] = tensor_contract_multiply_add(|V2 $854[d0_182,d1_182,c_182,m_182,i0_182,i1_182], |V2 $855[d0_182,d1_182,c_182,m_182,i0_182,i1_182], contract={m_182=[0:256:1],i0_182=[0:2:1],i1_182=[0:2:1]}, lhs_free={d0_182=[0:150:1],d1_182=[0:150:1]}, rhs_free={c_182=[0:256:1]}) # dl = aten_upsample_bilinear2d/conv2d_transpose
+	s 858 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['c_182', 'd0_182', '0', 'd1_182', '1']
+
+
+
+TensorContractLayout 24 block=i0_183=[0:2:1] i1_183=[0:2:1] load_par=m_183=[0:256:1] store_par=c_183=[0:256:1] free=d0_183=[0:150:1] d1_183=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 859 transpose0:0   [256, 150, 150] [P,F,F] ['m_183', 'd0_183+i0_183', 'd1_183+i1_183-1']
+	l 860 t847  const [256, 256, 4, 4] [P,F,B,B] ['m_183', 'c_183', '-2i0_183+2', '-2i1_183+3']
+	r               |V2 $1438[d0_183,d1_183,c_183] = tensor_contract_multiply_add(|V2 $859[d0_183,d1_183,c_183,m_183,i0_183,i1_183], |V2 $860[d0_183,d1_183,c_183,m_183,i0_183,i1_183], contract={m_183=[0:256:1],i0_183=[0:2:1],i1_183=[0:2:1]}, lhs_free={d0_183=[0:150:1],d1_183=[0:150:1]}, rhs_free={c_183=[0:256:1]}) # dl = aten_upsample_bilinear2d/conv2d_transpose
+	s 863 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['c_183', 'd0_183', '1', 'd1_183', '0']
+
+
+
+TensorContractLayout 25 block=i0_184=[0:2:1] i1_184=[0:2:1] load_par=m_184=[0:256:1] store_par=c_184=[0:256:1] free=d0_184=[0:150:1] d1_184=[0:150:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 864 transpose0:0   [256, 150, 150] [P,F,F] ['m_184', 'd0_184+i0_184', 'd1_184+i1_184']
+	l 865 t847  const [256, 256, 4, 4] [P,F,B,B] ['m_184', 'c_184', '-2i0_184+2', '-2i1_184+2']
+	r               |V2 $1439[d0_184,d1_184,c_184] = tensor_contract_multiply_add(|V2 $864[d0_184,d1_184,c_184,m_184,i0_184,i1_184], |V2 $865[d0_184,d1_184,c_184,m_184,i0_184,i1_184], contract={m_184=[0:256:1],i0_184=[0:2:1],i1_184=[0:2:1]}, lhs_free={d0_184=[0:150:1],d1_184=[0:150:1]}, rhs_free={c_184=[0:256:1]}) # dl = aten_upsample_bilinear2d/conv2d_transpose
+	s 868 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['c_184', 'd0_184', '1', 'd1_184', '1']
+
+
+
+DFNLayout 26 broadcast=i1_185=[0:256:1] block= par=i1_185=[0:256:1] free=i2_185_0=[0:150:1] i2_185_1=[0:2:1] i3_185_0=[0:150:1] i3_185_1=[0:2:1]
+layout_profile(block_axes_tripcount=88, parallel_axes_tripcount=128)
+	l 870 nn.conv2d_transpose0:0   [256, 150, 2, 150, 2] [P,F,F,F,F] ['i1_185', 'i2_185_0', 'i2_185_1', 'i3_185_0', 'i3_185_1']
+	l 877 t875  const [300, 300] [F,F] ['2i2_185_0+i2_185_1', '2i3_185_0+i3_185_1']
+	s 1760 t1692   [150, 2, 150, 2, 256] [F,F,F,F,P] ['i2_185_0', 'i2_185_1', 'i3_185_0', 'i3_185_1', 'i1_185']
+
+
+
+TensorContractLayout 27 block= load_par=c_191_0_1684=[0:2:1] c_191_1_1684=[0:256:1] store_par=m_191_1684=[0:256:1] free=h_191_0_1684=[0:150:1] h_191_1_1684=[0:2:1] w_191_0_1684=[0:150:1] w_191_1_1684=[0:2:1]
+layout_profile(block_axes_tripcount=352, parallel_axes_tripcount=16384)
+	l 1687 t1685   [150, 2, 150, 2, 2, 256] [F,F,F,F,P,P] ['h_191_0_1684', 'h_191_1_1684', 'w_191_0_1684', 'w_191_1_1684', 'c_191_0_1684', 'c_191_1_1684']
+	l 1688 t1686  const [2, 256, 256] [P,P,F] ['c_191_0_1684', 'c_191_1_1684', 'm_191_1684']
+	r                 |V2 $1689[h_191_0_1684,h_191_1_1684,w_191_0_1684,w_191_1_1684,m_191_1684] = tensor_contract_multiply_add(|V2 $1687[h_191_0_1684,h_191_1_1684,w_191_0_1684,w_191_1_1684,m_191_1684,c_191_0_1684,c_191_1_1684], |V2 $1688[h_191_0_1684,h_191_1_1684,w_191_0_1684,w_191_1_1684,m_191_1684,c_191_0_1684,c_191_1_1684], contract={c_191_0_1684=[0:2:1],c_191_1_1684=[0:256:1]}, lhs_free={h_191_0_1684=[0:150:1],h_191_1_1684=[0:2:1],w_191_0_1684=[0:150:1],w_191_1_1684=[0:2:1]}, rhs_free={m_191_1684=[0:256:1]}) # dl = double_conv_27/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	s 1690 t1698   [150, 2, 150, 2, 256] [F,F,F,F,P] ['h_191_0_1684', 'h_191_1_1684', 'w_191_0_1684', 'w_191_1_1684', 'm_191_1684']
+
+
+
+TensorContractLayout 28 block= load_par=c_191_1_1691=[0:256:1] store_par=m_191_1691=[0:256:1] free=h_191_0_1691=[0:150:1] h_191_1_1691=[0:2:1] w_191_0_1691=[0:150:1] w_191_1_1691=[0:2:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1694 t1692   [150, 2, 150, 2, 256] [F,F,F,F,P] ['h_191_0_1691', 'h_191_1_1691', 'w_191_0_1691', 'w_191_1_1691', 'c_191_1_1691']
+	l 1695 t1693  const [1, 256, 256] [F,P,F] ['0', 'c_191_1_1691', 'm_191_1691']
+	r               |V2 $1696[h_191_0_1691,h_191_1_1691,w_191_0_1691,w_191_1_1691,m_191_1691] = tensor_contract_multiply_add(|V2 $1694[h_191_0_1691,h_191_1_1691,w_191_0_1691,w_191_1_1691,m_191_1691,c_191_1_1691], |V2 $1695[h_191_0_1691,h_191_1_1691,w_191_0_1691,w_191_1_1691,m_191_1691,c_191_1_1691], contract={c_191_1_1691=[0:256:1]}, lhs_free={h_191_0_1691=[0:150:1],h_191_1_1691=[0:2:1],w_191_0_1691=[0:150:1],w_191_1_1691=[0:2:1]}, rhs_free={m_191_1691=[0:256:1]}) # dl = double_conv_27/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	l 1699 t1698   [150, 2, 150, 2, 256] [F,F,F,F,P] ['h_191_0_1691', 'h_191_1_1691', 'w_191_0_1691', 'w_191_1_1691', 'm_191_1691']
+	l 1622 t1621  const [256] [P] ['m_191_1691']
+	l 898 t896  const [256] [P] ['m_191_1691']
+	l 910 t908  const [256] [P] ['m_191_1691']
+	l 928 t926  const [256] [P] ['m_191_1691']
+	s 1536 double_conv_27/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [300, 300, 256] [F,F,P] ['2h_191_0_1691+h_191_1_1691', '2w_191_0_1691+w_191_1_1691', 'm_191_1691']
+
+
+
+TensorContractLayout 29 block=r_202=[0:3:1] s_202=[0:3:1] load_par=c_202=[0:256:1] store_par=m_202=[0:128:1] free=h_202=[0:300:1] w_202=[0:300:1]
+layout_profile(block_axes_tripcount=792, parallel_axes_tripcount=16384)
+	l 951 t949  const [128] [P] ['m_202']
+	l 963 t961  const [128] [P] ['m_202']
+	l 1625 t1624  const [128] [P] ['m_202']
+	l 981 t979  const [128] [P] ['m_202']
+	l 943 double_conv_27/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [300, 300, 256] [F,F,P] ['h_202+r_202-1', 'w_202+s_202-1', 'c_202']
+	l 944 t942  const [3, 3, 256, 128] [B,B,P,F] ['r_202', 's_202', 'c_202', 'm_202']
+	r               |V2 $1441[h_202,w_202,m_202] = tensor_contract_multiply_add(|V2 $943[h_202,w_202,m_202,c_202,r_202,s_202], |V2 $944[h_202,w_202,m_202,c_202,r_202,s_202], contract={c_202=[0:256:1],r_202=[0:3:1],s_202=[0:3:1]}, lhs_free={h_202=[0:300:1],w_202=[0:300:1]}, rhs_free={m_202=[0:128:1]}) # dl = double_conv_27/Sequential_1/Conv2d_9/aten__convolution/Conv2D
+	s 1541 transpose2:0   [128, 300, 300] [P,F,F] ['m_202', 'h_202', 'w_202']
+
+
+
+TensorContractLayout 30 block=i0_214=[0:2:1] i1_214=[0:2:1] load_par=m_214=[0:128:1] store_par=c_214=[0:128:1] free=d0_214=[0:300:1] d1_214=[0:300:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1000 transpose2:0   [128, 300, 300] [P,F,F] ['m_214', 'd0_214+i0_214-1', 'd1_214+i1_214-1']
+	l 1001 t998  const [128, 128, 4, 4] [P,F,B,B] ['m_214', 'c_214', '-2i0_214+3', '-2i1_214+3']
+	r               |V2 $1442[d0_214,d1_214,c_214] = tensor_contract_multiply_add(|V2 $1000[d0_214,d1_214,c_214,m_214,i0_214,i1_214], |V2 $1001[d0_214,d1_214,c_214,m_214,i0_214,i1_214], contract={m_214=[0:128:1],i0_214=[0:2:1],i1_214=[0:2:1]}, lhs_free={d0_214=[0:300:1],d1_214=[0:300:1]}, rhs_free={c_214=[0:128:1]}) # dl = aten_upsample_bilinear2d_1/conv2d_transpose
+	s 1004 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['c_214', 'd0_214', '0', 'd1_214', '0']
+
+
+
+TensorContractLayout 31 block=i0_215=[0:2:1] i1_215=[0:2:1] load_par=m_215=[0:128:1] store_par=c_215=[0:128:1] free=d0_215=[0:300:1] d1_215=[0:300:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1005 transpose2:0   [128, 300, 300] [P,F,F] ['m_215', 'd0_215+i0_215-1', 'd1_215+i1_215']
+	l 1006 t998  const [128, 128, 4, 4] [P,F,B,B] ['m_215', 'c_215', '-2i0_215+3', '-2i1_215+2']
+	r               |V2 $1443[d0_215,d1_215,c_215] = tensor_contract_multiply_add(|V2 $1005[d0_215,d1_215,c_215,m_215,i0_215,i1_215], |V2 $1006[d0_215,d1_215,c_215,m_215,i0_215,i1_215], contract={m_215=[0:128:1],i0_215=[0:2:1],i1_215=[0:2:1]}, lhs_free={d0_215=[0:300:1],d1_215=[0:300:1]}, rhs_free={c_215=[0:128:1]}) # dl = aten_upsample_bilinear2d_1/conv2d_transpose
+	s 1009 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['c_215', 'd0_215', '0', 'd1_215', '1']
+
+
+
+TensorContractLayout 32 block=i0_216=[0:2:1] i1_216=[0:2:1] load_par=m_216=[0:128:1] store_par=c_216=[0:128:1] free=d0_216=[0:300:1] d1_216=[0:300:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1010 transpose2:0   [128, 300, 300] [P,F,F] ['m_216', 'd0_216+i0_216', 'd1_216+i1_216-1']
+	l 1011 t998  const [128, 128, 4, 4] [P,F,B,B] ['m_216', 'c_216', '-2i0_216+2', '-2i1_216+3']
+	r               |V2 $1444[d0_216,d1_216,c_216] = tensor_contract_multiply_add(|V2 $1010[d0_216,d1_216,c_216,m_216,i0_216,i1_216], |V2 $1011[d0_216,d1_216,c_216,m_216,i0_216,i1_216], contract={m_216=[0:128:1],i0_216=[0:2:1],i1_216=[0:2:1]}, lhs_free={d0_216=[0:300:1],d1_216=[0:300:1]}, rhs_free={c_216=[0:128:1]}) # dl = aten_upsample_bilinear2d_1/conv2d_transpose
+	s 1014 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['c_216', 'd0_216', '1', 'd1_216', '0']
+
+
+
+TensorContractLayout 33 block=i0_217=[0:2:1] i1_217=[0:2:1] load_par=m_217=[0:128:1] store_par=c_217=[0:128:1] free=d0_217=[0:300:1] d1_217=[0:300:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1015 transpose2:0   [128, 300, 300] [P,F,F] ['m_217', 'd0_217+i0_217', 'd1_217+i1_217']
+	l 1016 t998  const [128, 128, 4, 4] [P,F,B,B] ['m_217', 'c_217', '-2i0_217+2', '-2i1_217+2']
+	r               |V2 $1445[d0_217,d1_217,c_217] = tensor_contract_multiply_add(|V2 $1015[d0_217,d1_217,c_217,m_217,i0_217,i1_217], |V2 $1016[d0_217,d1_217,c_217,m_217,i0_217,i1_217], contract={m_217=[0:128:1],i0_217=[0:2:1],i1_217=[0:2:1]}, lhs_free={d0_217=[0:300:1],d1_217=[0:300:1]}, rhs_free={c_217=[0:128:1]}) # dl = aten_upsample_bilinear2d_1/conv2d_transpose
+	s 1019 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['c_217', 'd0_217', '1', 'd1_217', '1']
+
+
+
+DFNLayout 34 broadcast=i1_218=[0:128:1] block= par=i1_218=[0:128:1] free=i2_218_0=[0:300:1] i2_218_1=[0:2:1] i3_218_0=[0:300:1] i3_218_1=[0:2:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=128)
+	l 1021 nn.conv2d_transpose1:0   [128, 300, 2, 300, 2] [P,F,F,F,F] ['i1_218', 'i2_218_0', 'i2_218_1', 'i3_218_0', 'i3_218_1']
+	l 1028 t1026  const [600, 600] [F,F] ['2i2_218_0+i2_218_1', '2i3_218_0+i3_218_1']
+	s 1761 t1723   [300, 2, 300, 2, 128] [F,F,F,F,P] ['i2_218_0', 'i2_218_1', 'i3_218_0', 'i3_218_1', 'i1_218']
+
+
+
+TensorContractLayout 35 block= load_par=c_224_0_1715=[0:2:1] c_224_1_1715=[0:128:1] store_par=m_224_1715=[0:128:1] free=h_224_0_1715=[0:300:1] h_224_1_1715=[0:2:1] w_224_0_1715=[0:300:1] w_224_1_1715=[0:2:1]
+layout_profile(block_axes_tripcount=352, parallel_axes_tripcount=16384)
+	l 1718 t1716   [300, 2, 300, 2, 2, 128] [F,F,F,F,P,P] ['h_224_0_1715', 'h_224_1_1715', 'w_224_0_1715', 'w_224_1_1715', 'c_224_0_1715', 'c_224_1_1715']
+	l 1719 t1717  const [2, 128, 128] [P,P,F] ['c_224_0_1715', 'c_224_1_1715', 'm_224_1715']
+	r                 |V2 $1720[h_224_0_1715,h_224_1_1715,w_224_0_1715,w_224_1_1715,m_224_1715] = tensor_contract_multiply_add(|V2 $1718[h_224_0_1715,h_224_1_1715,w_224_0_1715,w_224_1_1715,m_224_1715,c_224_0_1715,c_224_1_1715], |V2 $1719[h_224_0_1715,h_224_1_1715,w_224_0_1715,w_224_1_1715,m_224_1715,c_224_0_1715,c_224_1_1715], contract={c_224_0_1715=[0:2:1],c_224_1_1715=[0:128:1]}, lhs_free={h_224_0_1715=[0:300:1],h_224_1_1715=[0:2:1],w_224_0_1715=[0:300:1],w_224_1_1715=[0:2:1]}, rhs_free={m_224_1715=[0:128:1]}) # dl = double_conv_43/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	s 1721 t1729   [300, 2, 300, 2, 128] [F,F,F,F,P] ['h_224_0_1715', 'h_224_1_1715', 'w_224_0_1715', 'w_224_1_1715', 'm_224_1715']
+
+
+
+TensorContractLayout 36 block= load_par=c_224_1_1722=[0:128:1] store_par=m_224_1722=[0:128:1] free=h_224_0_1722=[0:300:1] h_224_1_1722=[0:2:1] w_224_0_1722=[0:300:1] w_224_1_1722=[0:2:1]
+layout_profile(block_axes_tripcount=176, parallel_axes_tripcount=16384)
+	l 1725 t1723   [300, 2, 300, 2, 128] [F,F,F,F,P] ['h_224_0_1722', 'h_224_1_1722', 'w_224_0_1722', 'w_224_1_1722', 'c_224_1_1722']
+	l 1726 t1724  const [1, 128, 128] [F,P,F] ['0', 'c_224_1_1722', 'm_224_1722']
+	r               |V2 $1727[h_224_0_1722,h_224_1_1722,w_224_0_1722,w_224_1_1722,m_224_1722] = tensor_contract_multiply_add(|V2 $1725[h_224_0_1722,h_224_1_1722,w_224_0_1722,w_224_1_1722,m_224_1722,c_224_1_1722], |V2 $1726[h_224_0_1722,h_224_1_1722,w_224_0_1722,w_224_1_1722,m_224_1722,c_224_1_1722], contract={c_224_1_1722=[0:128:1]}, lhs_free={h_224_0_1722=[0:300:1],h_224_1_1722=[0:2:1],w_224_0_1722=[0:300:1],w_224_1_1722=[0:2:1]}, rhs_free={m_224_1722=[0:128:1]}) # dl = double_conv_43/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	l 1730 t1729   [300, 2, 300, 2, 128] [F,F,F,F,P] ['h_224_0_1722', 'h_224_1_1722', 'w_224_0_1722', 'w_224_1_1722', 'm_224_1722']
+	l 1628 t1627  const [128] [P] ['m_224_1722']
+	l 1049 t1047  const [128] [P] ['m_224_1722']
+	l 1061 t1059  const [128] [P] ['m_224_1722']
+	l 1079 t1077  const [128] [P] ['m_224_1722']
+	s 1549 double_conv_43/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [600, 600, 128] [F,F,P] ['2h_224_0_1722+h_224_1_1722', '2w_224_0_1722+w_224_1_1722', 'm_224_1722']
+
+
+
+TensorContractLayout 37 block=r_235=[0:3:1] s_235=[0:3:1] load_par=c_235=[0:128:1] store_par=m_235=[0:64:1] free=h_235=[0:600:1] w_235=[0:600:1]
+layout_profile(block_axes_tripcount=1584, parallel_axes_tripcount=8192)
+	l 1102 t1100  const [64] [P] ['m_235']
+	l 1114 t1112  const [64] [P] ['m_235']
+	l 1631 t1630  const [64] [P] ['m_235']
+	l 1132 t1130  const [64] [P] ['m_235']
+	l 1094 double_conv_43/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [600, 600, 128] [F,F,P] ['h_235+r_235-1', 'w_235+s_235-1', 'c_235']
+	l 1095 t1093  const [3, 3, 128, 64] [B,B,P,F] ['r_235', 's_235', 'c_235', 'm_235']
+	r               |V2 $1447[h_235,w_235,m_235] = tensor_contract_multiply_add(|V2 $1094[h_235,w_235,m_235,c_235,r_235,s_235], |V2 $1095[h_235,w_235,m_235,c_235,r_235,s_235], contract={c_235=[0:128:1],r_235=[0:3:1],s_235=[0:3:1]}, lhs_free={h_235=[0:600:1],w_235=[0:600:1]}, rhs_free={m_235=[0:64:1]}) # dl = double_conv_43/Sequential_1/Conv2d_9/aten__convolution/Conv2D
+	s 1554 transpose4:0   [64, 600, 600] [P,F,F] ['m_235', 'h_235', 'w_235']
+
+
+
+TensorContractLayout 38 block=i0_247=[0:2:1] i1_247=[0:2:1] load_par=m_247=[0:64:1] store_par=c_247=[0:64:1] free=d0_247=[0:600:1] d1_247=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1151 transpose4:0   [64, 600, 600] [P,F,F] ['m_247', 'd0_247+i0_247-1', 'd1_247+i1_247-1']
+	l 1152 t1149  const [64, 64, 4, 4] [P,F,B,B] ['m_247', 'c_247', '-2i0_247+3', '-2i1_247+3']
+	r               |V2 $1448[d0_247,d1_247,c_247] = tensor_contract_multiply_add(|V2 $1151[d0_247,d1_247,c_247,m_247,i0_247,i1_247], |V2 $1152[d0_247,d1_247,c_247,m_247,i0_247,i1_247], contract={m_247=[0:64:1],i0_247=[0:2:1],i1_247=[0:2:1]}, lhs_free={d0_247=[0:600:1],d1_247=[0:600:1]}, rhs_free={c_247=[0:64:1]}) # dl = aten_upsample_bilinear2d_2/conv2d_transpose
+	s 1155 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['c_247', 'd0_247', '0', 'd1_247', '0']
+
+
+
+TensorContractLayout 39 block=i0_248=[0:2:1] i1_248=[0:2:1] load_par=m_248=[0:64:1] store_par=c_248=[0:64:1] free=d0_248=[0:600:1] d1_248=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1156 transpose4:0   [64, 600, 600] [P,F,F] ['m_248', 'd0_248+i0_248-1', 'd1_248+i1_248']
+	l 1157 t1149  const [64, 64, 4, 4] [P,F,B,B] ['m_248', 'c_248', '-2i0_248+3', '-2i1_248+2']
+	r               |V2 $1449[d0_248,d1_248,c_248] = tensor_contract_multiply_add(|V2 $1156[d0_248,d1_248,c_248,m_248,i0_248,i1_248], |V2 $1157[d0_248,d1_248,c_248,m_248,i0_248,i1_248], contract={m_248=[0:64:1],i0_248=[0:2:1],i1_248=[0:2:1]}, lhs_free={d0_248=[0:600:1],d1_248=[0:600:1]}, rhs_free={c_248=[0:64:1]}) # dl = aten_upsample_bilinear2d_2/conv2d_transpose
+	s 1160 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['c_248', 'd0_248', '0', 'd1_248', '1']
+
+
+
+TensorContractLayout 40 block=i0_249=[0:2:1] i1_249=[0:2:1] load_par=m_249=[0:64:1] store_par=c_249=[0:64:1] free=d0_249=[0:600:1] d1_249=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1161 transpose4:0   [64, 600, 600] [P,F,F] ['m_249', 'd0_249+i0_249', 'd1_249+i1_249-1']
+	l 1162 t1149  const [64, 64, 4, 4] [P,F,B,B] ['m_249', 'c_249', '-2i0_249+2', '-2i1_249+3']
+	r               |V2 $1450[d0_249,d1_249,c_249] = tensor_contract_multiply_add(|V2 $1161[d0_249,d1_249,c_249,m_249,i0_249,i1_249], |V2 $1162[d0_249,d1_249,c_249,m_249,i0_249,i1_249], contract={m_249=[0:64:1],i0_249=[0:2:1],i1_249=[0:2:1]}, lhs_free={d0_249=[0:600:1],d1_249=[0:600:1]}, rhs_free={c_249=[0:64:1]}) # dl = aten_upsample_bilinear2d_2/conv2d_transpose
+	s 1165 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['c_249', 'd0_249', '1', 'd1_249', '0']
+
+
+
+TensorContractLayout 41 block=i0_250=[0:2:1] i1_250=[0:2:1] load_par=m_250=[0:64:1] store_par=c_250=[0:64:1] free=d0_250=[0:600:1] d1_250=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1166 transpose4:0   [64, 600, 600] [P,F,F] ['m_250', 'd0_250+i0_250', 'd1_250+i1_250']
+	l 1167 t1149  const [64, 64, 4, 4] [P,F,B,B] ['m_250', 'c_250', '-2i0_250+2', '-2i1_250+2']
+	r               |V2 $1451[d0_250,d1_250,c_250] = tensor_contract_multiply_add(|V2 $1166[d0_250,d1_250,c_250,m_250,i0_250,i1_250], |V2 $1167[d0_250,d1_250,c_250,m_250,i0_250,i1_250], contract={m_250=[0:64:1],i0_250=[0:2:1],i1_250=[0:2:1]}, lhs_free={d0_250=[0:600:1],d1_250=[0:600:1]}, rhs_free={c_250=[0:64:1]}) # dl = aten_upsample_bilinear2d_2/conv2d_transpose
+	s 1170 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['c_250', 'd0_250', '1', 'd1_250', '1']
+
+
+
+DFNLayout 42 broadcast=i1_251=[0:64:1] block=i3_251_1=[0:2:1] par=i1_251=[0:64:1] free=i2_251_0=[0:600:1] i2_251_1=[0:2:1] i3_251_0=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=64)
+	l 1172 nn.conv2d_transpose2:0   [64, 600, 2, 600, 2] [P,F,F,F,B] ['i1_251', 'i2_251_0', 'i2_251_1', 'i3_251_0', 'i3_251_1']
+	l 1179 t1177  const [1200, 1200] [F,F] ['2i2_251_0+i2_251_1', '2i3_251_0+i3_251_1']
+	s 1762 t1750   [600, 2, 600, 2, 64] [F,F,F,B,P] ['i2_251_0', 'i2_251_1', 'i3_251_0', 'i3_251_1', 'i1_251']
+
+
+
+TensorContractLayout 43 block=w_257_1_1742=[0:2:1] load_par=c_257_0_1742=[0:2:1] c_257_1_1742=[0:64:1] store_par=m_257_1742=[0:64:1] free=h_257_0_1742=[0:600:1] h_257_1_1742=[0:2:1] w_257_0_1742=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=8192)
+	l 1186 vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0   [2, 64, 600, 2, 600, 2] [P,P,F,F,F,B] ['c_257_0_1742', 'c_257_1_1742', 'h_257_0_1742', 'h_257_1_1742', 'w_257_0_1742', 'w_257_1_1742']
+	l 1746 t1744  const [2, 64, 64] [P,P,F] ['c_257_0_1742', 'c_257_1_1742', 'm_257_1742']
+	r                 |V2 $1747[h_257_0_1742,h_257_1_1742,w_257_0_1742,w_257_1_1742,m_257_1742] = tensor_contract_multiply_add(|V2 $1186[h_257_0_1742,h_257_1_1742,w_257_0_1742,w_257_1_1742,m_257_1742,c_257_0_1742,c_257_1_1742], |V2 $1746[h_257_0_1742,h_257_1_1742,w_257_0_1742,w_257_1_1742,m_257_1742,c_257_0_1742,c_257_1_1742], contract={c_257_0_1742=[0:2:1],c_257_1_1742=[0:64:1]}, lhs_free={h_257_0_1742=[0:600:1],h_257_1_1742=[0:2:1],w_257_0_1742=[0:600:1],w_257_1_1742=[0:2:1]}, rhs_free={m_257_1742=[0:64:1]}) # dl = double_conv_59/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	s 1748 t1756   [600, 2, 600, 2, 64] [F,F,F,B,P] ['h_257_0_1742', 'h_257_1_1742', 'w_257_0_1742', 'w_257_1_1742', 'm_257_1742']
+
+
+
+TensorContractLayout 44 block=w_257_1_1749=[0:2:1] load_par=c_257_1_1749=[0:64:1] store_par=m_257_1749=[0:64:1] free=h_257_0_1749=[0:600:1] h_257_1_1749=[0:2:1] w_257_0_1749=[0:600:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=4096)
+	l 1752 t1750   [600, 2, 600, 2, 64] [F,F,F,B,P] ['h_257_0_1749', 'h_257_1_1749', 'w_257_0_1749', 'w_257_1_1749', 'c_257_1_1749']
+	l 1753 t1751  const [1, 64, 64] [F,P,F] ['0', 'c_257_1_1749', 'm_257_1749']
+	r               |V2 $1754[h_257_0_1749,h_257_1_1749,w_257_0_1749,w_257_1_1749,m_257_1749] = tensor_contract_multiply_add(|V2 $1752[h_257_0_1749,h_257_1_1749,w_257_0_1749,w_257_1_1749,m_257_1749,c_257_1_1749], |V2 $1753[h_257_0_1749,h_257_1_1749,w_257_0_1749,w_257_1_1749,m_257_1749,c_257_1_1749], contract={c_257_1_1749=[0:64:1]}, lhs_free={h_257_0_1749=[0:600:1],h_257_1_1749=[0:2:1],w_257_0_1749=[0:600:1],w_257_1_1749=[0:2:1]}, rhs_free={m_257_1749=[0:64:1]}) # dl = double_conv_59/Sequential_1/Conv2d_6/aten__convolution/Conv2D
+	l 1757 t1756   [600, 2, 600, 2, 64] [F,F,F,B,P] ['h_257_0_1749', 'h_257_1_1749', 'w_257_0_1749', 'w_257_1_1749', 'm_257_1749']
+	l 1634 t1633  const [64] [P] ['m_257_1749']
+	l 1200 t1198  const [64] [P] ['m_257_1749']
+	l 1212 t1210  const [64] [P] ['m_257_1749']
+	l 1230 t1228  const [64] [P] ['m_257_1749']
+	s 1562 double_conv_59/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [1200, 1200, 64] [F,F,P] ['2h_257_0_1749+h_257_1_1749', '2w_257_0_1749+w_257_1_1749', 'm_257_1749']
+
+
+
+TensorContractLayout 45 block=r_268=[0:3:1] s_268=[0:3:1] load_par=c_268=[0:64:1] store_par=m_268=[0:32:1] free=h_268=[0:1200:1] w_268=[0:1200:1]
+layout_profile(block_axes_tripcount=12663, parallel_axes_tripcount=2048)
+	l 1253 t1251  const [32] [P] ['m_268']
+	l 1265 t1263  const [32] [P] ['m_268']
+	l 1637 t1636  const [32] [P] ['m_268']
+	l 1283 t1281  const [32] [P] ['m_268']
+	l 1245 double_conv_59/Sequential_1/Conv2d_9/aten__convolution/transpose:0   [1200, 1200, 64] [F,F,P] ['h_268+r_268-1', 'w_268+s_268-1', 'c_268']
+	l 1246 t1244  const [3, 3, 64, 32] [B,B,P,F] ['r_268', 's_268', 'c_268', 'm_268']
+	r               |V2 $1453[h_268,w_268,m_268] = tensor_contract_multiply_add(|V2 $1245[h_268,w_268,m_268,c_268,r_268,s_268], |V2 $1246[h_268,w_268,m_268,c_268,r_268,s_268], contract={c_268=[0:64:1],r_268=[0:3:1],s_268=[0:3:1]}, lhs_free={h_268=[0:1200:1],w_268=[0:1200:1]}, rhs_free={m_268=[0:32:1]}) # dl = double_conv_59/Sequential_1/Conv2d_9/aten__convolution/Conv2D
+	s 1296 Sequential_60/Conv2d_9/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_268', 'w_268', 'm_268']
+	s 1293 double_conv_59/Sequential_1/BatchNorm2d_10/aten_relu/Relu:0   [1, 32, 1200, 1200] [F,P,F,F] ['0', 'm_268', 'h_268', 'w_268']
+
+
+
+TensorContractLayout 46 block=r_279=[0:3:1] s_279=[0:3:1] load_par=c_279=[0:32:1] store_par=m_279=[0:32:1] free=h_279=[0:1200:1] w_279=[0:1200:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=1024)
+	l 1306 t1304  const [32] [P] ['m_279']
+	l 1298 Sequential_60/Conv2d_9/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_279+r_279-1', 'w_279+s_279-1', 'c_279']
+	l 1299 t1297  const [3, 3, 32, 32] [B,B,P,F] ['r_279', 's_279', 'c_279', 'm_279']
+	r               |V2 $1454[h_279,w_279,m_279] = tensor_contract_multiply_add(|V2 $1298[h_279,w_279,m_279,c_279,r_279,s_279], |V2 $1299[h_279,w_279,m_279,c_279,r_279,s_279], contract={c_279=[0:32:1],r_279=[0:3:1],s_279=[0:3:1]}, lhs_free={h_279=[0:1200:1],w_279=[0:1200:1]}, rhs_free={m_279=[0:32:1]}) # dl = Sequential_60/Conv2d_9/aten__convolution/Conv2D
+	s 1567 Sequential_60/Conv2d_11/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_279', 'w_279', 'm_279']
+
+
+
+TensorContractLayout 47 block=r_284=[0:3:1] s_284=[0:3:1] load_par=c_284=[0:32:1] store_par=m_284=[0:32:1] free=h_284=[0:1200:1] w_284=[0:1200:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=1024)
+	l 1329 t1327  const [32] [P] ['m_284']
+	l 1321 Sequential_60/Conv2d_11/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_284+r_284-1', 'w_284+s_284-1', 'c_284']
+	l 1322 t1320  const [3, 3, 32, 32] [B,B,P,F] ['r_284', 's_284', 'c_284', 'm_284']
+	r               |V2 $1455[h_284,w_284,m_284] = tensor_contract_multiply_add(|V2 $1321[h_284,w_284,m_284,c_284,r_284,s_284], |V2 $1322[h_284,w_284,m_284,c_284,r_284,s_284], contract={c_284=[0:32:1],r_284=[0:3:1],s_284=[0:3:1]}, lhs_free={h_284=[0:1200:1],w_284=[0:1200:1]}, rhs_free={m_284=[0:32:1]}) # dl = Sequential_60/Conv2d_11/aten__convolution/Conv2D
+	s 1569 Sequential_60/Conv2d_13/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_284', 'w_284', 'm_284']
+
+
+
+TensorContractLayout 48 block=r_289=[0:3:1] s_289=[0:3:1] load_par=c_289=[0:32:1] store_par=m_289=[0:16:1] free=h_289=[0:1200:1] w_289=[0:1200:1]
+layout_profile(block_axes_tripcount=6336, parallel_axes_tripcount=512)
+	l 1352 t1350  const [16] [P] ['m_289']
+	l 1344 Sequential_60/Conv2d_13/aten__convolution/transpose:0   [1200, 1200, 32] [F,F,P] ['h_289+r_289-1', 'w_289+s_289-1', 'c_289']
+	l 1345 t1343  const [3, 3, 32, 16] [B,B,P,F] ['r_289', 's_289', 'c_289', 'm_289']
+	r               |V2 $1456[h_289,w_289,m_289] = tensor_contract_multiply_add(|V2 $1344[h_289,w_289,m_289,c_289,r_289,s_289], |V2 $1345[h_289,w_289,m_289,c_289,r_289,s_289], contract={c_289=[0:32:1],r_289=[0:3:1],s_289=[0:3:1]}, lhs_free={h_289=[0:1200:1],w_289=[0:1200:1]}, rhs_free={m_289=[0:16:1]}) # dl = Sequential_60/Conv2d_13/aten__convolution/Conv2D
+	s 1571 Sequential_60/Conv2d_15/aten__convolution/transpose:0   [1200, 1200, 16] [F,F,P] ['h_289', 'w_289', 'm_289']
+
+
+
+TensorContractLayout 49 block= load_par=c_294=[0:16:1] store_par=m_294=[0:16:1] free=h_294=[0:1200:1] w_294=[0:1200:1]
+layout_profile(block_axes_tripcount=704, parallel_axes_tripcount=256)
+	l 1375 t1373  const [16] [P] ['m_294']
+	l 1367 Sequential_60/Conv2d_15/aten__convolution/transpose:0   [1200, 1200, 16] [F,F,P] ['h_294', 'w_294', 'c_294']
+	l 1368 t1366  const [1, 1, 16, 16] [F,F,P,F] ['0', '0', 'c_294', 'm_294']
+	r           |V2 $1457[h_294,w_294,m_294] = tensor_contract_multiply_add(|V2 $1367[h_294,w_294,m_294,c_294], |V2 $1368[h_294,w_294,m_294,c_294], contract={c_294=[0:16:1]}, lhs_free={h_294=[0:1200:1],w_294=[0:1200:1]}, rhs_free={m_294=[0:16:1]}) # dl = Sequential_60/Conv2d_15/aten__convolution/Conv2D
+	s 1573 Sequential_60/Conv2d_17/aten__convolution/transpose:0   [1200, 1200, 16] [F,F,P] ['h_294', 'w_294', 'm_294']
+
+
+
+TensorContractLayout 50 block= load_par=c_299=[0:16:1] store_par=m_299=[0:2:1] free=h_299=[0:1200:1] w_299=[0:1200:1]
+layout_profile(block_axes_tripcount=1407, parallel_axes_tripcount=32)
+	l 1398 t1396  const [2] [P] ['m_299']
+	l 1390 Sequential_60/Conv2d_17/aten__convolution/transpose:0   [1200, 1200, 16] [F,F,P] ['h_299', 'w_299', 'c_299']
+	l 1391 t1389  const [1, 1, 16, 2] [F,F,P,F] ['0', '0', 'c_299', 'm_299']
+	r           |V2 $1458[h_299,w_299,m_299] = tensor_contract_multiply_add(|V2 $1390[h_299,w_299,m_299,c_299], |V2 $1391[h_299,w_299,m_299,c_299], contract={c_299=[0:16:1]}, lhs_free={h_299=[0:1200:1],w_299=[0:1200:1]}, rhs_free={m_299=[0:2:1]}) # dl = Sequential_60/Conv2d_17/aten__convolution/Conv2D
+	s 1575 aten_permute/transpose:0   [1, 1200, 1200, 2] [F,F,F,P] ['0', 'h_299', 'w_299', 'm_299']
+
+
+
+vgg16_bn_6/Sequential_5/Conv2d_15/aten__convolution/transpose:0 - [2400, 2400, 64], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1463 S', '67 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_5/MaxPool2d_18/aten_max_pool2d/transpose:0 - [1200, 2, 1200, 2, 64], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1467 S', '119 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_5/Conv2d_19/aten__convolution/transpose:0 - [1200, 1200, 64], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['130 L', '1469 S'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_5/Conv2d_22/aten__convolution/transpose:0 - [1200, 1200, 128], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1473 S', '183 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0 - [2, 64, 600, 2, 600, 2], tensor_layout: [P,P,F,F,F,B]
+ access_layout [P,P,F,F,F,B], accesses: ['231 S', '1186 L', '233 L'], path: [[_identity,_identity,_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_6/Conv2d_9/aten__convolution/transpose:0 - [600, 600, 2, 64], tensor_layout: [F,F,P,P]
+ access_layout [F,F,P,P], accesses: ['246 L', '1478 S'], path: [[_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_6/Conv2d_12/aten__convolution/transpose:0 - [600, 600, 256], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1482 S', '299 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0 - [600, 600, 2, 128], tensor_layout: [F,F,P,P]
+ access_layout [F,F,P,P], accesses: ['350 S', '352 L'], path: [[_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_8/MaxPool2d_14/aten_max_pool2d/transpose:0 - [300, 2, 300, 2, 256], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1489 S', '404 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_8/Conv2d_15/aten__convolution/transpose:0 - [300, 300, 256], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['415 L', '1491 S'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_8/Conv2d_18/aten__convolution/transpose:0 - [300, 300, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1495 S', '468 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_10/Conv2d_11/aten__convolution/transpose:0 - [300, 300, 2, 256], tensor_layout: [F,F,P,P]
+ access_layout [F,F,P,P], accesses: ['519 S', '521 L'], path: [[_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_10/MaxPool2d_14/aten_max_pool2d/transpose:0 - [150, 2, 150, 2, 512], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1502 S', '573 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_10/Conv2d_15/aten__convolution/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['584 L', '1504 S'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_10/Conv2d_18/aten__convolution/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1508 S', '637 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['684 S', '685 L'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_12/Conv2d_4/aten__convolution/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['696 L', '1513 S'], path: [[_identity,_identity,_identity]]
+vgg16_bn_6/Sequential_12/Conv2d_5/aten__convolution/transpose:0 - [150, 150, 1024], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1515 S', '715 L'], path: [[_identity,_identity,_identity]]
+double_conv_11/Sequential_1/Conv2d_9/aten__convolution/transpose:0 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1523 S', '792 L'], path: [[_identity,_identity,_identity]]
+transpose0:0 - [256, 150, 150], tensor_layout: [P,F,F]
+ access_layout [P,F,F], accesses: ['1528 S', '849 L', '854 L', '859 L', '864 L'], path: [[_identity,_identity,_identity]]
+nn.conv2d_transpose0:0 - [256, 150, 2, 150, 2], tensor_layout: [P,F,F,F,F]
+ access_layout [P,F,F,F,F], accesses: ['853 S', '858 S', '863 S', '868 S', '870 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+double_conv_27/Sequential_1/Conv2d_9/aten__convolution/transpose:0 - [300, 300, 256], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1536 S', '943 L'], path: [[_identity,_identity,_identity]]
+transpose2:0 - [128, 300, 300], tensor_layout: [P,F,F]
+ access_layout [P,F,F], accesses: ['1541 S', '1000 L', '1005 L', '1010 L', '1015 L'], path: [[_identity,_identity,_identity]]
+nn.conv2d_transpose1:0 - [128, 300, 2, 300, 2], tensor_layout: [P,F,F,F,F]
+ access_layout [P,F,F,F,F], accesses: ['1004 S', '1009 S', '1014 S', '1019 S', '1021 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+double_conv_43/Sequential_1/Conv2d_9/aten__convolution/transpose:0 - [600, 600, 128], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1549 S', '1094 L'], path: [[_identity,_identity,_identity]]
+transpose4:0 - [64, 600, 600], tensor_layout: [P,F,F]
+ access_layout [P,F,F], accesses: ['1554 S', '1151 L', '1156 L', '1161 L', '1166 L'], path: [[_identity,_identity,_identity]]
+nn.conv2d_transpose2:0 - [64, 600, 2, 600, 2], tensor_layout: [P,F,F,F,B]
+.............................................................................................................................................................................................................................................................................................................................................. access_layout [P,F,F,F,B], accesses: ['1155 S', '1160 S', '1165 S', '1170 S', '1172 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+double_conv_59/Sequential_1/Conv2d_9/aten__convolution/transpose:0 - [1200, 1200, 64], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1562 S', '1245 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_9/aten__convolution/transpose:0 - [1200, 1200, 32], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1296 S', '1298 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_11/aten__convolution/transpose:0 - [1200, 1200, 32], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1567 S', '1321 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_13/aten__convolution/transpose:0 - [1200, 1200, 32], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1569 S', '1344 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_15/aten__convolution/transpose:0 - [1200, 1200, 16], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1571 S', '1367 L'], path: [[_identity,_identity,_identity]]
+Sequential_60/Conv2d_17/aten__convolution/transpose:0 - [1200, 1200, 16], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1573 S', '1390 L'], path: [[_identity,_identity,_identity]]
+t1654 - [150, 150, 2, 512], tensor_layout: [F,F,P,P]
+ access_layout [F,F,P,P], accesses: ['1642 S', '1656 L'], path: [[_identity,_identity,_identity,_identity]]
+t1661 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1759 S', '1663 L'], path: [[_identity,_identity,_identity]]
+t1667 - [150, 150, 512], tensor_layout: [F,F,P]
+ access_layout [F,F,P], accesses: ['1659 S', '1668 L'], path: [[_identity,_identity,_identity]]
+t1685 - [150, 2, 150, 2, 2, 256], tensor_layout: [F,F,F,F,P,P]
+ access_layout [F,F,F,F,P,P], accesses: ['1673 S', '1687 L'], path: [[_identity,_identity,_identity,_identity,_identity,_identity]]
+t1692 - [150, 2, 150, 2, 256], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1694 L', '1760 S'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1698 - [150, 2, 150, 2, 256], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1690 S', '1699 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1716 - [300, 2, 300, 2, 2, 128], tensor_layout: [F,F,F,F,P,P]
+ access_layout [F,F,F,F,P,P], accesses: ['1704 S', '1718 L'], path: [[_identity,_identity,_identity,_identity,_identity,_identity]]
+t1723 - [300, 2, 300, 2, 128], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1725 L', '1761 S'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1729 - [300, 2, 300, 2, 128], tensor_layout: [F,F,F,F,P]
+ access_layout [F,F,F,F,P], accesses: ['1721 S', '1730 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1750 - [600, 2, 600, 2, 64], tensor_layout: [F,F,F,B,P]
+ access_layout [F,F,F,B,P], accesses: ['1752 L', '1762 S'], path: [[_identity,_identity,_identity,_identity,_identity]]
+t1756 - [600, 2, 600, 2, 64], tensor_layout: [F,F,F,B,P]
+ access_layout [F,F,F,B,P], accesses: ['1748 S', '1757 L'], path: [[_identity,_identity,_identity,_identity,_identity]]
+layoutgroup_profile(total_dmas=0, total_tripcount=131909, total_transpose_tripcount=0, total_pf_transposes=0, total_bf_transposes=0, block_axes_tripcount=131909, parallel_axes_tripcount=499040, dags_no_parallelism=0)
+
+20 MACROS WITH LARGEST INSTRUCTION COUNTS:
+108000: matmul_64x64x480
+43200: matmul_128x128x300
+43200: matmul_128x128x300
+43200: matmul_128x128x300
+43200: matmul_128x128x300
+43200: matmul_128x128x300
+43200: matmul_128x128x150
+32400: matmul_64x128x400
+32400: matmul_64x32x400
+32400: matmul_32x32x400
+32400: matmul_32x32x400
+32400: matmul_32x16x400
+21600: matmul_128x128x300
+21600: matmul_128x128x300
+21600: matmul_128x128x150
+21600: matmul_128x128x150
+19200: simd64x480
+14400: transpose_128x2
+12000: matmul_27x64x480
+12000: simd64x480
+f.num_dynamic_instances:  829400
+
+Compiler status PASS
+torch.Size([1, 3, 2400, 2400])

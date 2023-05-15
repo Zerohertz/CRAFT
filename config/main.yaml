@@ -30,7 +30,7 @@ train:
   synth_dir: ""
   synth_ratio: 5
   real_dataset: custom
-  ckpt_path: "pretrained/CRAFT.pth"
+  ckpt_path: "pretrained/best_accuracy_jpn_std.pth"
   eval_interval: 2000
   batch_size: 16
   st_iter: 0
@@ -102,12 +102,12 @@ train:
         option: True
 
 test:
-  trained_model: 'exp/main/CRAFT_clr_amp_6000.pth'
+  trained_model: 'pretrained/best_accuracy_jpn_std.pth'
   custom_data:
     test_set_size: 500
     cuda: True
     vis_opt: True
-    test_data_dir : "data/TestData/target"
+    test_data_dir : "data/Target/target.png"
     text_threshold: 0.5
     low_text: 0.6
     link_threshold: 0.2
