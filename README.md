@@ -6,6 +6,27 @@ pip install wandb==0.12.9
 pip install Shapely==1.8.0
 ```
 
+> train.sh
+
+```shell
+CUDA_VISIBLE_DEVICES=$CUDA python train.py --yaml=main
+```
+
+> test.sh
+
+```shell
+read -p "Exp: " dir
+rm -rf ./exp/$dir
+cd utils/cpp_bindings
+sh compile.sh
+cd ../..
+
+CUDA_VISIBLE_DEVICES=$CUDA python test.py --yaml=org --dir=$dir
+cp ./config/main.yaml ./exp/$dir/
+```
+
+---
+
 > Referecne: [gmuffiness/CRAFT-train](https://github.com/gmuffiness/CRAFT-train)
 
 <details>
