@@ -1,0 +1,221 @@
+{
+    "pwp_file_keys": [
+        "bkt_bin",
+        "ctrl_bin",
+        "profile_json"
+    ],
+    "act_func_sets": [
+        {
+            "name": "exp_and_others",
+            "bkt_bin": "exp_and_others_bkt.bin",
+            "ctrl_bin": "exp_and_others_ctrl.bin",
+            "profile_json": "exp_and_others.json",
+            "act": {
+                "exp": 400,
+                "identity": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "relu": 1,
+                "abs": 1,
+                "sign": 1,
+                "tanh": 4
+            }
+        },
+        {
+            "name": "sigmoid_and_others",
+            "bkt_bin": "sigmoid_and_others_bkt.bin",
+            "ctrl_bin": "sigmoid_and_others_ctrl.bin",
+            "profile_json": "sigmoid_and_others.json",
+            "act": {
+                "identity": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "relu": 1,
+                "tanh": 4,
+                "abs": 1,
+                "sign": 1,
+                "sigmoid": 40
+            }
+        },
+        {
+            "name": "softplus_tanh_and_others",
+            "bkt_bin": "softplus_tanh_and_others_bkt.bin",
+            "ctrl_bin": "softplus_tanh_and_others_ctrl.bin",
+            "profile_json": "softplus_tanh_and_others.json",
+            "act": {
+                "identity": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "relu": 1,
+                "tanh": 4,
+                "abs": 1,
+                "sign": 1,
+                "softplus": 40
+            }
+        },
+        {
+            "name": "sqrt_and_others",
+            "bkt_bin": "sqrt_and_others_bkt.bin",
+            "ctrl_bin": "sqrt_and_others_ctrl.bin",
+            "profile_json": "sqrt_and_others.json",
+            "act": {
+                "identity": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "relu": 1,
+                "sign": 1,
+                "abs": 1,
+                "square": 1,
+                "sqrt": 40000
+            }
+        },
+        {
+            "name": "small",
+            "bkt_bin": "small_bkt.bin",
+            "ctrl_bin": "small_ctrl.bin",
+            "profile_json": "small.json",
+            "act": {
+                "relu": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "identity": 1,
+                "sign": 1,
+                "abs": 1,
+                "square": 1
+            }
+        },
+        {
+            "name": "natural_log",
+            "bkt_bin": "natural_log_bkt.bin",
+            "ctrl_bin": "natural_log_ctrl.bin",
+            "profile_json": "natural_log.json",
+            "act": {
+                "ln": 40,
+                "abs": 1
+            }
+        },
+        {
+            "name": "gelu_and_others",
+            "bkt_bin": "gelu_and_others_bkt.bin",
+            "ctrl_bin": "gelu_and_others_ctrl.bin",
+            "profile_json": "gelu_and_others.json",
+            "act": {
+                "gelu": 4,
+                "tanh": 4,
+                "relu": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "abs": 1,
+                "sign": 1,
+                "identity": 1
+            }
+        },
+        {
+            "name": "gelu_apprx_tanh_and_others",
+            "bkt_bin": "gelu_apprx_tanh_and_others_bkt.bin",
+            "ctrl_bin": "gelu_apprx_tanh_and_others_ctrl.bin",
+            "profile_json": "gelu_apprx_tanh_and_others.json",
+            "act": {
+                "gelu_apprx_tanh": 40,
+                "tanh": 4,
+                "relu": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "abs": 1,
+                "sign": 1,
+                "identity": 1
+            }
+        },
+        {
+            "name": "gelu_apprx_sigmoid_and_others",
+            "bkt_bin": "gelu_apprx_sigmoid_and_others_bkt.bin",
+            "ctrl_bin": "gelu_apprx_sigmoid_and_others_ctrl.bin",
+            "profile_json": "gelu_apprx_sigmoid_and_others.json",
+            "act": {
+                "gelu_apprx_sigmoid": 40,
+                "tanh": 4,
+                "relu": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "abs": 1,
+                "sign": 1,
+                "identity": 1
+            }
+        },
+        {
+            "name": "mish_and_small",
+            "bkt_bin": "mish_and_small_bkt.bin",
+            "ctrl_bin": "mish_and_small_ctrl.bin",
+            "profile_json": "mish_and_small.json",
+            "act": {
+                "mish": 4,
+                "relu": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "sign": 1,
+                "abs": 1,
+                "identity": 1
+            }
+        },
+        {
+            "name": "reciprocal_and_small",
+            "bkt_bin": "reciprocal_and_small_bkt.bin",
+            "ctrl_bin": "reciprocal_and_small_ctrl.bin",
+            "profile_json": "reciprocal_and_small.json",
+            "act": {
+                "reciprocal": 400,
+                "parametric_relu": 1,
+                "sign": 1,
+                "abs": 1,
+                "square": 1
+            }
+        },
+        {
+            "name": "reciprocal_sqrt_and_small",
+            "bkt_bin": "reciprocal_sqrt_and_small_bkt.bin",
+            "ctrl_bin": "reciprocal_sqrt_and_small_ctrl.bin",
+            "profile_json": "reciprocal_sqrt_and_small.json",
+            "act": {
+                "reciprocal_sqrt": 40000,
+                "identity": 1,
+                "square": 1,
+                "abs": 1,
+                "sign": 1
+            }
+        },
+        {
+            "name": "trig_and_small",
+            "bkt_bin": "trig_and_small_bkt.bin",
+            "ctrl_bin": "trig_and_small_ctrl.bin",
+            "profile_json": "trig_and_small.json",
+            "act": {
+                "sin": 4,
+                "arctan": 4,
+                "relu": 1,
+                "abs": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "sign": 1,
+                "identity": 1
+            }
+        },
+        {
+            "name": "erf_and_others",
+            "bkt_bin": "erf_and_others_bkt.bin",
+            "ctrl_bin": "erf_and_others_ctrl.bin",
+            "profile_json": "erf_and_others.json",
+            "act": {
+                "erf": 4,
+                "tanh": 4,
+                "sin": 4,
+                "relu": 1,
+                "abs": 1,
+                "leaky_relu": 1,
+                "parametric_relu": 1,
+                "identity": 1,
+                "sign": 1,
+                "square": 1
+            }
+        }
+    ]
+}

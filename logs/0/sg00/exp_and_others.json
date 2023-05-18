@@ -1,0 +1,672 @@
+{
+    "bkt_bin": "exp_and_others_bkt.bin",
+    "ctl_bin": "exp_and_others_ctrl.bin",
+    "profile_meta_data": [
+        {
+            "func_name": "exp_400p",
+            "func_id": 7,
+            "symmetry_point": 0,
+            "sym_invert_sign_point": 0,
+            "symmetry_opt_en": 0,
+            "symmetry_opt_use_neg_region": 0,
+            "imm_bias": 0,
+            "exp_offset": -19,
+            "pwl_control_base_pos": 26,
+            "pwl_control_base_neg": 0,
+            "small_pos_signal_exp_threshold": 108,
+            "pos_small_signal_pwl_control": 777,
+            "small_neg_signal_exp_threshold": 108,
+            "neg_small_signal_pwl_control": 778,
+            "large_pos_signal_exp_threshold": 133,
+            "large_pos_signal_mantissa_threshold": 3240472,
+            "pos_large_signal_pwl_control": 779,
+            "large_neg_signal_exp_threshold": 133,
+            "large_neg_signal_mantissa_threshold": 4376683,
+            "neg_large_signal_pwl_control": 780,
+            "fnan_result": 2143289344,
+            "fpinf_result": 2139095040,
+            "fninf_result": 0,
+            "fzero_result": 1065353216,
+            "fma_const_0": 0,
+            "fma_const_1": 0,
+            "fma_indirection_src_sel": 0,
+            "use_multipass": false,
+            "lower_bound": 4286578687,
+            "upper_bound": 2139095039
+        },
+        {
+            "func_name": "identity_1p",
+            "func_id": 1,
+            "symmetry_point": 0,
+            "sym_invert_sign_point": 0,
+            "symmetry_opt_en": 0,
+            "symmetry_opt_use_neg_region": 0,
+            "imm_bias": 0,
+            "exp_offset": -127,
+            "pwl_control_base_pos": 53,
+            "pwl_control_base_neg": 52,
+            "small_pos_signal_exp_threshold": 0,
+            "pos_small_signal_pwl_control": 781,
+            "small_neg_signal_exp_threshold": 0,
+            "neg_small_signal_pwl_control": 782,
+            "large_pos_signal_exp_threshold": 0,
+            "large_pos_signal_mantissa_threshold": 0,
+            "pos_large_signal_pwl_control": 783,
+            "large_neg_signal_exp_threshold": 0,
+            "large_neg_signal_mantissa_threshold": 0,
+            "neg_large_signal_pwl_control": 784,
+            "fnan_result": 2143289344,
+            "fpinf_result": 2139095040,
+            "fninf_result": 4286578688,
+            "fzero_result": 0,
+            "fma_const_0": 0,
+            "fma_const_1": 0,
+            "fma_indirection_src_sel": 0,
+            "use_multipass": false,
+            "lower_bound": 4286578687,
+            "upper_bound": 2139095039
+        },
+        {
+            "func_name": "leaky_relu_1p",
+            "func_id": 3,
+            "symmetry_point": 0,
+            "sym_invert_sign_point": 0,
+            "symmetry_opt_en": 0,
+            "symmetry_opt_use_neg_region": 0,
+            "imm_bias": 0,
+            "exp_offset": -127,
+            "pwl_control_base_pos": 55,
+            "pwl_control_base_neg": 54,
+            "small_pos_signal_exp_threshold": 0,
+            "pos_small_signal_pwl_control": 785,
+            "small_neg_signal_exp_threshold": 0,
+            "neg_small_signal_pwl_control": 786,
+            "large_pos_signal_exp_threshold": 0,
+            "large_pos_signal_mantissa_threshold": 0,
+            "pos_large_signal_pwl_control": 787,
+            "large_neg_signal_exp_threshold": 0,
+            "large_neg_signal_mantissa_threshold": 0,
+            "neg_large_signal_pwl_control": 788,
+            "fnan_result": 2143289344,
+            "fpinf_result": 2139095040,
+            "fninf_result": 4286578688,
+            "fzero_result": 0,
+            "fma_const_0": 0,
+            "fma_const_1": 0,
+            "fma_indirection_src_sel": 0,
+            "use_multipass": false,
+            "lower_bound": 4286578687,
+            "upper_bound": 2139095039
+        },
+        {
+            "func_name": "parametric_relu_1p",
+            "func_id": 4,
+            "symmetry_point": 0,
+            "sym_invert_sign_point": 0,
+            "symmetry_opt_en": 0,
+            "symmetry_opt_use_neg_region": 0,
+            "imm_bias": 0,
+            "exp_offset": 128,
+            "pwl_control_base_pos": 56,
+            "pwl_control_base_neg": 56,
+            "small_pos_signal_exp_threshold": 0,
+            "pos_small_signal_pwl_control": 789,
+            "small_neg_signal_exp_threshold": 0,
+            "neg_small_signal_pwl_control": 790,
+            "large_pos_signal_exp_threshold": 0,
+            "large_pos_signal_mantissa_threshold": 0,
+            "pos_large_signal_pwl_control": 791,
+            "large_neg_signal_exp_threshold": 0,
+            "large_neg_signal_mantissa_threshold": 0,
+            "neg_large_signal_pwl_control": 792,
+            "fnan_result": 2143289344,
+            "fpinf_result": 2139095040,
+            "fninf_result": 4286578688,
+            "fzero_result": 0,
+            "fma_const_0": 1065353216,
+            "fma_const_1": 0,
+            "fma_indirection_src_sel": 2,
+            "use_multipass": false,
+            "lower_bound": 0,
+            "upper_bound": 0
+        },
+        {
+            "func_name": "relu_1p",
+            "func_id": 2,
+            "symmetry_point": 0,
+            "sym_invert_sign_point": 0,
+            "symmetry_opt_en": 0,
+            "symmetry_opt_use_neg_region": 0,
+            "imm_bias": 0,
+            "exp_offset": -127,
+            "pwl_control_base_pos": 57,
+            "pwl_control_base_neg": 56,
+            "small_pos_signal_exp_threshold": 0,
+            "pos_small_signal_pwl_control": 793,
+            "small_neg_signal_exp_threshold": 0,
+            "neg_small_signal_pwl_control": 794,
+            "large_pos_signal_exp_threshold": 0,
+            "large_pos_signal_mantissa_threshold": 0,
+            "pos_large_signal_pwl_control": 795,
+            "large_neg_signal_exp_threshold": 0,
+            "large_neg_signal_mantissa_threshold": 0,
+            "neg_large_signal_pwl_control": 796,
+            "fnan_result": 2143289344,
+            "fpinf_result": 2139029504,
+            "fninf_result": 0,
+            "fzero_result": 0,
+            "fma_const_0": 0,
+            "fma_const_1": 0,
+            "fma_indirection_src_sel": 0,
+            "use_multipass": false,
+            "lower_bound": 4286578687,
+            "upper_bound": 2139095039
+        },
+        {
+            "func_name": "abs_1p",
+            "func_id": 22,
+            "symmetry_point": 0,
+            "sym_invert_sign_point": 0,
+            "symmetry_opt_en": 0,
+            "symmetry_opt_use_neg_region": 0,
+            "imm_bias": 0,
+            "exp_offset": -127,
+            "pwl_control_base_pos": 59,
+            "pwl_control_base_neg": 58,
+            "small_pos_signal_exp_threshold": 0,
+            "pos_small_signal_pwl_control": 797,
+            "small_neg_signal_exp_threshold": 0,
+            "neg_small_signal_pwl_control": 798,
+            "large_pos_signal_exp_threshold": 0,
+            "large_pos_signal_mantissa_threshold": 0,
+            "pos_large_signal_pwl_control": 799,
+            "large_neg_signal_exp_threshold": 0,
+            "large_neg_signal_mantissa_threshold": 0,
+            "neg_large_signal_pwl_control": 800,
+            "fnan_result": 2143289344,
+            "fpinf_result": 2139095040,
+            "fninf_result": 2139095040,
+            "fzero_result": 0,
+            "fma_const_0": 0,
+            "fma_const_1": 0,
+            "fma_indirection_src_sel": 0,
+            "use_multipass": false,
+            "lower_bound": 4286578687,
+            "upper_bound": 2139095039
+        },
+        {
+            "func_name": "sign_1p",
+            "func_id": 21,
+            "symmetry_point": 0,
+            "sym_invert_sign_point": 1,
+            "symmetry_opt_en": 1,
+            "symmetry_opt_use_neg_region": 0,
+            "imm_bias": 0,
+            "exp_offset": -127,
+            "pwl_control_base_pos": 60,
+            "pwl_control_base_neg": 60,
+            "small_pos_signal_exp_threshold": 0,
+            "pos_small_signal_pwl_control": 801,
+            "small_neg_signal_exp_threshold": 0,
+            "neg_small_signal_pwl_control": 802,
+            "large_pos_signal_exp_threshold": 0,
+            "large_pos_signal_mantissa_threshold": 1,
+            "pos_large_signal_pwl_control": 803,
+            "large_neg_signal_exp_threshold": 0,
+            "large_neg_signal_mantissa_threshold": 1,
+            "neg_large_signal_pwl_control": 804,
+            "fnan_result": 2143289344,
+            "fpinf_result": 1065353216,
+            "fninf_result": 3212836864,
+            "fzero_result": 0,
+            "fma_const_0": 0,
+            "fma_const_1": 0,
+            "fma_indirection_src_sel": 0,
+            "use_multipass": false,
+            "lower_bound": 0,
+            "upper_bound": 2139095039
+        },
+        {
+            "func_name": "tanh_4p",
+            "func_id": 6,
+            "symmetry_point": 0,
+            "sym_invert_sign_point": 1,
+            "symmetry_opt_en": 1,
+            "symmetry_opt_use_neg_region": 0,
+            "imm_bias": 0,
+            "exp_offset": -14,
+            "pwl_control_base_pos": 61,
+            "pwl_control_base_neg": 61,
+            "small_pos_signal_exp_threshold": 113,
+            "pos_small_signal_pwl_control": 910,
+            "small_neg_signal_exp_threshold": 0,
+            "neg_small_signal_pwl_control": 911,
+            "large_pos_signal_exp_threshold": 130,
+            "large_pos_signal_mantissa_threshold": 39803,
+            "pos_large_signal_pwl_control": 912,
+            "large_neg_signal_exp_threshold": 0,
+            "large_neg_signal_mantissa_threshold": 0,
+            "neg_large_signal_pwl_control": 913,
+            "fnan_result": 2143289344,
+            "fpinf_result": 1065353216,
+            "fninf_result": 3212836864,
+            "fzero_result": 0,
+            "fma_const_0": 0,
+            "fma_const_1": 0,
+            "fma_indirection_src_sel": 0,
+            "use_multipass": false,
+            "lower_bound": 0,
+            "upper_bound": 2139095039
+        }
+    ],
+    "bkt_entry_cnt": 914,
+    "ctl_entry_cnt": 79,
+    "func_to_bkt_start_idx": {
+        "exp": 0,
+        "identity": 781,
+        "leaky_relu": 785,
+        "parametric_relu": 789,
+        "relu": 793,
+        "abs": 797,
+        "sign": 801,
+        "tanh": 805
+    },
+    "func_to_ctl_start_idx": {
+        "exp": 0,
+        "identity": 52,
+        "leaky_relu": 54,
+        "parametric_relu": 56,
+        "relu": 56,
+        "abs": 58,
+        "sign": 60,
+        "tanh": 61
+    },
+    "func_exp_to_bkt_start_idx": {
+        "exp": {
+            "-19": [
+                0,
+                406
+            ],
+            "-18": [
+                1,
+                407
+            ],
+            "-17": [
+                2,
+                408
+            ],
+            "-16": [
+                3,
+                409
+            ],
+            "-15": [
+                4,
+                410
+            ],
+            "-14": [
+                5,
+                411
+            ],
+            "-13": [
+                6,
+                412
+            ],
+            "-12": [
+                7,
+                413
+            ],
+            "-11": [
+                8,
+                414
+            ],
+            "-10": [
+                9,
+                415
+            ],
+            "-9": [
+                10,
+                416
+            ],
+            "-8": [
+                11,
+                417
+            ],
+            "-7": [
+                12,
+                418
+            ],
+            "-6": [
+                13,
+                419
+            ],
+            "-5": [
+                14,
+                420
+            ],
+            "-4": [
+                15,
+                421
+            ],
+            "-3": [
+                16,
+                422
+            ],
+            "-2": [
+                17,
+                423
+            ],
+            "-1": [
+                18,
+                424
+            ],
+            "0": [
+                20,
+                426
+            ],
+            "1": [
+                24,
+                430
+            ],
+            "2": [
+                32,
+                438
+            ],
+            "3": [
+                48,
+                454
+            ],
+            "4": [
+                80,
+                486
+            ],
+            "5": [
+                144,
+                550
+            ],
+            "6": [
+                272,
+                678
+            ]
+        },
+        "identity": {
+            "-127": [
+                781,
+                781
+            ]
+        },
+        "leaky_relu": {
+            "-127": [
+                785,
+                785
+            ]
+        },
+        "parametric_relu": {},
+        "relu": {
+            "-127": [
+                793,
+                793
+            ]
+        },
+        "abs": {
+            "-127": [
+                797,
+                797
+            ]
+        },
+        "sign": {
+            "-127": [
+                801
+            ]
+        },
+        "tanh": {
+            "-14": [
+                805
+            ],
+            "-13": [
+                806
+            ],
+            "-12": [
+                807
+            ],
+            "-11": [
+                808
+            ],
+            "-10": [
+                809
+            ],
+            "-9": [
+                810
+            ],
+            "-8": [
+                811
+            ],
+            "-7": [
+                812
+            ],
+            "-6": [
+                813
+            ],
+            "-5": [
+                814
+            ],
+            "-4": [
+                815
+            ],
+            "-3": [
+                817
+            ],
+            "-2": [
+                821
+            ],
+            "-1": [
+                829
+            ],
+            "0": [
+                845
+            ],
+            "1": [
+                861
+            ],
+            "2": [
+                893
+            ],
+            "3": [
+                909
+            ]
+        }
+    },
+    "func_exp_to_ctl_start_idx": {
+        "exp": {
+            "-19": [
+                0,
+                26
+            ],
+            "-18": [
+                1,
+                27
+            ],
+            "-17": [
+                2,
+                28
+            ],
+            "-16": [
+                3,
+                29
+            ],
+            "-15": [
+                4,
+                30
+            ],
+            "-14": [
+                5,
+                31
+            ],
+            "-13": [
+                6,
+                32
+            ],
+            "-12": [
+                7,
+                33
+            ],
+            "-11": [
+                8,
+                34
+            ],
+            "-10": [
+                9,
+                35
+            ],
+            "-9": [
+                10,
+                36
+            ],
+            "-8": [
+                11,
+                37
+            ],
+            "-7": [
+                12,
+                38
+            ],
+            "-6": [
+                13,
+                39
+            ],
+            "-5": [
+                14,
+                40
+            ],
+            "-4": [
+                15,
+                41
+            ],
+            "-3": [
+                16,
+                42
+            ],
+            "-2": [
+                17,
+                43
+            ],
+            "-1": [
+                18,
+                44
+            ],
+            "0": [
+                19,
+                45
+            ],
+            "1": [
+                20,
+                46
+            ],
+            "2": [
+                21,
+                47
+            ],
+            "3": [
+                22,
+                48
+            ],
+            "4": [
+                23,
+                49
+            ],
+            "5": [
+                24,
+                50
+            ],
+            "6": [
+                25,
+                51
+            ]
+        },
+        "identity": {
+            "-127": [
+                52,
+                53
+            ]
+        },
+        "leaky_relu": {
+            "-127": [
+                54,
+                55
+            ]
+        },
+        "parametric_relu": {},
+        "relu": {
+            "-127": [
+                56,
+                57
+            ]
+        },
+        "abs": {
+            "-127": [
+                58,
+                59
+            ]
+        },
+        "sign": {
+            "-127": [
+                60
+            ]
+        },
+        "tanh": {
+            "-14": [
+                61
+            ],
+            "-13": [
+                62
+            ],
+            "-12": [
+                63
+            ],
+            "-11": [
+                64
+            ],
+            "-10": [
+                65
+            ],
+            "-9": [
+                66
+            ],
+            "-8": [
+                67
+            ],
+            "-7": [
+                68
+            ],
+            "-6": [
+                69
+            ],
+            "-5": [
+                70
+            ],
+            "-4": [
+                71
+            ],
+            "-3": [
+                72
+            ],
+            "-2": [
+                73
+            ],
+            "-1": [
+                74
+            ],
+            "0": [
+                75
+            ],
+            "1": [
+                76
+            ],
+            "2": [
+                77
+            ],
+            "3": [
+                78
+            ]
+        }
+    }
+}

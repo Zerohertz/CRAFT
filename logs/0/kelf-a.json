@@ -1,0 +1,9 @@
+{
+    "graphs": [
+        {
+            "definition": "sg00/def.json",
+            "name": "sg00"
+        }
+    ],
+    "version": "0.5"
+}

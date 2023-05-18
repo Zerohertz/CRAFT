@@ -1,0 +1,22 @@
+[
+  {
+    "MetricName": "TPBCount",
+    "Value": 1,
+    "Unit": "Count"
+  },
+  {
+    "MetricName": "EstimatedLowerBoundLatency",
+    "Value": 0,
+    "Unit": "Milliseconds"
+  },
+  {
+    "MetricName": "EstimatedUpperBoundThroughput",
+    "Value": 0,
+    "Unit": "Count/Second"
+  },
+  {
+    "MetricName": "InferentiaDRAMUsage",
+    "Value": 0,
+    "Unit": "Bytes"
+  }
+]

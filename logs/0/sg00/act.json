@@ -1,0 +1,1625 @@
+{
+    "act_info": "act_info.json",
+    "activation_function_sets": [
+        "exp_and_others"
+    ],
+    "activation_functions": [
+        "RELU"
+    ],
+    "dma": [
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "1380-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i1_SpillSave1_104792_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 26400,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP0-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 0,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "1380-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i1_SpillSave1_104792_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 157472,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP1-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 0,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "2101-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i3_SpillSave3_104794_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 37200,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP2-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 1,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "2101-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i3_SpillSave3_104794_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 168272,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP3-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 1,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "2165-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i5_SpillSave5_104796_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 42000,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP4-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 2,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "2165-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i5_SpillSave5_104796_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 173072,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP5-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 2,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "2982-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i7_SpillSave7_104798_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 46000,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP6-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 3,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "2982-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i7_SpillSave7_104798_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 177072,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP7-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 3,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "3908-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i9_SpillSave10_104801_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 51472,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP8-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 4,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "3908-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i9_SpillSave10_104801_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 182544,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP9-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 4,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "3991-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i11_SpillSave12_104803_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 0,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP10-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 5,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "3991-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i11_SpillSave12_104803_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 131072,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP11-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 5,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 153600,
+            "#block_num_descs": 64,
+            "#comment": "4214-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i2_SpillSave13_104804_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 81064,
+                    "from_sizes": [
+                        2400,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP12-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        2400,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        2400
+                    ]
+                }
+            ],
+            "id": 6,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 153600,
+            "#block_num_descs": 64,
+            "#comment": "4214-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i2_SpillSave13_104804_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 212136,
+                    "from_sizes": [
+                        2400,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP13-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        2400,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        2400
+                    ]
+                }
+            ],
+            "id": 6,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "4321-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i603_SpillSave14_104805_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 83464,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP14-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 7,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "4321-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i603_SpillSave14_104805_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 214536,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP15-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 7,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "5106-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i13_SpillSave17_104808_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 88576,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP16-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 8,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "5106-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i13_SpillSave17_104808_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 219648,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP17-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 8,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 153600,
+            "#block_num_descs": 64,
+            "#comment": "5378-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i3_SpillSave19_104810_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 55800,
+                    "from_sizes": [
+                        2400,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP18-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        2400,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        2400
+                    ]
+                }
+            ],
+            "id": 9,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 153600,
+            "#block_num_descs": 64,
+            "#comment": "5378-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i3_SpillSave19_104810_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 186872,
+                    "from_sizes": [
+                        2400,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP19-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        2400,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        2400
+                    ]
+                }
+            ],
+            "id": 9,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "5415-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i605_SpillSave20_104811_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 75448,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP20-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 10,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "5415-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i605_SpillSave20_104811_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 206520,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP21-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 10,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "6239-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i15_SpillSave21_104812_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 76648,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP22-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 11,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "6239-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i15_SpillSave21_104812_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 207720,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP23-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 11,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "6304-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i17_SpillSave23_104814_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 0,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP24-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 12,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "6304-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i17_SpillSave23_104814_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 131072,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP25-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 12,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "6607-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i606_SpillSave25_104816_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 51472,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP26-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 13,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "6607-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i606_SpillSave25_104816_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 182544,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP27-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 13,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "6613-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i4_SpillSave24_104815_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 49800,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP28-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 14,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "6613-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i4_SpillSave24_104815_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 180872,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP29-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 14,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "7393-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i19_SpillSave27_104818_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 39600,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP30-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 15,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "7393-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i19_SpillSave27_104818_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 170672,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP31-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 15,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 102400,
+            "#block_num_descs": 64,
+            "#comment": "7408-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i20_SpillSave28_104819_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 42800,
+                    "from_sizes": [
+                        1600,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP32-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1600,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1600
+                    ]
+                }
+            ],
+            "id": 16,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 102400,
+            "#block_num_descs": 64,
+            "#comment": "7408-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i20_SpillSave28_104819_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 173872,
+                    "from_sizes": [
+                        1600,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP33-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1600,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1600
+                    ]
+                }
+            ],
+            "id": 16,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "7666-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i5_SpillSave29_104820_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 24000,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP34-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 17,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "7666-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i5_SpillSave29_104820_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 155072,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP35-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 17,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "7715-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i607_SpillSave30_104821_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 79864,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP36-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 18,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "7715-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i607_SpillSave30_104821_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 210936,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP37-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 18,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "8943-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i22_SpillSave32_104823_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 44400,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP38-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 19,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "8943-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i22_SpillSave32_104823_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 175472,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP39-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 19,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "9223-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i6_SpillSave34_104825_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 75448,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP40-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 20,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "9223-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i6_SpillSave34_104825_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 206520,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP41-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 20,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "9245-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i608_SpillSave35_104826_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 76648,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP42-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 21,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "9245-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i608_SpillSave35_104826_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 207720,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP43-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 21,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "9993-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i24_SpillSave36_104827_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 81064,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP44-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 22,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "9993-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i24_SpillSave36_104827_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 212136,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP45-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 22,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "10057-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i26_SpillSave38_104829_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 6160,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP46-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 23,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 204800,
+            "#block_num_descs": 64,
+            "#comment": "10057-vgg16_bn_6/Sequential_5/BatchNorm2d_23/aten_relu/Relu:0_i26_SpillSave38_104829_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 137232,
+                    "from_sizes": [
+                        3200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP47-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        3200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        3200
+                    ]
+                }
+            ],
+            "id": 23,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "10317-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i7_SpillSave39_104830_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 26400,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP48-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 24,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "10317-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i7_SpillSave39_104830_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 157472,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP49-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 24,
+            "queue": "qActS2R1"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "10366-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i609_SpillSave40_104831_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 28800,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP50-b",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 25,
+            "queue": "qActS2R0"
+        },
+        {
+            "#block_num_bytes": 76800,
+            "#block_num_descs": 64,
+            "#comment": "10366-vgg16_bn_6/Sequential_8/Conv2d_11/aten__convolution/transpose:0_i609_SpillSave40_104831_SpillSave",
+            "desc": [
+                {
+                    "from": "SB",
+                    "from_off": 159872,
+                    "from_sizes": [
+                        1200,
+                        64
+                    ],
+                    "from_steps": [
+                        1,
+                        262144
+                    ],
+                    "to": "TMP51-t",
+                    "to_off": 0,
+                    "to_sizes": [
+                        1200,
+                        64
+                    ],
+                    "to_steps": [
+                        1,
+                        1200
+                    ]
+                }
+            ],
+            "id": 25,
+            "queue": "qActS2R1"
+        }
+    ],
+    "instr": "act.bin",
+    "name": "act_json"
+}

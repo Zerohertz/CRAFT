@@ -1,0 +1,1496 @@
+{
+    "aten_permute/transpose:0": {
+        "dtype": "float32",
+        "is_const": false,
+        "kind": "output",
+        "layer_name": "aten_permute/transpose:0",
+        "sim_format": "NHWC",
+        "sim_shape": [
+            1,
+            1200,
+            1200,
+            2
+        ],
+        "tf_file": "value_aten_permute__transpose:0.npy",
+        "tf_format": "NHWC",
+        "tf_shape": [
+            1,
+            1200,
+            1200,
+            2
+        ]
+    },
+    "double_conv_59/Sequential_1/BatchNorm2d_10/aten_relu/Relu:0": {
+        "dtype": "float32",
+        "is_const": false,
+        "kind": "output",
+        "layer_name": "double_conv_59/Sequential_1/BatchNorm2d_10/aten_relu/Relu:0",
+        "sim_format": "NHWC",
+        "sim_shape": [
+            1,
+            32,
+            1200,
+            1200
+        ],
+        "tf_file": "value_double_conv_59__Sequential_1__BatchNorm2d_10__aten_relu__Relu:0.npy",
+        "tf_format": "NHWC",
+        "tf_shape": [
+            1,
+            32,
+            1200,
+            1200
+        ]
+    },
+    "identity_4256": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "identity_4256",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            128,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_identity_4256_CRSM_0.npy",
+            "value_sg00_identity_4256_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_identity_4256_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            128,
+            1,
+            1
+        ]
+    },
+    "nn.pad0:0": {
+        "dtype": "float32",
+        "is_const": false,
+        "kind": "input",
+        "layer_name": "nn.pad0:0",
+        "sim_format": "NCHW",
+        "sim_shape": [
+            1,
+            3,
+            2402,
+            2404
+        ],
+        "tf_file": "value_nn.pad0:0.npy",
+        "tf_format": "NCHW",
+        "tf_shape": [
+            1,
+            3,
+            2402,
+            2404
+        ]
+    },
+    "t1026-2788-3384": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1026",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            1,
+            1,
+            1,
+            360000
+        ],
+        "split_axis": -1,
+        "split_indices_or_sections": [],
+        "split_npys": [],
+        "tf_file": "value_sg00_t1026-2788-3384_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            1,
+            1,
+            1,
+            360000
+        ]
+    },
+    "t1093-3398-3660": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1093",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            576,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t1093-3398-3660_CRSM_0.npy",
+            "value_sg00_t1093-3398-3660_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1093-3398-3660_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            576,
+            1,
+            1
+        ]
+    },
+    "t1149-3408-3670": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1149",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            256,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t1149-3408-3670_CRSM_0.npy",
+            "value_sg00_t1149-3408-3670_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1149-3408-3670_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            256,
+            1,
+            1
+        ]
+    },
+    "t1149-3410-3672": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1149",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            256,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t1149-3410-3672_CRSM_0.npy",
+            "value_sg00_t1149-3410-3672_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1149-3410-3672_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            256,
+            1,
+            1
+        ]
+    },
+    "t1149-3412-3674": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1149",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            256,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t1149-3412-3674_CRSM_0.npy",
+            "value_sg00_t1149-3412-3674_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1149-3412-3674_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            256,
+            1,
+            1
+        ]
+    },
+    "t1149-3414-3676": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1149",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            256,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t1149-3414-3676_CRSM_0.npy",
+            "value_sg00_t1149-3414-3676_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1149-3414-3676_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            256,
+            1,
+            1
+        ]
+    },
+    "t1177-2894-3416": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1177",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            1,
+            1,
+            1,
+            1440000
+        ],
+        "split_axis": -1,
+        "split_indices_or_sections": [],
+        "split_npys": [],
+        "tf_file": "value_sg00_t1177-2894-3416_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            1,
+            1,
+            1,
+            1440000
+        ]
+    },
+    "t1244-3430-3690": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1244",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            288,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t1244-3430-3690_CRSM_0.npy",
+            "value_sg00_t1244-3430-3690_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1244-3430-3690_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            288,
+            1,
+            1
+        ]
+    },
+    "t129-3214-3480": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t129",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            1152,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t129-3214-3480_CRSM_0.npy",
+            "value_sg00_t129-3214-3480_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t129-3214-3480_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            1152,
+            1,
+            1
+        ]
+    },
+    "t1297-3440-3700": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1297",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            32,
+            288,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            16
+        ],
+        "split_npys": [
+            "value_sg00_t1297-3440-3700_CRSM_0.npy",
+            "value_sg00_t1297-3440-3700_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1297-3440-3700_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            32,
+            288,
+            1,
+            1
+        ]
+    },
+    "t1320-3444-3704": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1320",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            32,
+            288,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            16
+        ],
+        "split_npys": [
+            "value_sg00_t1320-3444-3704_CRSM_0.npy",
+            "value_sg00_t1320-3444-3704_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1320-3444-3704_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            32,
+            288,
+            1,
+            1
+        ]
+    },
+    "t1396-3458-3718": {
+        "dtype": "float32",
+        "is_const": true,
+        "layer_name": "t1396",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            2,
+            1,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            1
+        ],
+        "split_npys": [
+            "value_sg00_t1396-3458-3718_CRSM_0.npy",
+            "value_sg00_t1396-3458-3718_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1396-3458-3718_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            2,
+            1,
+            1,
+            1
+        ]
+    },
+    "t1655-2516-3322-3588": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1655",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            4096,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t1655-2516-3322-3588_CRSM_0.npy",
+            "value_sg00_t1655-2516-3322-3588_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1655-2516-3322-3588_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            4096,
+            1,
+            1
+        ]
+    },
+    "t1662-2527-3324-3590": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1662",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            2048,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t1662-2527-3324-3590_CRSM_0.npy",
+            "value_sg00_t1662-2527-3324-3590_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1662-2527-3324-3590_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            2048,
+            1,
+            1
+        ]
+    },
+    "t1686-2673-3354-3618": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1686",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            1024,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t1686-2673-3354-3618_CRSM_0.npy",
+            "value_sg00_t1686-2673-3354-3618_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1686-2673-3354-3618_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            1024,
+            1,
+            1
+        ]
+    },
+    "t1693-2683-3356-3620": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1693",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            512,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t1693-2683-3356-3620_CRSM_0.npy",
+            "value_sg00_t1693-2683-3356-3620_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1693-2683-3356-3620_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            512,
+            1,
+            1
+        ]
+    },
+    "t1717-2799-3386-3648": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t1717",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            256,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t1717-2799-3386-3648_CRSM_0.npy",
+            "value_sg00_t1717-2799-3386-3648_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t1717-2799-3386-3648_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            256,
+            1,
+            1
+        ]
+    },
+    "t182-3224-3490": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t182",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            1152,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t182-3224-3490_CRSM_0.npy",
+            "value_sg00_t182-3224-3490_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t182-3224-3490_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            1152,
+            1,
+            1
+        ]
+    },
+    "t245-2112-3234-3500": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t245",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            2304,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t245-2112-3234-3500_CRSM_0.npy",
+            "value_sg00_t245-2112-3234-3500_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t245-2112-3234-3500_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            2304,
+            1,
+            1
+        ]
+    },
+    "t298-2155-3244-3510": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t298",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            4608,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t298-2155-3244-3510_CRSM_0.npy",
+            "value_sg00_t298-2155-3244-3510_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t298-2155-3244-3510_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            4608,
+            1,
+            1
+        ]
+    },
+    "t3-3194-3460": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t3",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            27,
+            64,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            13
+        ],
+        "split_npys": [
+            "value_sg00_t3-3194-3460_CRSM_0.npy",
+            "value_sg00_t3-3194-3460_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t3-3194-3460_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            27,
+            64,
+            1,
+            1
+        ]
+    },
+    "t351-2199-3254-3520": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t351",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            4608,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t351-2199-3254-3520_CRSM_0.npy",
+            "value_sg00_t351-2199-3254-3520_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t351-2199-3254-3520_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            4608,
+            1,
+            1
+        ]
+    },
+    "t414-2243-3264-3530": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t414",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            9216,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t414-2243-3264-3530_CRSM_0.npy",
+            "value_sg00_t414-2243-3264-3530_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t414-2243-3264-3530_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            9216,
+            1,
+            1
+        ]
+    },
+    "t4613": {
+        "dtype": "float32",
+        "is_const": true,
+        "layer_name": "t4613",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            128,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t4613_CRSM_0.npy",
+            "value_sg00_t4613_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t4613_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            128,
+            1,
+            1
+        ]
+    },
+    "t4614": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t4614",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            68,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t4614_CRSM_0.npy",
+            "value_sg00_t4614_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t4614_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            68,
+            1,
+            1
+        ]
+    },
+    "t4615": {
+        "dtype": "float32",
+        "is_const": true,
+        "layer_name": "t4615",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            12,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t4615_CRSM_0.npy",
+            "value_sg00_t4615_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t4615_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            12,
+            1,
+            1
+        ]
+    },
+    "t4616": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t4616",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            226,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t4616_CRSM_0.npy",
+            "value_sg00_t4616_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t4616_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            226,
+            1,
+            1
+        ]
+    },
+    "t4617": {
+        "dtype": "float32",
+        "is_const": true,
+        "layer_name": "t4617",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            6,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t4617_CRSM_0.npy",
+            "value_sg00_t4617_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t4617_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            6,
+            1,
+            1
+        ]
+    },
+    "t4618": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t4618",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            32,
+            147,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            16
+        ],
+        "split_npys": [
+            "value_sg00_t4618_CRSM_0.npy",
+            "value_sg00_t4618_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t4618_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            32,
+            147,
+            1,
+            1
+        ]
+    },
+    "t4619": {
+        "dtype": "float32",
+        "is_const": true,
+        "layer_name": "t4619",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            32,
+            3,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            16
+        ],
+        "split_npys": [
+            "value_sg00_t4619_CRSM_0.npy",
+            "value_sg00_t4619_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t4619_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            32,
+            3,
+            1,
+            1
+        ]
+    },
+    "t4620": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t4620",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            16,
+            22,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            8
+        ],
+        "split_npys": [
+            "value_sg00_t4620_CRSM_0.npy",
+            "value_sg00_t4620_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t4620_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            16,
+            22,
+            1,
+            1
+        ]
+    },
+    "t4621": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t4621",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            64,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t4621_CRSM_0.npy",
+            "value_sg00_t4621_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t4621_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            64,
+            1,
+            1
+        ]
+    },
+    "t467-2287-3274-3540": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t467",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            18432,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t467-2287-3274-3540_CRSM_0.npy",
+            "value_sg00_t467-2287-3274-3540_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t467-2287-3274-3540_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            18432,
+            1,
+            1
+        ]
+    },
+    "t520-2331-3284-3550": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t520",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            18432,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t520-2331-3284-3550_CRSM_0.npy",
+            "value_sg00_t520-2331-3284-3550_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t520-2331-3284-3550_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            18432,
+            1,
+            1
+        ]
+    },
+    "t583-2375-3294-3560": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t583",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            18432,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t583-2375-3294-3560_CRSM_0.npy",
+            "value_sg00_t583-2375-3294-3560_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t583-2375-3294-3560_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            18432,
+            1,
+            1
+        ]
+    },
+    "t636-2419-3304-3570": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t636",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            18432,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t636-2419-3304-3570_CRSM_0.npy",
+            "value_sg00_t636-2419-3304-3570_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t636-2419-3304-3570_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            18432,
+            1,
+            1
+        ]
+    },
+    "t66-3204-3470": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t66",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            64,
+            576,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            32
+        ],
+        "split_npys": [
+            "value_sg00_t66-3204-3470_CRSM_0.npy",
+            "value_sg00_t66-3204-3470_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t66-3204-3470_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            64,
+            576,
+            1,
+            1
+        ]
+    },
+    "t695-2477-3314-3580": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t695",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            36864,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t695-2477-3314-3580_CRSM_0.npy",
+            "value_sg00_t695-2477-3314-3580_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t695-2477-3314-3580_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            36864,
+            1,
+            1
+        ]
+    },
+    "t714-2497-3318-3584": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t714",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            8192,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t714-2497-3318-3584_CRSM_0.npy",
+            "value_sg00_t714-2497-3318-3584_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t714-2497-3318-3584_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            8192,
+            1,
+            1
+        ]
+    },
+    "t791-2569-3334-3600": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t791",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            9216,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t791-2569-3334-3600_CRSM_0.npy",
+            "value_sg00_t791-2569-3334-3600_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t791-2569-3334-3600_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            9216,
+            1,
+            1
+        ]
+    },
+    "t847-2613-3344-3610": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t847",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            2048,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t847-2613-3344-3610_CRSM_0.npy",
+            "value_sg00_t847-2613-3344-3610_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t847-2613-3344-3610_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            2048,
+            1,
+            1
+        ]
+    },
+    "t847-2625-3346-3612": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t847",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            2048,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t847-2625-3346-3612_CRSM_0.npy",
+            "value_sg00_t847-2625-3346-3612_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t847-2625-3346-3612_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            2048,
+            1,
+            1
+        ]
+    },
+    "t847-2637-3348-3614": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t847",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            2048,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t847-2637-3348-3614_CRSM_0.npy",
+            "value_sg00_t847-2637-3348-3614_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t847-2637-3348-3614_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            2048,
+            1,
+            1
+        ]
+    },
+    "t847-2649-3350-3616": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t847",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            2048,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t847-2649-3350-3616_CRSM_0.npy",
+            "value_sg00_t847-2649-3350-3616_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t847-2649-3350-3616_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            2048,
+            1,
+            1
+        ]
+    },
+    "t875-2661-3352": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t875",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            1,
+            1,
+            1,
+            90000
+        ],
+        "split_axis": -1,
+        "split_indices_or_sections": [],
+        "split_npys": [],
+        "tf_file": "value_sg00_t875-2661-3352_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            1,
+            1,
+            1,
+            90000
+        ]
+    },
+    "t942-2725-3366-3630": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t942",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            2304,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t942-2725-3366-3630_CRSM_0.npy",
+            "value_sg00_t942-2725-3366-3630_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t942-2725-3366-3630_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            2304,
+            1,
+            1
+        ]
+    },
+    "t998-3376-3640": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t998",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            512,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t998-3376-3640_CRSM_0.npy",
+            "value_sg00_t998-3376-3640_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t998-3376-3640_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            512,
+            1,
+            1
+        ]
+    },
+    "t998-3378-3642": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t998",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            512,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t998-3378-3642_CRSM_0.npy",
+            "value_sg00_t998-3378-3642_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t998-3378-3642_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            512,
+            1,
+            1
+        ]
+    },
+    "t998-3380-3644": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t998",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            512,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t998-3380-3644_CRSM_0.npy",
+            "value_sg00_t998-3380-3644_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t998-3380-3644_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            512,
+            1,
+            1
+        ]
+    },
+    "t998-3382-3646": {
+        "dtype": "bfloat16",
+        "is_const": true,
+        "layer_name": "t998",
+        "sim_format": "CRSM",
+        "sim_shape": [
+            128,
+            512,
+            1,
+            1
+        ],
+        "split_axis": 0,
+        "split_indices_or_sections": [
+            64
+        ],
+        "split_npys": [
+            "value_sg00_t998-3382-3646_CRSM_0.npy",
+            "value_sg00_t998-3382-3646_CRSM_1.npy"
+        ],
+        "tf_file": "value_sg00_t998-3382-3646_CRSM.npy",
+        "tf_format": "CRSM",
+        "tf_shape": [
+            128,
+            512,
+            1,
+            1
+        ]
+    },
+    "vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/transpose:0": {
+        "dtype": "bfloat16",
+        "is_const": false,
+        "layer_name": "vgg16_bn_6/Sequential_12/MaxPool2d_3/aten_max_pool2d/transpose:0",
+        "sim_format": "NHC",
+        "sim_shape": [
+            12057600,
+            1,
+            1
+        ],
+        "tf_file": "value_vgg16_bn_6__Sequential_12__MaxPool2d_3__aten_max_pool2d__transpose:0.npy",
+        "tf_format": "NHC",
+        "tf_shape": [
+            12057600,
+            1,
+            1
+        ]
+    }
+}

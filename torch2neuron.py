@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
     convert_neuron = True
     if convert_neuron:
-        model_neuron = torch.neuron.trace(model, [input_tensor])
+        model_neuron = torch.neuron.trace(model, [input_tensor], compiler_workdir='./logs')
         filename = 'model_neuron.pt'
         model_neuron.save(filename)
 
